@@ -1,0 +1,41 @@
+Biophony - Domestic animal - Cat, cat meowing or purring, cat in the distance
+Biophony - Domestic animal - Rooster crowing, rooster crows, rooster in the distance, chicken
+Biophony - Domestic animal - Cow mooing, cow crowing, cow in the background, cowbell
+Biophony - Domestic animal - Dog barking, dog barks in the distance
+Biophony - Domestic animal - Donkey braying, donkey
+Biophony - Domestic animal - Goat bleating, goat bleats, goat cawing in the background
+Biophony - Domestic animal - Horse hovers, horse hooves, horse barking, horse neighing, horse trotting, gallops, horse in the background
+Biophony - Domestic animal - Pig sow or pork grumpying, pig 
+Biophony - Domestic animal - Sheep bleating, sheep crowing in the distance
+Biophony - Non-domestic animal - Frog croaking, frogs in the background, frogs chirping
+Biophony - Non-domestic animal - Birds chirping, bird chrip, bird singing, birdsong, birds in the background
+Biophony - Non-domestic animal - Other mammals that are non humans, such as wolf, mouse
+Biophony - Non-domestic animal - Mammals - Bats
+Biophony - Insects / Bugs - Cicadas chirping, cicadas chirp, cicadas in the distance
+Biophony - Insects / Bugs - Cicadas chirping, crickets chirp, crickets in the distance
+Biophony - Insects / Bugs - Insects buzzing, insects flying, sound of wings
+Geophony - Fire burning, fire crackles, campfire 
+Geophony - Thunder rumbling in the distance, thunder rattling, thunderbolt, thunderclap
+Geophony - Heavy storm, thunderstorm rolling, thunderstorm blowing, hail
+Geophony - Water - Rain falling, steady rain or heavy rain, rain hitting the ground, raindrops on a surface, water flowing, continuous flow, waves from river ocean or sea 
+Geophony - Wind - Wind blowing, soft breeze, wind on branch or leaf 
+Anthropophony - People clapping, person clapping, clapping in the background
+Anthropophony - People walking, footsteps
+Anthropophony - Music playing, faint music in the background, festival, radio playing, musical instrument, melodic tune
+Anthropophony - People talking, person talking, people speaking, talking in the background, giving a speech
+Anthropophony - People singing, person singing, people whistling, people singing in the background
+Anthropophony - People laughing, person laughing, laugh in the distance
+Anthropophony - People yelling, people screaming, people shouting, children shout in the background
+Anthropophony - People crying, children crying
+Technophony - Objects - Bells ringing, belles chiming, bells in the background, church bells
+Technophony - Objects - Computer-related sounds like keyboard typing, glitch, electronic sounds
+Technophony - Objects - Doors opening, closing, creaking or sounds of keys or lock
+Technophony - Objects - Microphone tapping, audio feedback, crackling on microphone
+Technophony - Vehicles - Tractor, mower, lawnmower running, and other machines used for farming or gardening
+Technophony - Vehicles - Airplane, plane, helicopter, plane flying overhead and other flying vehicles 
+Technophony - Vehicles - Car, cars driving by, bus, motorcycle, bike, scooter, truck, lorry and other motored vehicles 
+Technophony - Vehicles - Trains, trains passing by, metros, undergrounds or other railed vehicles
+Technophony - Vehicles - Engine starting and stopping, outdoor traffic, braking, klaxon, horn, sirens
+Technophony - Roadworks and outdoor construction
+Technophony - Explosions including fireworks, bomb, gunshot
+None - Silence, brief silence

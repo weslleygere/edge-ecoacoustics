@@ -1,0 +1,1001 @@
+audio_id,source_path,site_id,site_name,station_id,recording_datetime_local,recording_date_local,hour_of_day,start_second,duration_seconds,segment_seconds,sampling_rate_hz
+92470,/escutado-audios/HD1/Luiz - Fura Feia/Data/LUIZ4223_20240922_213000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2024-09-22 21:30:00,2024-09-22,21,0,60,6,48000
+92518,/escutado-audios/HD1/Luiz - Fura Feia/Data/LUIZ4223_20240923_061000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2024-09-23 06:10:00,2024-09-23,6,60,60,6,48000
+108419,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20240923_112000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-09-23 11:20:00,2024-09-23,11,0,60,6,48000
+122872,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20240923_174000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-09-23 17:40:00,2024-09-23,17,120,60,6,48000
+109214,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20240925_154000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-09-25 15:40:00,2024-09-25,15,120,60,6,48000
+93524,/escutado-audios/HD1/Luiz - Fura Feia/Data/LUIZ4223_20240928_004000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2024-09-28 00:40:00,2024-09-28,0,0,60,6,48000
+109250,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20240928_032000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-09-28 03:20:00,2024-09-28,3,60,60,6,48000
+124006,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20240930_090000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-09-30 09:00:00,2024-09-30,9,0,60,6,48000
+93420,/escutado-audios/HD1/Luiz - Fura Feia/Data/LUIZ4223_20240930_105000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2024-09-30 10:50:00,2024-09-30,10,120,60,6,48000
+110124,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20241004_173000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-10-04 17:30:00,2024-10-04,17,60,60,6,48000
+124575,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20241004_182000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-10-04 18:20:00,2024-10-04,18,120,60,6,48000
+94153,/escutado-audios/HD1/Luiz - Fura Feia/Data/LUIZ4223_20241005_014000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2024-10-05 01:40:00,2024-10-05,1,60,60,6,48000
+110294,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20241005_145000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-10-05 14:50:00,2024-10-05,14,0,60,6,48000
+125008,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20241007_022000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-10-07 02:20:00,2024-10-07,2,0,60,6,48000
+110909,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20241007_232000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-10-07 23:20:00,2024-10-07,23,60,60,6,48000
+110508,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20241008_053000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-10-08 05:30:00,2024-10-08,5,60,60,6,48000
+110642,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20241009_025000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-10-09 02:50:00,2024-10-09,2,0,60,6,48000
+125028,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20241009_082000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-10-09 08:20:00,2024-10-09,8,120,60,6,48000
+125293,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20241010_114000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-10-10 11:40:00,2024-10-10,11,120,60,6,48000
+111704,/escutado-audios/HD1/Raul - Furna Feia/Data/RAUL4247_20241015_095000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2024-10-15 09:50:00,2024-10-15,9,0,60,6,48000
+126293,/escutado-audios/HD1/Paulo - Furna Feia/Data/PAULO4225_20241016_185000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2024-10-16 18:50:00,2024-10-16,18,60,60,6,48000
+290549,/escutado-audios/HD3/Chuvoso1/celi_barauna_abr_2025/Data/CELI4565_20250314_165000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2025-03-14 16:50:00,2025-03-14,16,120,60,6,48000
+355778,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/17/JORGE660_20250317_174000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2025-03-17 17:40:00,2025-03-17,17,120,60,6,48000
+311559,/escutado-audios/HD3/Chuvoso1/celi_barauna_abr_2025/Data/CELI4565_20250318_001000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2025-03-18 00:10:00,2025-03-18,0,120,60,6,48000
+347241,/escutado-audios/HD3/Chuvoso1/gal_barauna_parnafurnafeia_marco_2025/Data/GAL24576_20250319_133000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2025-03-19 13:30:00,2025-03-19,13,120,60,6,48000
+290610,/escutado-audios/HD3/Chuvoso1/celi_barauna_abr_2025/Data/CELI4565_20250320_221000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2025-03-20 22:10:00,2025-03-20,22,0,60,6,48000
+357586,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/25/JORGE660_20250325_011000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2025-03-25 01:10:00,2025-03-25,1,60,60,6,48000
+311921,/escutado-audios/HD3/Chuvoso1/celi_barauna_abr_2025/Data/CELI4565_20250325_081000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2025-03-25 08:10:00,2025-03-25,8,0,60,6,48000
+292288,/escutado-audios/HD3/Chuvoso1/celi_barauna_abr_2025/Data/CELI4565_20250328_202000.wav,1,Parque Nacional Furna Feia,site_1_station_7,2025-03-28 20:20:00,2025-03-28,20,60,60,6,48000
+358302,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/1/JORGE660_20250401_193000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2025-04-01 19:30:00,2025-04-01,19,120,60,6,48000
+348667,/escutado-audios/HD3/Chuvoso1/gal_barauna_parnafurnafeia_marco_2025/Data/GAL24576_20250402_044000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2025-04-02 04:40:00,2025-04-02,4,60,60,6,48000
+358462,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/3/JORGE660_20250403_215000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2025-04-03 21:50:00,2025-04-03,21,120,60,6,48000
+349060,/escutado-audios/HD3/Chuvoso1/gal_barauna_parnafurnafeia_marco_2025/Data/GAL24576_20250405_132000.wav,1,Parque Nacional Furna Feia,site_1_station_6,2025-04-05 13:20:00,2025-04-05,13,120,60,6,48000
+273971,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/8/JORGE660_20250408_115000.wav,1,Parque Nacional Furna Feia,site_1_station_5,2025-04-08 11:50:00,2025-04-08,11,120,60,6,48000
+145719,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/25/NISE4659_20240925_115000.wav,8,Sítio Reforma,site_8_station_8,2024-09-25 11:50:00,2024-09-25,11,120,60,6,48000
+164407,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/27/ZILA4575_20240927_032000.wav,8,Sítio Reforma,site_8_station_10,2024-09-27 03:20:00,2024-09-27,3,60,60,6,48000
+158083,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/27/NISIA651_20240927_043000.wav,8,Sítio Reforma,site_8_station_9,2024-09-27 04:30:00,2024-09-27,4,0,60,6,48000
+146769,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/29/NISE4659_20240929_062000.wav,8,Sítio Reforma,site_8_station_8,2024-09-29 06:20:00,2024-09-29,6,60,60,6,48000
+164852,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/2/ZILA4575_20241002_170000.wav,8,Sítio Reforma,site_8_station_10,2024-10-02 17:00:00,2024-10-02,17,120,60,6,48000
+165311,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/3/ZILA4575_20241003_123000.wav,8,Sítio Reforma,site_8_station_10,2024-10-03 12:30:00,2024-10-03,12,0,60,6,48000
+146845,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/3/NISE4659_20241003_163000.wav,8,Sítio Reforma,site_8_station_8,2024-10-03 16:30:00,2024-10-03,16,0,60,6,48000
+158933,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/6/NISIA651_20241006_174000.wav,8,Sítio Reforma,site_8_station_9,2024-10-06 17:40:00,2024-10-06,17,60,60,6,48000
+273553,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/7/ZILA4575_20241007_091000.wav,8,Sítio Reforma,site_8_station_10,2024-10-07 09:10:00,2024-10-07,9,0,60,6,48000
+147653,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/7/NISE4659_20241007_230000.wav,8,Sítio Reforma,site_8_station_8,2024-10-07 23:00:00,2024-10-07,23,120,60,6,48000
+147867,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/NISE4659_20241009_154000.wav,8,Sítio Reforma,site_8_station_8,2024-10-09 15:40:00,2024-10-09,15,60,60,6,48000
+166125,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/10/ZILA4575_20241010_042000.wav,8,Sítio Reforma,site_8_station_10,2024-10-10 04:20:00,2024-10-10,4,0,60,6,48000
+166787,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/12/ZILA4575_20241012_104000.wav,8,Sítio Reforma,site_8_station_10,2024-10-12 10:40:00,2024-10-12,10,120,60,6,48000
+166620,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/13/ZILA4575_20241013_070000.wav,8,Sítio Reforma,site_8_station_10,2024-10-13 07:00:00,2024-10-13,7,60,60,6,48000
+148273,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/13/NISE4659_20241013_093000.wav,8,Sítio Reforma,site_8_station_8,2024-10-13 09:30:00,2024-10-13,9,0,60,6,48000
+147770,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/13/NISE4659_20241013_224000.wav,8,Sítio Reforma,site_8_station_8,2024-10-13 22:40:00,2024-10-13,22,0,60,6,48000
+148594,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/16/NISE4659_20241016_054000.wav,8,Sítio Reforma,site_8_station_8,2024-10-16 05:40:00,2024-10-16,5,60,60,6,48000
+535812,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250409_022000.wav,8,Sítio Reforma,site_8_station_10,2025-04-09 02:20:00,2025-04-09,2,120,60,6,48000
+500107,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250410_133000.wav,8,Sítio Reforma,site_8_station_10,2025-04-10 13:30:00,2025-04-10,13,60,60,6,48000
+500419,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250410_220000.wav,8,Sítio Reforma,site_8_station_10,2025-04-10 22:00:00,2025-04-10,22,60,60,6,48000
+502414,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/11/ZUMBI658_20250411_224000.wav,8,Sítio Reforma,site_8_station_9,2025-04-11 22:40:00,2025-04-11,22,0,60,6,48000
+505673,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250413_001000.wav,8,Sítio Reforma,site_8_station_10,2025-04-13 00:10:00,2025-04-13,0,120,60,6,48000
+360369,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/14/LUIZ4223_20250414_042000.wav,8,Sítio Reforma,site_8_station_8,2025-04-14 04:20:00,2025-04-14,4,0,60,6,48000
+360629,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/16/LUIZ4223_20250416_215000.wav,8,Sítio Reforma,site_8_station_8,2025-04-16 21:50:00,2025-04-16,21,60,60,6,48000
+512360,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/ZUMBI658_20250417_093000.wav,8,Sítio Reforma,site_8_station_9,2025-04-17 09:30:00,2025-04-17,9,0,60,6,48000
+512253,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/ZUMBI658_20250417_223000.wav,8,Sítio Reforma,site_8_station_9,2025-04-17 22:30:00,2025-04-17,22,0,60,6,48000
+516073,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/19/ZUMBI658_20250419_105000.wav,8,Sítio Reforma,site_8_station_9,2025-04-19 10:50:00,2025-04-19,10,0,60,6,48000
+515153,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250419_174000.wav,8,Sítio Reforma,site_8_station_10,2025-04-19 17:40:00,2025-04-19,17,0,60,6,48000
+523547,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250424_123000.wav,8,Sítio Reforma,site_8_station_10,2025-04-24 12:30:00,2025-04-24,12,120,60,6,48000
+362089,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/27/LUIZ4223_20250427_172000.wav,8,Sítio Reforma,site_8_station_8,2025-04-27 17:20:00,2025-04-27,17,0,60,6,48000
+362086,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/28/LUIZ4223_20250428_185000.wav,8,Sítio Reforma,site_8_station_8,2025-04-28 18:50:00,2025-04-28,18,120,60,6,48000
+529910,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/29/ZUMBI658_20250429_060000.wav,8,Sítio Reforma,site_8_station_9,2025-04-29 06:00:00,2025-04-29,6,60,60,6,48000
+530257,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250429_210000.wav,8,Sítio Reforma,site_8_station_10,2025-04-29 21:00:00,2025-04-29,21,120,60,6,48000
+531134,/escutado-audios/HD3/Chuvoso1/raul_sitio_reforma_caico_maio_2025/Data/RAUL4247_20250430_004000.wav,8,Sítio Reforma,site_8_station_10,2025-04-30 00:40:00,2025-04-30,0,60,60,6,48000
+169508,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/25/ALCEU525_20240925_112000.wav,9,Cachoeira Grande,site_9_station_11,2024-09-25 11:20:00,2024-09-25,11,60,60,6,48000
+170096,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/29/ALCEU525_20240929_134000.wav,9,Cachoeira Grande,site_9_station_11,2024-09-29 13:40:00,2024-09-29,13,120,60,6,48000
+170563,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/2/ALCEU525_20241002_170000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-02 17:00:00,2024-10-02,17,60,60,6,48000
+170504,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/3/ALCEU525_20241003_220000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-03 22:00:00,2024-10-03,22,120,60,6,48000
+170648,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/4/ALCEU525_20241004_010000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-04 01:00:00,2024-10-04,1,60,60,6,48000
+170830,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/4/ALCEU525_20241004_195000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-04 19:50:00,2024-10-04,19,60,60,6,48000
+170664,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/5/ALCEU525_20241005_031000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-05 03:10:00,2024-10-05,3,0,60,6,48000
+170919,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/6/ALCEU525_20241006_020000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-06 02:00:00,2024-10-06,2,60,60,6,48000
+170927,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/6/ALCEU525_20241006_112000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-06 11:20:00,2024-10-06,11,60,60,6,48000
+171477,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/7/ALCEU525_20241007_194000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-07 19:40:00,2024-10-07,19,0,60,6,48000
+171435,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/8/ALCEU525_20241008_152000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-08 15:20:00,2024-10-08,15,0,60,6,48000
+171426,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/ALCEU525_20241009_151000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-09 15:10:00,2024-10-09,15,0,60,6,48000
+171476,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/10/ALCEU525_20241010_235000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-10 23:50:00,2024-10-10,23,60,60,6,48000
+171778,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/11/ALCEU525_20241011_043000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-11 04:30:00,2024-10-11,4,0,60,6,48000
+171687,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/11/ALCEU525_20241011_200000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-11 20:00:00,2024-10-11,20,0,60,6,48000
+171925,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/14/ALCEU525_20241014_122000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-14 12:20:00,2024-10-14,12,120,60,6,48000
+172496,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/16/ALCEU525_20241016_033000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-16 03:30:00,2024-10-16,3,60,60,6,48000
+172503,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/16/ALCEU525_20241016_090000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-16 09:00:00,2024-10-16,9,60,60,6,48000
+172701,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/17/ALCEU525_20241017_123000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-17 12:30:00,2024-10-17,12,60,60,6,48000
+172555,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/17/ALCEU525_20241017_183000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-17 18:30:00,2024-10-17,18,60,60,6,48000
+172380,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/18/ALCEU525_20241018_075000.wav,9,Cachoeira Grande,site_9_station_11,2024-10-18 07:50:00,2024-10-18,7,120,60,6,48000
+297440,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/8/ALCEU525_20250408_230000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-08 23:00:00,2025-04-08,23,60,60,6,48000
+297728,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/10/ALCEU525_20250410_134000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-10 13:40:00,2025-04-10,13,120,60,6,48000
+297495,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/10/ALCEU525_20250410_220000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-10 22:00:00,2025-04-10,22,60,60,6,48000
+297621,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/11/ALCEU525_20250411_103000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-11 10:30:00,2025-04-11,10,0,60,6,48000
+297855,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/13/ALCEU525_20250413_014000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-13 01:40:00,2025-04-13,1,0,60,6,48000
+298303,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/ALCEU525_20250417_001000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-17 00:10:00,2025-04-17,0,0,60,6,48000
+298749,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/18/ALCEU525_20250418_064000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-18 06:40:00,2025-04-18,6,0,60,6,48000
+298789,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/21/ALCEU525_20250421_184000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-21 18:40:00,2025-04-21,18,0,60,6,48000
+299759,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/24/ALCEU525_20250424_015000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-24 01:50:00,2025-04-24,1,60,60,6,48000
+299995,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/24/ALCEU525_20250424_122000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-24 12:20:00,2025-04-24,12,0,60,6,48000
+300060,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/26/ALCEU525_20250426_102000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-26 10:20:00,2025-04-26,10,60,60,6,48000
+299937,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/26/ALCEU525_20250426_121000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-26 12:10:00,2025-04-26,12,120,60,6,48000
+299831,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/29/ALCEU525_20250429_111000.wav,9,Cachoeira Grande,site_9_station_11,2025-04-29 11:10:00,2025-04-29,11,60,60,6,48000
+185285,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/27/SONIA570_20240927_033000.wav,10,Piatozinho,site_10_station_12,2024-09-27 03:30:00,2024-09-27,3,120,60,6,48000
+186877,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/27/SONIA570_20240927_211000.wav,10,Piatozinho,site_10_station_12,2024-09-27 21:10:00,2024-09-27,21,0,60,6,48000
+185345,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/28/SONIA570_20240928_011000.wav,10,Piatozinho,site_10_station_12,2024-09-28 01:10:00,2024-09-28,1,60,60,6,48000
+187044,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/28/SONIA570_20240928_140000.wav,10,Piatozinho,site_10_station_12,2024-09-28 14:00:00,2024-09-28,14,60,60,6,48000
+187001,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/28/SONIA570_20240928_220000.wav,10,Piatozinho,site_10_station_12,2024-09-28 22:00:00,2024-09-28,22,0,60,6,48000
+185487,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/29/SONIA570_20240929_093000.wav,10,Piatozinho,site_10_station_12,2024-09-29 09:30:00,2024-09-29,9,0,60,6,48000
+187298,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/1/SONIA570_20241001_171000.wav,10,Piatozinho,site_10_station_12,2024-10-01 17:10:00,2024-10-01,17,0,60,6,48000
+187357,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/4/SONIA570_20241004_130000.wav,10,Piatozinho,site_10_station_12,2024-10-04 13:00:00,2024-10-04,13,60,60,6,48000
+187607,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/5/SONIA570_20241005_215000.wav,10,Piatozinho,site_10_station_12,2024-10-05 21:50:00,2024-10-05,21,120,60,6,48000
+187670,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/6/SONIA570_20241006_170000.wav,10,Piatozinho,site_10_station_12,2024-10-06 17:00:00,2024-10-06,17,60,60,6,48000
+187635,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/SONIA570_20241009_073000.wav,10,Piatozinho,site_10_station_12,2024-10-09 07:30:00,2024-10-09,7,120,60,6,48000
+187788,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/SONIA570_20241009_214000.wav,10,Piatozinho,site_10_station_12,2024-10-09 21:40:00,2024-10-09,21,60,60,6,48000
+187928,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/14/SONIA570_20241014_095000.wav,10,Piatozinho,site_10_station_12,2024-10-14 09:50:00,2024-10-14,9,120,60,6,48000
+188251,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/14/SONIA570_20241014_233000.wav,10,Piatozinho,site_10_station_12,2024-10-14 23:30:00,2024-10-14,23,120,60,6,48000
+535860,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250409_205000.wav,10,Piatozinho,site_10_station_12,2025-04-09 20:50:00,2025-04-09,20,120,60,6,48000
+499858,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250410_023000.wav,10,Piatozinho,site_10_station_12,2025-04-10 02:30:00,2025-04-10,2,0,60,6,48000
+500295,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250410_063000.wav,10,Piatozinho,site_10_station_12,2025-04-10 06:30:00,2025-04-10,6,120,60,6,48000
+501601,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250411_000000.wav,10,Piatozinho,site_10_station_12,2025-04-11 00:00:00,2025-04-11,0,60,60,6,48000
+503092,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250412_101000.wav,10,Piatozinho,site_10_station_12,2025-04-12 10:10:00,2025-04-12,10,0,60,6,48000
+503276,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250412_151000.wav,10,Piatozinho,site_10_station_12,2025-04-12 15:10:00,2025-04-12,15,60,60,6,48000
+506100,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250414_123000.wav,10,Piatozinho,site_10_station_12,2025-04-14 12:30:00,2025-04-14,12,0,60,6,48000
+507988,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250415_055000.wav,10,Piatozinho,site_10_station_12,2025-04-15 05:50:00,2025-04-15,5,0,60,6,48000
+512033,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250417_045000.wav,10,Piatozinho,site_10_station_12,2025-04-17 04:50:00,2025-04-17,4,0,60,6,48000
+511450,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250417_095000.wav,10,Piatozinho,site_10_station_12,2025-04-17 09:50:00,2025-04-17,9,120,60,6,48000
+513317,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250418_033000.wav,10,Piatozinho,site_10_station_12,2025-04-18 03:30:00,2025-04-18,3,60,60,6,48000
+519021,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250421_235000.wav,10,Piatozinho,site_10_station_12,2025-04-21 23:50:00,2025-04-21,23,120,60,6,48000
+520856,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250422_201000.wav,10,Piatozinho,site_10_station_12,2025-04-22 20:10:00,2025-04-22,20,0,60,6,48000
+524441,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250424_233000.wav,10,Piatozinho,site_10_station_12,2025-04-24 23:30:00,2025-04-24,23,60,60,6,48000
+525555,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250425_042000.wav,10,Piatozinho,site_10_station_12,2025-04-25 04:20:00,2025-04-25,4,60,60,6,48000
+523768,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250425_150000.wav,10,Piatozinho,site_10_station_12,2025-04-25 15:00:00,2025-04-25,15,120,60,6,48000
+526215,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250426_060000.wav,10,Piatozinho,site_10_station_12,2025-04-26 06:00:00,2025-04-26,6,60,60,6,48000
+526532,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250426_175000.wav,10,Piatozinho,site_10_station_12,2025-04-26 17:50:00,2025-04-26,17,120,60,6,48000
+528552,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250429_113000.wav,10,Piatozinho,site_10_station_12,2025-04-29 11:30:00,2025-04-29,11,120,60,6,48000
+531424,/escutado-audios/HD3/Chuvoso1/paulo_caico_maio_2025/Data/PAULO4225_20250430_041000.wav,10,Piatozinho,site_10_station_12,2025-04-30 04:10:00,2025-04-30,4,120,60,6,48000
+99159,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240831_150000.wav,11,HARAS FVF,site_11_station_1,2024-08-31 15:00:00,2024-08-31,15,0,60,6,48000
+99650,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240901_180000.wav,11,HARAS FVF,site_11_station_1,2024-09-01 18:00:00,2024-09-01,18,60,60,6,48000
+99705,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240904_000000.wav,11,HARAS FVF,site_11_station_1,2024-09-04 00:00:00,2024-09-04,0,0,60,6,48000
+99455,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240904_170000.wav,11,HARAS FVF,site_11_station_1,2024-09-04 17:00:00,2024-09-04,17,120,60,6,48000
+99946,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240905_015000.wav,11,HARAS FVF,site_11_station_1,2024-09-05 01:50:00,2024-09-05,1,60,60,6,48000
+99875,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240905_105000.wav,11,HARAS FVF,site_11_station_1,2024-09-05 10:50:00,2024-09-05,10,120,60,6,48000
+99870,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240906_094000.wav,11,HARAS FVF,site_11_station_1,2024-09-06 09:40:00,2024-09-06,9,0,60,6,48000
+99991,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240906_202000.wav,11,HARAS FVF,site_11_station_1,2024-09-06 20:20:00,2024-09-06,20,0,60,6,48000
+100188,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240907_054000.wav,11,HARAS FVF,site_11_station_1,2024-09-07 05:40:00,2024-09-07,5,0,60,6,48000
+99982,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240907_115000.wav,11,HARAS FVF,site_11_station_1,2024-09-07 11:50:00,2024-09-07,11,0,60,6,48000
+100400,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240908_023000.wav,11,HARAS FVF,site_11_station_1,2024-09-08 02:30:00,2024-09-08,2,60,60,6,48000
+99966,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240908_165000.wav,11,HARAS FVF,site_11_station_1,2024-09-08 16:50:00,2024-09-08,16,0,60,6,48000
+100432,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240909_114000.wav,11,HARAS FVF,site_11_station_1,2024-09-09 11:40:00,2024-09-09,11,0,60,6,48000
+100148,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240909_214000.wav,11,HARAS FVF,site_11_station_1,2024-09-09 21:40:00,2024-09-09,21,0,60,6,48000
+100615,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240910_192000.wav,11,HARAS FVF,site_11_station_1,2024-09-10 19:20:00,2024-09-10,19,120,60,6,48000
+100526,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240911_002000.wav,11,HARAS FVF,site_11_station_1,2024-09-11 00:20:00,2024-09-11,0,120,60,6,48000
+100690,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240911_065000.wav,11,HARAS FVF,site_11_station_1,2024-09-11 06:50:00,2024-09-11,6,60,60,6,48000
+100790,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240911_145000.wav,11,HARAS FVF,site_11_station_1,2024-09-11 14:50:00,2024-09-11,14,0,60,6,48000
+100381,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240911_183000.wav,11,HARAS FVF,site_11_station_1,2024-09-11 18:30:00,2024-09-11,18,60,60,6,48000
+100815,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240912_071000.wav,11,HARAS FVF,site_11_station_1,2024-09-12 07:10:00,2024-09-12,7,120,60,6,48000
+101123,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240912_234000.wav,11,HARAS FVF,site_11_station_1,2024-09-12 23:40:00,2024-09-12,23,0,60,6,48000
+101153,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240913_002000.wav,11,HARAS FVF,site_11_station_1,2024-09-13 00:20:00,2024-09-13,0,0,60,6,48000
+101079,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240913_094000.wav,11,HARAS FVF,site_11_station_1,2024-09-13 09:40:00,2024-09-13,9,0,60,6,48000
+101258,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240914_204000.wav,11,HARAS FVF,site_11_station_1,2024-09-14 20:40:00,2024-09-14,20,120,60,6,48000
+101351,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240915_103000.wav,11,HARAS FVF,site_11_station_1,2024-09-15 10:30:00,2024-09-15,10,120,60,6,48000
+101109,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240915_133000.wav,11,HARAS FVF,site_11_station_1,2024-09-15 13:30:00,2024-09-15,13,120,60,6,48000
+101342,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240916_005000.wav,11,HARAS FVF,site_11_station_1,2024-09-16 00:50:00,2024-09-16,0,120,60,6,48000
+101534,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240916_175000.wav,11,HARAS FVF,site_11_station_1,2024-09-16 17:50:00,2024-09-16,17,120,60,6,48000
+101359,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240917_052000.wav,11,HARAS FVF,site_11_station_1,2024-09-17 05:20:00,2024-09-17,5,0,60,6,48000
+101650,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240917_143000.wav,11,HARAS FVF,site_11_station_1,2024-09-17 14:30:00,2024-09-17,14,0,60,6,48000
+101495,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240918_043000.wav,11,HARAS FVF,site_11_station_1,2024-09-18 04:30:00,2024-09-18,4,60,60,6,48000
+101828,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240919_193000.wav,11,HARAS FVF,site_11_station_1,2024-09-19 19:30:00,2024-09-19,19,120,60,6,48000
+102088,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240920_145000.wav,11,HARAS FVF,site_11_station_1,2024-09-20 14:50:00,2024-09-20,14,120,60,6,48000
+102093,/escutado-audios/HD1/Luiz - Vitor Hugo_haras_fvf/Data/LUIZ4223_20240921_083000.wav,11,HARAS FVF,site_11_station_1,2024-09-21 08:30:00,2024-09-21,8,60,60,6,48000
+105359,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240831_161000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-08-31 16:10:00,2024-08-31,16,60,60,6,48000
+105705,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240831_182000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-08-31 18:20:00,2024-08-31,18,0,60,6,48000
+105961,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240904_100000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-04 10:00:00,2024-09-04,10,60,60,6,48000
+106075,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240906_002000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-06 00:20:00,2024-09-06,0,0,60,6,48000
+106357,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240908_153000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-08 15:30:00,2024-09-08,15,0,60,6,48000
+106834,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240910_020000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-10 02:00:00,2024-09-10,2,0,60,6,48000
+106629,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240910_222000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-10 22:20:00,2024-09-10,22,0,60,6,48000
+106903,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240911_081000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-11 08:10:00,2024-09-11,8,60,60,6,48000
+107242,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240914_161000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-14 16:10:00,2024-09-14,16,0,60,6,48000
+107396,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240914_213000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-14 21:30:00,2024-09-14,21,60,60,6,48000
+107625,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240915_134000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-15 13:40:00,2024-09-15,13,120,60,6,48000
+107484,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240916_052000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-16 05:20:00,2024-09-16,5,120,60,6,48000
+107734,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240917_042000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-17 04:20:00,2024-09-17,4,60,60,6,48000
+107727,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240917_235000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-17 23:50:00,2024-09-17,23,60,60,6,48000
+107834,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240918_062000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-18 06:20:00,2024-09-18,6,0,60,6,48000
+108025,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240919_225000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-19 22:50:00,2024-09-19,22,0,60,6,48000
+108105,/escutado-audios/HD1/Raul - Edvaldo _ assentamento sussuarana/Data/RAUL4247_20240920_211000.wav,12,Assentamento Suçuarana,site_12_station_2,2024-09-20 21:10:00,2024-09-20,21,0,60,6,48000
+485642,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250316_084000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-16 08:40:00,2025-03-16,8,0,60,6,48000
+486880,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250318_163000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-18 16:30:00,2025-03-18,16,0,60,6,48000
+487343,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250319_152000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-19 15:20:00,2025-03-19,15,120,60,6,48000
+488100,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250320_115000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-20 11:50:00,2025-03-20,11,60,60,6,48000
+489125,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250321_143000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-21 14:30:00,2025-03-21,14,60,60,6,48000
+490641,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250323_200000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-23 20:00:00,2025-03-23,20,0,60,6,48000
+491401,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250324_090000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-24 09:00:00,2025-03-24,9,120,60,6,48000
+491530,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250325_031000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-25 03:10:00,2025-03-25,3,0,60,6,48000
+494070,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250327_065000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-27 06:50:00,2025-03-27,6,0,60,6,48000
+495769,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250329_122000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-29 12:20:00,2025-03-29,12,0,60,6,48000
+496311,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250330_064000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-03-30 06:40:00,2025-03-30,6,0,60,6,48000
+498475,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250401_033000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-04-01 03:30:00,2025-04-01,3,60,60,6,48000
+498838,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250401_085000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-04-01 08:50:00,2025-04-01,8,0,60,6,48000
+530418,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250403_021000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-04-03 02:10:00,2025-04-03,2,120,60,6,48000
+532129,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250404_174000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-04-04 17:40:00,2025-04-04,17,60,60,6,48000
+530741,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250404_223000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-04-04 22:30:00,2025-04-04,22,60,60,6,48000
+533686,/escutado-audios/HD3/Chuvoso1/paulo_mossoro_abr_2025/Data/PAULO4225_20250406_054000.wav,12,Assentamento Suçuarana,site_12_station_2,2025-04-06 05:40:00,2025-04-06,5,60,60,6,48000
+115641,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240901_141000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-01 14:10:00,2024-09-01,14,0,60,6,48000
+115546,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240902_173000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-02 17:30:00,2024-09-02,17,60,60,6,48000
+115664,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240903_041000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-03 04:10:00,2024-09-03,4,60,60,6,48000
+115774,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240903_123000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-03 12:30:00,2024-09-03,12,120,60,6,48000
+116368,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240905_231000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-05 23:10:00,2024-09-05,23,60,60,6,48000
+116731,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240909_162000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-09 16:20:00,2024-09-09,16,0,60,6,48000
+117280,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240911_000000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-11 00:00:00,2024-09-11,0,120,60,6,48000
+117456,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240911_194000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-11 19:40:00,2024-09-11,19,0,60,6,48000
+116971,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240912_053000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-12 05:30:00,2024-09-12,5,120,60,6,48000
+117830,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240915_001000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-15 00:10:00,2024-09-15,0,0,60,6,48000
+117907,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240917_151000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-17 15:10:00,2024-09-17,15,0,60,6,48000
+118175,/escutado-audios/HD1/Chico - Erione_recanto_das_abelhas/Data/CHICO244_20240917_230000.wav,13,Recanto das Abelhas,site_13_station_3,2024-09-17 23:00:00,2024-09-17,23,0,60,6,48000
+485823,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/16/RAUL4247_20250316_234000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-16 23:40:00,2025-03-16,23,60,60,6,48000
+486916,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/18/RAUL4247_20250318_111000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-18 11:10:00,2025-03-18,11,0,60,6,48000
+488347,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/20/RAUL4247_20250320_114000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-20 11:40:00,2025-03-20,11,120,60,6,48000
+489010,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/21/RAUL4247_20250321_004000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-21 00:40:00,2025-03-21,0,0,60,6,48000
+489751,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/21/RAUL4247_20250321_082000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-21 08:20:00,2025-03-21,8,120,60,6,48000
+492163,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/25/RAUL4247_20250325_042000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-25 04:20:00,2025-03-25,4,60,60,6,48000
+492148,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/25/RAUL4247_20250325_203000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-25 20:30:00,2025-03-25,20,120,60,6,48000
+493140,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/26/RAUL4247_20250326_154000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-26 15:40:00,2025-03-26,15,0,60,6,48000
+492419,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/26/RAUL4247_20250326_211000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-26 21:10:00,2025-03-26,21,120,60,6,48000
+493855,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/27/RAUL4247_20250327_082000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-27 08:20:00,2025-03-27,8,60,60,6,48000
+493446,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/27/RAUL4247_20250327_130000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-27 13:00:00,2025-03-27,13,120,60,6,48000
+495301,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/RAUL4247_20250329_022000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-29 02:20:00,2025-03-29,2,60,60,6,48000
+495416,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/RAUL4247_20250329_084000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-29 08:40:00,2025-03-29,8,0,60,6,48000
+495405,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/RAUL4247_20250329_155000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-29 15:50:00,2025-03-29,15,60,60,6,48000
+495337,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/RAUL4247_20250329_203000.wav,13,Recanto das Abelhas,site_13_station_3,2025-03-29 20:30:00,2025-03-29,20,60,60,6,48000
+499132,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/1/RAUL4247_20250401_081000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-01 08:10:00,2025-04-01,8,0,60,6,48000
+498984,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/1/RAUL4247_20250401_145000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-01 14:50:00,2025-04-01,14,0,60,6,48000
+531895,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/3/RAUL4247_20250403_194000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-03 19:40:00,2025-04-03,19,0,60,6,48000
+532904,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/5/RAUL4247_20250405_071000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-05 07:10:00,2025-04-05,7,120,60,6,48000
+533291,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/5/RAUL4247_20250405_182000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-05 18:20:00,2025-04-05,18,120,60,6,48000
+534302,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/6/RAUL4247_20250406_045000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-06 04:50:00,2025-04-06,4,0,60,6,48000
+535000,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/6/RAUL4247_20250406_074000.wav,13,Recanto das Abelhas,site_13_station_3,2025-04-06 07:40:00,2025-04-06,7,60,60,6,48000
+126704,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240831_211000.wav,14,Sítio Casqueira,site_14_station_4,2024-08-31 21:10:00,2024-08-31,21,0,60,6,48000
+126602,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240902_010000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-02 01:00:00,2024-09-02,1,60,60,6,48000
+126841,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240903_155000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-03 15:50:00,2024-09-03,15,60,60,6,48000
+126826,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240903_230000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-03 23:00:00,2024-09-03,23,120,60,6,48000
+126950,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240904_010000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-04 01:00:00,2024-09-04,1,0,60,6,48000
+126928,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240904_115000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-04 11:50:00,2024-09-04,11,120,60,6,48000
+126953,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240904_141000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-04 14:10:00,2024-09-04,14,120,60,6,48000
+127059,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240904_192000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-04 19:20:00,2024-09-04,19,120,60,6,48000
+126959,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240905_001000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-05 00:10:00,2024-09-05,0,120,60,6,48000
+126949,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240905_104000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-05 10:40:00,2024-09-05,10,0,60,6,48000
+127307,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240905_212000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-05 21:20:00,2024-09-05,21,120,60,6,48000
+127331,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240906_050000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-06 05:00:00,2024-09-06,5,60,60,6,48000
+127378,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240907_174000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-07 17:40:00,2024-09-07,17,120,60,6,48000
+127594,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240908_110000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-08 11:00:00,2024-09-08,11,60,60,6,48000
+127580,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240908_195000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-08 19:50:00,2024-09-08,19,0,60,6,48000
+127716,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240909_233000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-09 23:30:00,2024-09-09,23,60,60,6,48000
+127945,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240911_135000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-11 13:50:00,2024-09-11,13,120,60,6,48000
+127882,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240911_223000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-11 22:30:00,2024-09-11,22,120,60,6,48000
+128041,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240913_041000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-13 04:10:00,2024-09-13,4,0,60,6,48000
+128261,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240913_163000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-13 16:30:00,2024-09-13,16,0,60,6,48000
+128639,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240914_172000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-14 17:20:00,2024-09-14,17,60,60,6,48000
+128552,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240914_222000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-14 22:20:00,2024-09-14,22,60,60,6,48000
+128334,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240915_055000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-15 05:50:00,2024-09-15,5,120,60,6,48000
+128508,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240915_082000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-15 08:20:00,2024-09-15,8,120,60,6,48000
+128605,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240916_004000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-16 00:40:00,2024-09-16,0,120,60,6,48000
+128733,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240916_111000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-16 11:10:00,2024-09-16,11,120,60,6,48000
+128570,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240916_124000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-16 12:40:00,2024-09-16,12,60,60,6,48000
+128940,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240918_005000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-18 00:50:00,2024-09-18,0,0,60,6,48000
+129172,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240918_084000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-18 08:40:00,2024-09-18,8,120,60,6,48000
+128987,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240919_075000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-19 07:50:00,2024-09-19,7,120,60,6,48000
+129206,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240919_205000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-19 20:50:00,2024-09-19,20,120,60,6,48000
+129060,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240920_175000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-20 17:50:00,2024-09-20,17,60,60,6,48000
+129268,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240921_052000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-21 05:20:00,2024-09-21,5,60,60,6,48000
+129255,/escutado-audios/HD1/Paulo - Ismael_casqueira/Data/PAULO4225_20240921_061000.wav,14,Sítio Casqueira,site_14_station_4,2024-09-21 06:10:00,2024-09-21,6,120,60,6,48000
+233169,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/25/MARIA581_20240925_143000.wav,15,ESEC Seridó,site_15_station_14,2024-09-25 14:30:00,2024-09-25,14,120,60,6,48000
+232113,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/26/MARIA581_20240926_130000.wav,15,ESEC Seridó,site_15_station_14,2024-09-26 13:00:00,2024-09-26,13,60,60,6,48000
+200630,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/27/DULCE580_20240927_055000.wav,15,ESEC Seridó,site_15_station_15,2024-09-27 05:50:00,2024-09-27,5,0,60,6,48000
+118969,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20240928_222000.wav,15,ESEC Seridó,site_15_station_13,2024-09-28 22:20:00,2024-09-28,22,120,60,6,48000
+119518,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20240929_224000.wav,15,ESEC Seridó,site_15_station_13,2024-09-29 22:40:00,2024-09-29,22,60,60,6,48000
+232286,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/30/MARIA581_20240930_202000.wav,15,ESEC Seridó,site_15_station_14,2024-09-30 20:20:00,2024-09-30,20,60,60,6,48000
+233217,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/1/MARIA581_20241001_100000.wav,15,ESEC Seridó,site_15_station_14,2024-10-01 10:00:00,2024-10-01,10,60,60,6,48000
+119385,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20241001_114000.wav,15,ESEC Seridó,site_15_station_13,2024-10-01 11:40:00,2024-10-01,11,120,60,6,48000
+119501,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20241003_063000.wav,15,ESEC Seridó,site_15_station_13,2024-10-03 06:30:00,2024-10-03,6,120,60,6,48000
+119627,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20241004_040000.wav,15,ESEC Seridó,site_15_station_13,2024-10-04 04:00:00,2024-10-04,4,60,60,6,48000
+241550,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/7/MARIA581_20241007_060000.wav,15,ESEC Seridó,site_15_station_14,2024-10-07 06:00:00,2024-10-07,6,60,60,6,48000
+234033,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/8/MARIA581_20241008_103000.wav,15,ESEC Seridó,site_15_station_14,2024-10-08 10:30:00,2024-10-08,10,60,60,6,48000
+233367,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/MARIA581_20241009_103000.wav,15,ESEC Seridó,site_15_station_14,2024-10-09 10:30:00,2024-10-09,10,0,60,6,48000
+204574,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/DULCE580_20241009_230000.wav,15,ESEC Seridó,site_15_station_15,2024-10-09 23:00:00,2024-10-09,23,0,60,6,48000
+204480,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/10/DULCE580_20241010_143000.wav,15,ESEC Seridó,site_15_station_15,2024-10-10 14:30:00,2024-10-10,14,120,60,6,48000
+205047,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/11/DULCE580_20241011_045000.wav,15,ESEC Seridó,site_15_station_15,2024-10-11 04:50:00,2024-10-11,4,60,60,6,48000
+120714,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20241011_163000.wav,15,ESEC Seridó,site_15_station_13,2024-10-11 16:30:00,2024-10-11,16,0,60,6,48000
+234327,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/12/MARIA581_20241012_220000.wav,15,ESEC Seridó,site_15_station_14,2024-10-12 22:00:00,2024-10-12,22,60,60,6,48000
+205311,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/12/DULCE580_20241012_224000.wav,15,ESEC Seridó,site_15_station_15,2024-10-12 22:40:00,2024-10-12,22,60,60,6,48000
+121714,/escutado-audios/HD1/Chico - ESEC Serido/Data/CHICO244_20241013_071000.wav,15,ESEC Seridó,site_15_station_13,2024-10-13 07:10:00,2024-10-13,7,60,60,6,48000
+205335,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/14/DULCE580_20241014_004000.wav,15,ESEC Seridó,site_15_station_15,2024-10-14 00:40:00,2024-10-14,0,60,60,6,48000
+234039,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/17/MARIA581_20241017_034000.wav,15,ESEC Seridó,site_15_station_14,2024-10-17 03:40:00,2024-10-17,3,120,60,6,48000
+206160,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/17/DULCE580_20241017_103000.wav,15,ESEC Seridó,site_15_station_15,2024-10-17 10:30:00,2024-10-17,10,120,60,6,48000
+350248,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/10/GAL24576_20250410_075000.wav,15,ESEC Seridó,site_15_station_13,2025-04-10 07:50:00,2025-04-10,7,0,60,6,48000
+504413,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/13/PATATIVA_20250413_163000.wav,15,ESEC Seridó,site_15_station_15,2025-04-13 16:30:00,2025-04-13,16,120,60,6,48000
+507994,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/15/PATATIVA_20250415_010000.wav,15,ESEC Seridó,site_15_station_15,2025-04-15 01:00:00,2025-04-15,1,120,60,6,48000
+350921,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/15/GAL24576_20250415_124000.wav,15,ESEC Seridó,site_15_station_13,2025-04-15 12:40:00,2025-04-15,12,120,60,6,48000
+351098,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/16/GAL24576_20250416_224000.wav,15,ESEC Seridó,site_15_station_13,2025-04-16 22:40:00,2025-04-16,22,0,60,6,48000
+512589,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/18/PATATIVA_20250418_041000.wav,15,ESEC Seridó,site_15_station_15,2025-04-18 04:10:00,2025-04-18,4,120,60,6,48000
+351376,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/19/GAL24576_20250419_132000.wav,15,ESEC Seridó,site_15_station_13,2025-04-19 13:20:00,2025-04-19,13,60,60,6,48000
+351761,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/23/GAL24576_20250423_020000.wav,15,ESEC Seridó,site_15_station_13,2025-04-23 02:00:00,2025-04-23,2,120,60,6,48000
+352489,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/23/GAL24576_20250423_140000.wav,15,ESEC Seridó,site_15_station_13,2025-04-23 14:00:00,2025-04-23,14,60,60,6,48000
+522415,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/23/PATATIVA_20250423_200000.wav,15,ESEC Seridó,site_15_station_15,2025-04-23 20:00:00,2025-04-23,20,60,60,6,48000
+531315,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/30/PATATIVA_20250430_010000.wav,15,ESEC Seridó,site_15_station_15,2025-04-30 01:00:00,2025-04-30,1,60,60,6,48000
+213131,/escutado-audios/HD1/Elba - recanto ribeirinho  - caico/Data/ELBA4536_20240928_165000.wav,16,Recanto Ribeirinho,site_16_station_18,2024-09-28 16:50:00,2024-09-28,16,60,60,6,48000
+196505,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/29/CELI4565_20240929_065000.wav,16,Recanto Ribeirinho,site_16_station_16,2024-09-29 06:50:00,2024-09-29,6,120,60,6,48000
+214326,/escutado-audios/HD1/Elba - recanto ribeirinho  - caico/Data/ELBA4536_20240929_112000.wav,16,Recanto Ribeirinho,site_16_station_18,2024-09-29 11:20:00,2024-09-29,11,120,60,6,48000
+216010,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/30/GAL24576_20240930_061000.wav,16,Recanto Ribeirinho,site_16_station_17,2024-09-30 06:10:00,2024-09-30,6,60,60,6,48000
+217366,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/9/30/GAL24576_20240930_140000.wav,16,Recanto Ribeirinho,site_16_station_17,2024-09-30 14:00:00,2024-09-30,14,120,60,6,48000
+213806,/escutado-audios/HD1/Elba - recanto ribeirinho  - caico/Data/ELBA4536_20241001_210000.wav,16,Recanto Ribeirinho,site_16_station_18,2024-10-01 21:00:00,2024-10-01,21,60,60,6,48000
+214199,/escutado-audios/HD1/Elba - recanto ribeirinho  - caico/Data/ELBA4536_20241003_151000.wav,16,Recanto Ribeirinho,site_16_station_18,2024-10-03 15:10:00,2024-10-03,15,60,60,6,48000
+197409,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/8/CELI4565_20241008_061000.wav,16,Recanto Ribeirinho,site_16_station_16,2024-10-08 06:10:00,2024-10-08,6,120,60,6,48000
+198453,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/CELI4565_20241009_141000.wav,16,Recanto Ribeirinho,site_16_station_16,2024-10-09 14:10:00,2024-10-09,14,60,60,6,48000
+218118,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/13/GAL24576_20241013_203000.wav,16,Recanto Ribeirinho,site_16_station_17,2024-10-13 20:30:00,2024-10-13,20,0,60,6,48000
+198282,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/14/CELI4565_20241014_152000.wav,16,Recanto Ribeirinho,site_16_station_16,2024-10-14 15:20:00,2024-10-14,15,0,60,6,48000
+215634,/escutado-audios/HD1/Elba - recanto ribeirinho  - caico/Data/ELBA4536_20241015_043000.wav,16,Recanto Ribeirinho,site_16_station_18,2024-10-15 04:30:00,2024-10-15,4,120,60,6,48000
+217077,/escutado-audios/HD1/Elba - recanto ribeirinho  - caico/Data/ELBA4536_20241017_200000.wav,16,Recanto Ribeirinho,site_16_station_18,2024-10-17 20:00:00,2024-10-17,20,120,60,6,48000
+198113,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/18/CELI4565_20241018_021000.wav,16,Recanto Ribeirinho,site_16_station_16,2024-10-18 02:10:00,2024-10-18,2,60,60,6,48000
+534638,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250408_233000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-08 23:30:00,2025-04-08,23,60,60,6,48000
+499575,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250410_022000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-10 02:20:00,2025-04-10,2,120,60,6,48000
+501301,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250411_151000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-11 15:10:00,2025-04-11,15,60,60,6,48000
+315586,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250411_191000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-11 19:10:00,2025-04-11,19,60,60,6,48000
+505775,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/13/SONIA570_20250413_124000.wav,16,Recanto Ribeirinho,site_16_station_16,2025-04-13 12:40:00,2025-04-13,12,60,60,6,48000
+315592,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250414_175000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-14 17:50:00,2025-04-14,17,120,60,6,48000
+316071,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250416_082000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-16 08:20:00,2025-04-16,8,120,60,6,48000
+515259,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/19/SONIA570_20250419_075000.wav,16,Recanto Ribeirinho,site_16_station_16,2025-04-19 07:50:00,2025-04-19,7,120,60,6,48000
+514430,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250419_183000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-19 18:30:00,2025-04-19,18,60,60,6,48000
+316507,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250421_014000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-21 01:40:00,2025-04-21,1,0,60,6,48000
+517759,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250421_035000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-21 03:50:00,2025-04-21,3,60,60,6,48000
+520506,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/22/SONIA570_20250422_052000.wav,16,Recanto Ribeirinho,site_16_station_16,2025-04-22 05:20:00,2025-04-22,5,0,60,6,48000
+523607,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/24/SONIA570_20250424_001000.wav,16,Recanto Ribeirinho,site_16_station_16,2025-04-24 00:10:00,2025-04-24,0,120,60,6,48000
+524184,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/25/SONIA570_20250424_211000.wav,16,Recanto Ribeirinho,site_16_station_16,2025-04-24 21:10:00,2025-04-24,21,120,60,6,48000
+317171,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250425_195000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-25 19:50:00,2025-04-25,19,0,60,6,48000
+525827,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250426_152000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-26 15:20:00,2025-04-26,15,0,60,6,48000
+317044,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250427_095000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-27 09:50:00,2025-04-27,9,60,60,6,48000
+526951,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/27/SONIA570_20250427_111000.wav,16,Recanto Ribeirinho,site_16_station_16,2025-04-27 11:10:00,2025-04-27,11,0,60,6,48000
+528303,/escutado-audios/HD3/Chuvoso2/nise_recantoribeirinho_caico_abril_2025/Data/NISE4659_20250428_055000.wav,16,Recanto Ribeirinho,site_16_station_18,2025-04-28 05:50:00,2025-04-28,5,60,60,6,48000
+317994,/escutado-audios/HD3/Chuvoso1/chico_caico_maio_2025/Data/CHICO244_20250429_111000.wav,16,Recanto Ribeirinho,site_16_station_17,2025-04-29 11:10:00,2025-04-29,11,0,60,6,48000
+270533,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20240930_100000.wav,17,Cacimbinha,site_17_station_21,2024-09-30 10:00:00,2024-09-30,10,60,60,6,48000
+251958,/escutado-audios/HD1/Ramos657_ipueira_agelo/Data/RAMOS657_20240930_183000.wav,17,Cacimbinha,site_17_station_20,2024-09-30 18:30:00,2024-09-30,18,60,60,6,48000
+272440,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20241001_233000.wav,17,Cacimbinha,site_17_station_21,2024-10-01 23:30:00,2024-10-01,23,120,60,6,48000
+266230,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/3/ZUMBI658_20241003_050000.wav,17,Cacimbinha,site_17_station_19,2024-10-03 05:00:00,2024-10-03,5,120,60,6,48000
+269853,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20241003_195000.wav,17,Cacimbinha,site_17_station_21,2024-10-03 19:50:00,2024-10-03,19,120,60,6,48000
+272856,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20241004_025000.wav,17,Cacimbinha,site_17_station_21,2024-10-04 02:50:00,2024-10-04,2,60,60,6,48000
+252331,/escutado-audios/HD1/Ramos657_ipueira_agelo/Data/RAMOS657_20241004_053000.wav,17,Cacimbinha,site_17_station_20,2024-10-04 05:30:00,2024-10-04,5,60,60,6,48000
+265661,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/5/ZUMBI658_20241005_115000.wav,17,Cacimbinha,site_17_station_19,2024-10-05 11:50:00,2024-10-05,11,60,60,6,48000
+253647,/escutado-audios/HD1/Ramos657_ipueira_agelo/Data/RAMOS657_20241005_181000.wav,17,Cacimbinha,site_17_station_20,2024-10-05 18:10:00,2024-10-05,18,120,60,6,48000
+266329,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/ZUMBI658_20241009_025000.wav,17,Cacimbinha,site_17_station_19,2024-10-09 02:50:00,2024-10-09,2,120,60,6,48000
+271931,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20241009_030000.wav,17,Cacimbinha,site_17_station_21,2024-10-09 03:00:00,2024-10-09,3,60,60,6,48000
+266429,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/ZUMBI658_20241009_160000.wav,17,Cacimbinha,site_17_station_19,2024-10-09 16:00:00,2024-10-09,16,60,60,6,48000
+266199,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/9/ZUMBI658_20241009_224000.wav,17,Cacimbinha,site_17_station_19,2024-10-09 22:40:00,2024-10-09,22,60,60,6,48000
+272321,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20241010_104000.wav,17,Cacimbinha,site_17_station_21,2024-10-10 10:40:00,2024-10-10,10,60,60,6,48000
+254548,/escutado-audios/HD1/Ramos657_ipueira_agelo/Data/RAMOS657_20241012_103000.wav,17,Cacimbinha,site_17_station_20,2024-10-12 10:30:00,2024-10-12,10,0,60,6,48000
+267298,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/13/ZUMBI658_20241013_133000.wav,17,Cacimbinha,site_17_station_19,2024-10-13 13:30:00,2024-10-13,13,60,60,6,48000
+271654,/escutado-audios/HD1/jorge660_ipueira/Data/JORGE660_20241013_225000.wav,17,Cacimbinha,site_17_station_21,2024-10-13 22:50:00,2024-10-13,22,120,60,6,48000
+267031,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/15/ZUMBI658_20241015_115000.wav,17,Cacimbinha,site_17_station_19,2024-10-15 11:50:00,2024-10-15,11,0,60,6,48000
+255594,/escutado-audios/HD1/Ramos657_ipueira_agelo/Data/RAMOS657_20241016_151000.wav,17,Cacimbinha,site_17_station_20,2024-10-16 15:10:00,2024-10-16,15,60,60,6,48000
+341811,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/9/ELBA4536_20250409_142000.wav,17,Cacimbinha,site_17_station_20,2025-04-09 14:20:00,2025-04-09,14,120,60,6,48000
+505594,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/14/NISIA651_20250414_145000.wav,17,Cacimbinha,site_17_station_19,2025-04-14 14:50:00,2025-04-14,14,120,60,6,48000
+342595,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/15/ELBA4536_20250415_135000.wav,17,Cacimbinha,site_17_station_20,2025-04-15 13:50:00,2025-04-15,13,120,60,6,48000
+294079,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/16/CELI4565_20250416_135000.wav,17,Cacimbinha,site_17_station_21,2025-04-16 13:50:00,2025-04-16,13,120,60,6,48000
+293635,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/18/CELI4565_20250418_005000.wav,17,Cacimbinha,site_17_station_21,2025-04-18 00:50:00,2025-04-18,0,60,60,6,48000
+343393,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/18/ELBA4536_20250418_050000.wav,17,Cacimbinha,site_17_station_20,2025-04-18 05:00:00,2025-04-18,5,60,60,6,48000
+512261,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/18/NISIA651_20250418_221000.wav,17,Cacimbinha,site_17_station_19,2025-04-18 22:10:00,2025-04-18,22,120,60,6,48000
+294093,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/19/CELI4565_20250419_085000.wav,17,Cacimbinha,site_17_station_21,2025-04-19 08:50:00,2025-04-19,8,60,60,6,48000
+517713,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/21/NISIA651_20250421_055000.wav,17,Cacimbinha,site_17_station_19,2025-04-21 05:50:00,2025-04-21,5,120,60,6,48000
+343931,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/23/ELBA4536_20250423_070000.wav,17,Cacimbinha,site_17_station_20,2025-04-23 07:00:00,2025-04-23,7,60,60,6,48000
+521397,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/23/NISIA651_20250423_123000.wav,17,Cacimbinha,site_17_station_19,2025-04-23 12:30:00,2025-04-23,12,0,60,6,48000
+313720,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/23/CELI4565_20250423_150000.wav,17,Cacimbinha,site_17_station_21,2025-04-23 15:00:00,2025-04-23,15,60,60,6,48000
+313889,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/25/CELI4565_20250425_215000.wav,17,Cacimbinha,site_17_station_21,2025-04-25 21:50:00,2025-04-25,21,120,60,6,48000
+526338,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/27/NISIA651_20250427_092000.wav,17,Cacimbinha,site_17_station_19,2025-04-27 09:20:00,2025-04-27,9,120,60,6,48000
+142024,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/12/NISE4659_20241112_042000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-11-12 04:20:00,2024-11-12,4,60,60,6,48000
+142134,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/12/NISE4659_20241112_174000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-11-12 17:40:00,2024-11-12,17,60,60,6,48000
+142893,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/18/NISE4659_20241118_224000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-11-18 22:40:00,2024-11-18,22,0,60,6,48000
+143407,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/20/NISE4659_20241120_143000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-11-20 14:30:00,2024-11-20,14,60,60,6,48000
+143576,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/24/NISE4659_20241124_015000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-11-24 01:50:00,2024-11-24,1,120,60,6,48000
+145046,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/5/NISE4659_20241205_221000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-12-05 22:10:00,2024-12-05,22,120,60,6,48000
+138802,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/10/NISE4659_20241210_155000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-12-10 15:50:00,2024-12-10,15,60,60,6,48000
+139664,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/16/NISE4659_20241216_205000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-12-16 20:50:00,2024-12-16,20,120,60,6,48000
+140091,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/17/NISE4659_20241217_142000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-12-17 14:20:00,2024-12-17,14,60,60,6,48000
+140319,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/20/NISE4659_20241220_232000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-12-20 23:20:00,2024-12-20,23,0,60,6,48000
+140383,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/21/NISE4659_20241221_022000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2024-12-21 02:20:00,2024-12-21,2,0,60,6,48000
+269078,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/1/22/NISE4659_20250122_034000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-01-22 03:40:00,2025-01-22,3,120,60,6,48000
+269202,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/1/26/NISE4659_20250126_104000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-01-26 10:40:00,2025-01-26,10,120,60,6,48000
+270435,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/1/30/NISE4659_20250130_121000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-01-30 12:10:00,2025-01-30,12,0,60,6,48000
+267998,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/1/31/NISE4659_20250131_031000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-01-31 03:10:00,2025-01-31,3,0,60,6,48000
+270215,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/2/3/NISE4659_20250203_095000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-02-03 09:50:00,2025-02-03,9,0,60,6,48000
+255782,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/2/14/RAMOS657_20250214_062000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-02-14 06:20:00,2025-02-14,6,60,60,6,48000
+494153,/escutado-audios/HD3/Chuvoso1/ramos_mossoro_abr_2025/Data/RAMOS657_20250328_194000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-03-28 19:40:00,2025-03-28,19,60,60,6,48000
+516732,/escutado-audios/HD3/Chuvoso1/ramos_mossoro_abr_2025/Data/RAMOS657_20250402_013000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-04-02 01:30:00,2025-04-02,1,0,60,6,48000
+515330,/escutado-audios/HD3/Chuvoso1/ramos_mossoro_abr_2025/Data/RAMOS657_20250402_224000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-04-02 22:40:00,2025-04-02,22,60,60,6,48000
+328327,/escutado-audios/HD3/Chuvoso1/dulce_ufersa_abr_2025/Data/DULCE580_20250419_162000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-04-19 16:20:00,2025-04-19,16,60,60,6,48000
+328509,/escutado-audios/HD3/Chuvoso1/dulce_ufersa_abr_2025/Data/DULCE580_20250423_053000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-04-23 05:30:00,2025-04-23,5,0,60,6,48000
+332834,/escutado-audios/HD4/dulce_ufersa_mossoro_junho_2025/Data/DULCE580_20250606_215000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-06-06 21:50:00,2025-06-06,21,60,60,6,48000
+333311,/escutado-audios/HD4/dulce_ufersa_mossoro_junho_2025/Data/DULCE580_20250610_201000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-06-10 20:10:00,2025-06-10,20,0,60,6,48000
+333523,/escutado-audios/HD4/dulce_ufersa_mossoro_junho_2025/Data/DULCE580_20250612_072000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-06-12 07:20:00,2025-06-12,7,0,60,6,48000
+334113,/escutado-audios/HD4/dulce_ufersa_mossoro_junho_2025/Data/DULCE580_20250614_060000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-06-14 06:00:00,2025-06-14,6,0,60,6,48000
+337263,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/22/DULCE580_20250722_054000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-07-22 05:40:00,2025-07-22,5,120,60,6,48000
+338093,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/26/DULCE580_20250726_081000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-07-26 08:10:00,2025-07-26,8,0,60,6,48000
+336882,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/27/DULCE580_20250727_110000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-07-27 11:00:00,2025-07-27,11,120,60,6,48000
+338150,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/28/DULCE580_20250728_123000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-07-28 12:30:00,2025-07-28,12,120,60,6,48000
+330596,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/21/DULCE580_20250821_173000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-08-21 17:30:00,2025-08-21,17,0,60,6,48000
+330524,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/22/DULCE580_20250822_092000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-08-22 09:20:00,2025-08-22,9,0,60,6,48000
+330666,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/24/DULCE580_20250824_181000.wav,18,UFERSA (Floresta de Jurema - campus leste),site_18_station_40,2025-08-24 18:10:00,2025-08-24,18,0,60,6,48000
+240559,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/PATATIVA_20241027_022000.wav,19,Tanque Novo,site_19_station_26,2024-10-27 02:20:00,2024-10-27,2,120,60,6,48000
+241962,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/PATATIVA_20241027_102000.wav,19,Tanque Novo,site_19_station_26,2024-10-27 10:20:00,2024-10-27,10,60,60,6,48000
+207214,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241101_160000.wav,19,Tanque Novo,site_19_station_25,2024-11-01 16:00:00,2024-11-01,16,60,60,6,48000
+207920,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241101_212000.wav,19,Tanque Novo,site_19_station_25,2024-11-01 21:20:00,2024-11-01,21,60,60,6,48000
+207403,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241103_033000.wav,19,Tanque Novo,site_19_station_25,2024-11-03 03:30:00,2024-11-03,3,60,60,6,48000
+207998,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241103_064000.wav,19,Tanque Novo,site_19_station_25,2024-11-03 06:40:00,2024-11-03,6,0,60,6,48000
+207915,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241103_124000.wav,19,Tanque Novo,site_19_station_25,2024-11-03 12:40:00,2024-11-03,12,60,60,6,48000
+208254,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241104_081000.wav,19,Tanque Novo,site_19_station_25,2024-11-04 08:10:00,2024-11-04,8,60,60,6,48000
+207748,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241104_214000.wav,19,Tanque Novo,site_19_station_25,2024-11-04 21:40:00,2024-11-04,21,60,60,6,48000
+208147,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241105_100000.wav,19,Tanque Novo,site_19_station_25,2024-11-05 10:00:00,2024-11-05,10,120,60,6,48000
+243060,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/5/PATATIVA_20241105_161000.wav,19,Tanque Novo,site_19_station_26,2024-11-05 16:10:00,2024-11-05,16,0,60,6,48000
+208054,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241107_052000.wav,19,Tanque Novo,site_19_station_25,2024-11-07 05:20:00,2024-11-07,5,60,60,6,48000
+208447,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241108_164000.wav,19,Tanque Novo,site_19_station_25,2024-11-08 16:40:00,2024-11-08,16,0,60,6,48000
+208204,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241110_205000.wav,19,Tanque Novo,site_19_station_25,2024-11-10 20:50:00,2024-11-10,20,60,60,6,48000
+210267,/escutado-audios/HD1/Dulce tanque novo lajes pintadas/Data/DULCE580_20241111_075000.wav,19,Tanque Novo,site_19_station_25,2024-11-11 07:50:00,2024-11-11,7,60,60,6,48000
+345735,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/5/ELBA4536_20250505_190000.wav,19,Tanque Novo,site_19_station_26,2025-05-05 19:00:00,2025-05-05,19,0,60,6,48000
+345008,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/6/ELBA4536_20250506_031000.wav,19,Tanque Novo,site_19_station_26,2025-05-06 03:10:00,2025-05-06,3,60,60,6,48000
+345519,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/8/ELBA4536_20250508_061000.wav,19,Tanque Novo,site_19_station_26,2025-05-08 06:10:00,2025-05-08,6,60,60,6,48000
+345562,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/9/ELBA4536_20250509_041000.wav,19,Tanque Novo,site_19_station_26,2025-05-09 04:10:00,2025-05-09,4,0,60,6,48000
+567926,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250714_221000.wav,19,Tanque Novo,site_19_station_26,2025-07-14 22:10:00,2025-07-14,22,0,60,6,48000
+372077,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/MARIA581_20250714_231000.wav,19,Tanque Novo,site_19_station_25,2025-07-14 23:10:00,2025-07-14,23,0,60,6,48000
+371983,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/15/MARIA581_20250715_110000.wav,19,Tanque Novo,site_19_station_25,2025-07-15 11:00:00,2025-07-15,11,60,60,6,48000
+372273,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/17/MARIA581_20250717_055000.wav,19,Tanque Novo,site_19_station_25,2025-07-17 05:50:00,2025-07-17,5,120,60,6,48000
+373256,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/22/MARIA581_20250722_012000.wav,19,Tanque Novo,site_19_station_25,2025-07-22 01:20:00,2025-07-22,1,120,60,6,48000
+373215,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/23/MARIA581_20250723_222000.wav,19,Tanque Novo,site_19_station_25,2025-07-23 22:20:00,2025-07-23,22,0,60,6,48000
+373448,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/MARIA581_20250724_083000.wav,19,Tanque Novo,site_19_station_25,2025-07-24 08:30:00,2025-07-24,8,0,60,6,48000
+373296,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/MARIA581_20250724_131000.wav,19,Tanque Novo,site_19_station_25,2025-07-24 13:10:00,2025-07-24,13,0,60,6,48000
+577660,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250724_144000.wav,19,Tanque Novo,site_19_station_26,2025-07-24 14:40:00,2025-07-24,14,60,60,6,48000
+578077,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250725_235000.wav,19,Tanque Novo,site_19_station_26,2025-07-25 23:50:00,2025-07-25,23,120,60,6,48000
+578784,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250726_011000.wav,19,Tanque Novo,site_19_station_26,2025-07-26 01:10:00,2025-07-26,1,120,60,6,48000
+580283,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250728_141000.wav,19,Tanque Novo,site_19_station_26,2025-07-28 14:10:00,2025-07-28,14,0,60,6,48000
+583423,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250730_163000.wav,19,Tanque Novo,site_19_station_26,2025-07-30 16:30:00,2025-07-30,16,0,60,6,48000
+583975,/escutado-audios/HD3/Chuvoso2/raul_lagespintadas_tanquenovo_julho_2025/Data/RAUL4247_20250731_050000.wav,19,Tanque Novo,site_19_station_26,2025-07-31 05:00:00,2025-07-31,5,60,60,6,48000
+115485,/escutado-audios/HD1/Raul4247_rancho_canaan_lajes pintadas/Data/RAUL4247_20241022_160000.wav,20,Rancho Canaã,site_20_station_27,2024-10-22 16:00:00,2024-10-22,16,120,60,6,48000
+115331,/escutado-audios/HD1/Raul4247_rancho_canaan_lajes pintadas/Data/RAUL4247_20241023_115000.wav,20,Rancho Canaã,site_20_station_27,2024-10-23 11:50:00,2024-10-23,11,120,60,6,48000
+115326,/escutado-audios/HD1/Raul4247_rancho_canaan_lajes pintadas/Data/RAUL4247_20241023_120000.wav,20,Rancho Canaã,site_20_station_27,2024-10-23 12:00:00,2024-10-23,12,60,60,6,48000
+568013,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/PATATIVA_20250714_204000.wav,20,Rancho Canaã,site_20_station_27,2025-07-14 20:40:00,2025-07-14,20,0,60,6,48000
+569099,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/15/PATATIVA_20250715_224000.wav,20,Rancho Canaã,site_20_station_27,2025-07-15 22:40:00,2025-07-15,22,120,60,6,48000
+569573,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/PATATIVA_20250716_051000.wav,20,Rancho Canaã,site_20_station_27,2025-07-16 05:10:00,2025-07-16,5,60,60,6,48000
+569914,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/PATATIVA_20250716_194000.wav,20,Rancho Canaã,site_20_station_27,2025-07-16 19:40:00,2025-07-16,19,120,60,6,48000
+570562,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/17/PATATIVA_20250717_091000.wav,20,Rancho Canaã,site_20_station_27,2025-07-17 09:10:00,2025-07-17,9,120,60,6,48000
+570457,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/18/PATATIVA_20250718_002000.wav,20,Rancho Canaã,site_20_station_27,2025-07-18 00:20:00,2025-07-18,0,60,60,6,48000
+572276,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/PATATIVA_20250719_103000.wav,20,Rancho Canaã,site_20_station_27,2025-07-19 10:30:00,2025-07-19,10,0,60,6,48000
+574089,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/PATATIVA_20250720_141000.wav,20,Rancho Canaã,site_20_station_27,2025-07-20 14:10:00,2025-07-20,14,120,60,6,48000
+574266,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/PATATIVA_20250720_200000.wav,20,Rancho Canaã,site_20_station_27,2025-07-20 20:00:00,2025-07-20,20,60,60,6,48000
+575691,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/22/PATATIVA_20250722_133000.wav,20,Rancho Canaã,site_20_station_27,2025-07-22 13:30:00,2025-07-22,13,120,60,6,48000
+578174,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/23/PATATIVA_20250723_152000.wav,20,Rancho Canaã,site_20_station_27,2025-07-23 15:20:00,2025-07-23,15,120,60,6,48000
+576558,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/PATATIVA_20250724_001000.wav,20,Rancho Canaã,site_20_station_27,2025-07-24 00:10:00,2025-07-24,0,120,60,6,48000
+577077,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/PATATIVA_20250724_073000.wav,20,Rancho Canaã,site_20_station_27,2025-07-24 07:30:00,2025-07-24,7,120,60,6,48000
+576484,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/PATATIVA_20250724_183000.wav,20,Rancho Canaã,site_20_station_27,2025-07-24 18:30:00,2025-07-24,18,120,60,6,48000
+577989,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/25/PATATIVA_20250725_171000.wav,20,Rancho Canaã,site_20_station_27,2025-07-25 17:10:00,2025-07-25,17,60,60,6,48000
+578206,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/26/PATATIVA_20250726_112000.wav,20,Rancho Canaã,site_20_station_27,2025-07-26 11:20:00,2025-07-26,11,0,60,6,48000
+580577,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/29/PATATIVA_20250729_033000.wav,20,Rancho Canaã,site_20_station_27,2025-07-29 03:30:00,2025-07-29,3,60,60,6,48000
+580918,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/29/PATATIVA_20250729_095000.wav,20,Rancho Canaã,site_20_station_27,2025-07-29 09:50:00,2025-07-29,9,120,60,6,48000
+582619,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/PATATIVA_20250730_004000.wav,20,Rancho Canaã,site_20_station_27,2025-07-30 00:40:00,2025-07-30,0,120,60,6,48000
+582636,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/PATATIVA_20250730_081000.wav,20,Rancho Canaã,site_20_station_27,2025-07-30 08:10:00,2025-07-30,8,60,60,6,48000
+582853,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/PATATIVA_20250730_185000.wav,20,Rancho Canaã,site_20_station_27,2025-07-30 18:50:00,2025-07-30,18,120,60,6,48000
+592099,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/PATATIVA_20250801_021000.wav,20,Rancho Canaã,site_20_station_27,2025-08-01 02:10:00,2025-08-01,2,0,60,6,48000
+592091,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/PATATIVA_20250801_175000.wav,20,Rancho Canaã,site_20_station_27,2025-08-01 17:50:00,2025-08-01,17,120,60,6,48000
+592616,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/2/PATATIVA_20250802_063000.wav,20,Rancho Canaã,site_20_station_27,2025-08-02 06:30:00,2025-08-02,6,0,60,6,48000
+593115,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/2/PATATIVA_20250802_122000.wav,20,Rancho Canaã,site_20_station_27,2025-08-02 12:20:00,2025-08-02,12,120,60,6,48000
+593797,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/3/PATATIVA_20250803_041000.wav,20,Rancho Canaã,site_20_station_27,2025-08-03 04:10:00,2025-08-03,4,60,60,6,48000
+593742,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/3/PATATIVA_20250803_110000.wav,20,Rancho Canaã,site_20_station_27,2025-08-03 11:00:00,2025-08-03,11,120,60,6,48000
+594163,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/3/PATATIVA_20250803_191000.wav,20,Rancho Canaã,site_20_station_27,2025-08-03 19:10:00,2025-08-03,19,120,60,6,48000
+595017,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/5/PATATIVA_20250805_040000.wav,20,Rancho Canaã,site_20_station_27,2025-08-05 04:00:00,2025-08-05,4,120,60,6,48000
+595449,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/6/PATATIVA_20250806_224000.wav,20,Rancho Canaã,site_20_station_27,2025-08-06 22:40:00,2025-08-06,22,120,60,6,48000
+236477,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/24/MARIA581_20241024_065000.wav,21,Bom destino,site_21_station_29,2024-10-24 06:50:00,2024-10-24,6,60,60,6,48000
+236540,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/25/MARIA581_20241025_171000.wav,21,Bom destino,site_21_station_29,2024-10-25 17:10:00,2024-10-25,17,120,60,6,48000
+203671,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/MARIA581_20241026_074000.wav,21,Bom destino,site_21_station_29,2024-10-26 07:40:00,2024-10-26,7,0,60,6,48000
+234786,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/MARIA581_20241027_094000.wav,21,Bom destino,site_21_station_29,2024-10-27 09:40:00,2024-10-27,9,0,60,6,48000
+235710,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/MARIA581_20241027_171000.wav,21,Bom destino,site_21_station_29,2024-10-27 17:10:00,2024-10-27,17,60,60,6,48000
+235877,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/30/MARIA581_20241030_143000.wav,21,Bom destino,site_21_station_29,2024-10-30 14:30:00,2024-10-30,14,120,60,6,48000
+236140,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/1/MARIA581_20241031_211000.wav,21,Bom destino,site_21_station_29,2024-10-31 21:10:00,2024-10-31,21,120,60,6,48000
+236549,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/1/MARIA581_20241101_195000.wav,21,Bom destino,site_21_station_29,2024-11-01 19:50:00,2024-11-01,19,60,60,6,48000
+236546,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/5/MARIA581_20241105_025000.wav,21,Bom destino,site_21_station_29,2024-11-05 02:50:00,2024-11-05,2,0,60,6,48000
+235922,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/6/MARIA581_20241106_052000.wav,21,Bom destino,site_21_station_29,2024-11-06 05:20:00,2024-11-06,5,60,60,6,48000
+237107,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/8/MARIA581_20241108_154000.wav,21,Bom destino,site_21_station_29,2024-11-08 15:40:00,2024-11-08,15,120,60,6,48000
+237504,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/10/MARIA581_20241110_075000.wav,21,Bom destino,site_21_station_29,2024-11-10 07:50:00,2024-11-10,7,60,60,6,48000
+238439,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/11/MARIA581_20241111_062000.wav,21,Bom destino,site_21_station_29,2024-11-11 06:20:00,2024-11-11,6,0,60,6,48000
+238251,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/13/MARIA581_20241112_224000.wav,21,Bom destino,site_21_station_29,2024-11-12 22:40:00,2024-11-12,22,60,60,6,48000
+277119,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/ALCEU525_20250714_150000.wav,21,Bom destino,site_21_station_29,2025-07-14 15:00:00,2025-07-14,15,60,60,6,48000
+295481,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/CELI4565_20250716_000000.wav,21,Bom destino,site_21_station_30,2025-07-16 00:00:00,2025-07-16,0,120,60,6,48000
+296792,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/ALCEU525_20250716_222000.wav,21,Bom destino,site_21_station_29,2025-07-16 22:20:00,2025-07-16,22,120,60,6,48000
+296151,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/CELI4565_20250719_122000.wav,21,Bom destino,site_21_station_30,2025-07-19 12:20:00,2025-07-19,12,60,60,6,48000
+295405,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/CELI4565_20250719_193000.wav,21,Bom destino,site_21_station_30,2025-07-19 19:30:00,2025-07-19,19,0,60,6,48000
+295786,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/CELI4565_20250720_012000.wav,21,Bom destino,site_21_station_30,2025-07-20 01:20:00,2025-07-20,1,0,60,6,48000
+279156,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/ALCEU525_20250720_052000.wav,21,Bom destino,site_21_station_29,2025-07-20 05:20:00,2025-07-20,5,0,60,6,48000
+279309,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/ALCEU525_20250720_064000.wav,21,Bom destino,site_21_station_29,2025-07-20 06:40:00,2025-07-20,6,120,60,6,48000
+314585,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/CELI4565_20250720_162000.wav,21,Bom destino,site_21_station_30,2025-07-20 16:20:00,2025-07-20,16,120,60,6,48000
+296481,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/21/CELI4565_20250721_005000.wav,21,Bom destino,site_21_station_30,2025-07-21 00:50:00,2025-07-21,0,60,60,6,48000
+314706,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/21/CELI4565_20250721_212000.wav,21,Bom destino,site_21_station_30,2025-07-21 21:20:00,2025-07-21,21,60,60,6,48000
+314647,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/23/CELI4565_20250723_031000.wav,21,Bom destino,site_21_station_30,2025-07-23 03:10:00,2025-07-23,3,60,60,6,48000
+297009,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/26/ALCEU525_20250726_004000.wav,21,Bom destino,site_21_station_29,2025-07-26 00:40:00,2025-07-26,0,0,60,6,48000
+296044,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/26/CELI4565_20250726_131000.wav,21,Bom destino,site_21_station_30,2025-07-26 13:10:00,2025-07-26,13,120,60,6,48000
+280774,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/ALCEU525_20250730_091000.wav,21,Bom destino,site_21_station_29,2025-07-30 09:10:00,2025-07-30,9,60,60,6,48000
+280122,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/ALCEU525_20250730_192000.wav,21,Bom destino,site_21_station_29,2025-07-30 19:20:00,2025-07-30,19,120,60,6,48000
+297060,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/ALCEU525_20250801_173000.wav,21,Bom destino,site_21_station_29,2025-08-01 17:30:00,2025-08-01,17,120,60,6,48000
+283996,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/2/ALCEU525_20250802_195000.wav,21,Bom destino,site_21_station_29,2025-08-02 19:50:00,2025-08-02,19,120,60,6,48000
+296954,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/3/ALCEU525_20250803_064000.wav,21,Bom destino,site_21_station_29,2025-08-03 06:40:00,2025-08-03,6,60,60,6,48000
+247728,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/23/RAMOS657_20241023_200000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2024-10-23 20:00:00,2024-10-23,20,60,60,6,48000
+255982,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/24/ZUMBI658_20241024_025000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2024-10-24 02:50:00,2024-10-24,2,60,60,6,48000
+162175,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/25/ZILA4575_20241025_131000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2024-10-25 13:10:00,2024-10-25,13,0,60,6,48000
+162075,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/ZILA4575_20241026_011000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2024-10-26 01:10:00,2024-10-26,1,60,60,6,48000
+256871,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/ZUMBI658_20241026_075000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2024-10-26 07:50:00,2024-10-26,7,120,60,6,48000
+248453,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/RAMOS657_20241026_234000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2024-10-26 23:40:00,2024-10-26,23,120,60,6,48000
+257743,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/28/ZUMBI658_20241028_000000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2024-10-28 00:00:00,2024-10-28,0,120,60,6,48000
+257590,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/28/ZUMBI658_20241028_214000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2024-10-28 21:40:00,2024-10-28,21,120,60,6,48000
+162504,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/30/ZILA4575_20241030_100000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2024-10-30 10:00:00,2024-10-30,10,60,60,6,48000
+162803,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/2/ZILA4575_20241102_201000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2024-11-02 20:10:00,2024-11-02,20,120,60,6,48000
+163474,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/5/ZILA4575_20241105_222000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2024-11-05 22:20:00,2024-11-05,22,120,60,6,48000
+485904,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250317_113000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-03-17 11:30:00,2025-03-17,11,0,60,6,48000
+321846,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250318_091000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-18 09:10:00,2025-03-18,9,120,60,6,48000
+362457,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/18/LUIZ4223_20250318_135000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2025-03-18 13:50:00,2025-03-18,13,0,60,6,48000
+362550,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/18/LUIZ4223_20250318_211000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2025-03-18 21:10:00,2025-03-18,21,120,60,6,48000
+322402,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250319_111000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-19 11:10:00,2025-03-19,11,120,60,6,48000
+487817,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250320_123000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-03-20 12:30:00,2025-03-20,12,120,60,6,48000
+488013,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250320_190000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-03-20 19:00:00,2025-03-20,19,60,60,6,48000
+362865,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/21/LUIZ4223_20250321_003000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2025-03-21 00:30:00,2025-03-21,0,60,60,6,48000
+323044,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250324_142000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-24 14:20:00,2025-03-24,14,0,60,6,48000
+324300,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250325_221000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-25 22:10:00,2025-03-25,22,0,60,6,48000
+363810,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/26/LUIZ4223_20250326_025000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2025-03-26 02:50:00,2025-03-26,2,120,60,6,48000
+323300,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250326_175000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-26 17:50:00,2025-03-26,17,60,60,6,48000
+494428,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250328_015000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-03-28 01:50:00,2025-03-28,1,0,60,6,48000
+324169,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250328_020000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-28 02:00:00,2025-03-28,2,0,60,6,48000
+324790,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250329_064000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-29 06:40:00,2025-03-29,6,0,60,6,48000
+324797,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250330_214000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-03-30 21:40:00,2025-03-30,21,120,60,6,48000
+364054,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/31/LUIZ4223_20250331_022000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_31,2025-03-31 02:20:00,2025-03-31,2,60,60,6,48000
+515735,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250402_061000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-04-02 06:10:00,2025-04-02,6,60,60,6,48000
+533253,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250405_103000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-04-05 10:30:00,2025-04-05,10,120,60,6,48000
+531140,/escutado-audios/HD3/Chuvoso1/nise_jucurutu_abr_2025/Data/NISE4659_20250405_161000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_32,2025-04-05 16:10:00,2025-04-05,16,60,60,6,48000
+323841,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250405_163000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-04-05 16:30:00,2025-04-05,16,0,60,6,48000
+323276,/escutado-audios/HD3/Chuvoso1/chico_jucurutu_stoesseldebritto_marco_2025/Data/CHICO244_20250406_120000.wav,22,RPPN STOESSEL DE BRITTO,site_22_station_33,2025-04-06 12:00:00,2025-04-06,12,120,60,6,48000
+224490,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241021_062000.wav,23,Chácara Cananeia,site_23_station_34,2024-10-21 06:20:00,2024-10-21,6,120,60,6,48000
+224217,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241027_155000.wav,23,Chácara Cananeia,site_23_station_34,2024-10-27 15:50:00,2024-10-27,15,120,60,6,48000
+224731,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241030_072000.wav,23,Chácara Cananeia,site_23_station_34,2024-10-30 07:20:00,2024-10-30,7,120,60,6,48000
+225103,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241031_014000.wav,23,Chácara Cananeia,site_23_station_34,2024-10-31 01:40:00,2024-10-31,1,60,60,6,48000
+224542,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241031_132000.wav,23,Chácara Cananeia,site_23_station_34,2024-10-31 13:20:00,2024-10-31,13,0,60,6,48000
+226795,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241101_171000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-01 17:10:00,2024-11-01,17,120,60,6,48000
+224396,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241101_221000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-01 22:10:00,2024-11-01,22,0,60,6,48000
+225045,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241102_041000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-02 04:10:00,2024-11-02,4,60,60,6,48000
+225137,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241102_070000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-02 07:00:00,2024-11-02,7,120,60,6,48000
+225298,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241106_234000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-06 23:40:00,2024-11-06,23,120,60,6,48000
+227813,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241107_130000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-07 13:00:00,2024-11-07,13,0,60,6,48000
+225512,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241107_223000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-07 22:30:00,2024-11-07,22,120,60,6,48000
+225092,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241108_001000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-08 00:10:00,2024-11-08,0,0,60,6,48000
+225957,/escutado-audios/HD1/Jorge _ chacara  cananeia _ Sp do potengi/Data/JORGE660_20241110_130000.wav,23,Chácara Cananeia,site_23_station_34,2024-11-10 13:00:00,2024-11-10,13,0,60,6,48000
+349777,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/6/GAL24576_20250506_113000.wav,23,Chácara Cananeia,site_23_station_34,2025-05-06 11:30:00,2025-05-06,11,60,60,6,48000
+349865,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/6/GAL24576_20250506_230000.wav,23,Chácara Cananeia,site_23_station_34,2025-05-06 23:00:00,2025-05-06,23,0,60,6,48000
+349802,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/8/GAL24576_20250508_050000.wav,23,Chácara Cananeia,site_23_station_34,2025-05-08 05:00:00,2025-05-08,5,0,60,6,48000
+365801,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/22/LUIZ4223_20250622_214000.wav,23,Chácara Cananeia,site_23_station_34,2025-06-22 21:40:00,2025-06-22,21,60,60,6,48000
+365766,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/LUIZ4223_20250623_104000.wav,23,Chácara Cananeia,site_23_station_34,2025-06-23 10:40:00,2025-06-23,10,60,60,6,48000
+365841,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/24/LUIZ4223_20250624_044000.wav,23,Chácara Cananeia,site_23_station_34,2025-06-24 04:40:00,2025-06-24,4,60,60,6,48000
+366165,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/29/LUIZ4223_20250629_071000.wav,23,Chácara Cananeia,site_23_station_34,2025-06-29 07:10:00,2025-06-29,7,120,60,6,48000
+367220,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/1/LUIZ4223_20250701_233000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-01 23:30:00,2025-07-01,23,60,60,6,48000
+367064,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/2/LUIZ4223_20250702_021000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-02 02:10:00,2025-07-02,2,60,60,6,48000
+367199,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/4/LUIZ4223_20250704_161000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-04 16:10:00,2025-07-04,16,120,60,6,48000
+367290,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/5/LUIZ4223_20250705_015000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-05 01:50:00,2025-07-05,1,60,60,6,48000
+367761,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/8/LUIZ4223_20250708_012000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-08 01:20:00,2025-07-08,1,60,60,6,48000
+367709,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/8/LUIZ4223_20250708_084000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-08 08:40:00,2025-07-08,8,0,60,6,48000
+368759,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/12/LUIZ4223_20250712_131000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-12 13:10:00,2025-07-12,13,120,60,6,48000
+368830,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/LUIZ4223_20250714_060000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-14 06:00:00,2025-07-14,6,0,60,6,48000
+368292,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/LUIZ4223_20250714_212000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-14 21:20:00,2025-07-14,21,0,60,6,48000
+368846,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/15/LUIZ4223_20250715_154000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-15 15:40:00,2025-07-15,15,60,60,6,48000
+368872,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/LUIZ4223_20250716_045000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-16 04:50:00,2025-07-16,4,0,60,6,48000
+368745,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/LUIZ4223_20250716_222000.wav,23,Chácara Cananeia,site_23_station_34,2025-07-16 22:20:00,2025-07-16,22,60,60,6,48000
+149205,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/22/NISIA651_20241022_171000.wav,24,Sítio Carnaúba,site_24_station_36,2024-10-22 17:10:00,2024-10-22,17,60,60,6,48000
+221562,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/GAL24576_20241026_001000.wav,24,Sítio Carnaúba,site_24_station_35,2024-10-26 00:10:00,2024-10-26,0,0,60,6,48000
+150442,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/30/NISIA651_20241030_105000.wav,24,Sítio Carnaúba,site_24_station_36,2024-10-30 10:50:00,2024-10-30,10,120,60,6,48000
+150825,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/1/NISIA651_20241101_155000.wav,24,Sítio Carnaúba,site_24_station_36,2024-11-01 15:50:00,2024-11-01,15,0,60,6,48000
+213417,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/4/ELBA4536_20241104_162000.wav,24,Sítio Carnaúba,site_24_station_37,2024-11-04 16:20:00,2024-11-04,16,0,60,6,48000
+241382,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/5/GAL24576_20241105_211000.wav,24,Sítio Carnaúba,site_24_station_35,2024-11-05 21:10:00,2024-11-05,21,120,60,6,48000
+213867,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/7/ELBA4536_20241107_014000.wav,24,Sítio Carnaúba,site_24_station_37,2024-11-07 01:40:00,2024-11-07,1,60,60,6,48000
+292111,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/7/NISIA651_20250507_054000.wav,24,Sítio Carnaúba,site_24_station_36,2025-05-07 05:40:00,2025-05-07,5,0,60,6,48000
+543427,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/7/PATATIVA_20250507_102000.wav,24,Sítio Carnaúba,site_24_station_37,2025-05-07 10:20:00,2025-05-07,10,60,60,6,48000
+536287,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/10/PATATIVA_20250510_165000.wav,24,Sítio Carnaúba,site_24_station_37,2025-05-10 16:50:00,2025-05-10,16,60,60,6,48000
+536386,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/10/PATATIVA_20250510_224000.wav,24,Sítio Carnaúba,site_24_station_37,2025-05-10 22:40:00,2025-05-10,22,60,60,6,48000
+294014,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/12/NISIA651_20250512_073000.wav,24,Sítio Carnaúba,site_24_station_36,2025-05-12 07:30:00,2025-05-12,7,120,60,6,48000
+296036,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/17/NISIA651_20250517_002000.wav,24,Sítio Carnaúba,site_24_station_36,2025-05-17 00:20:00,2025-05-17,0,60,60,6,48000
+538699,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/21/NISIA651_20250521_123000.wav,24,Sítio Carnaúba,site_24_station_36,2025-05-21 12:30:00,2025-05-21,12,0,60,6,48000
+548208,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/21/ZUMBI658_20250621_193000.wav,24,Sítio Carnaúba,site_24_station_36,2025-06-21 19:30:00,2025-06-21,19,0,60,6,48000
+548407,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/22/ZUMBI658_20250622_032000.wav,24,Sítio Carnaúba,site_24_station_36,2025-06-22 03:20:00,2025-06-22,3,0,60,6,48000
+548545,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/22/ZILA4575_20250622_092700.wav,24,Sítio Carnaúba,site_24_station_35,2025-06-22 09:27:00,2025-06-22,9,60,60,6,48000
+551278,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/24/ZILA4575_20250624_061800.wav,24,Sítio Carnaúba,site_24_station_35,2025-06-24 06:18:00,2025-06-24,6,120,60,6,48000
+558235,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/30/NISE4659_20250630_215000.wav,24,Sítio Carnaúba,site_24_station_37,2025-06-30 21:50:00,2025-06-30,21,0,60,6,48000
+563860,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/1/ZUMBI658_20250701_221000.wav,24,Sítio Carnaúba,site_24_station_36,2025-07-01 22:10:00,2025-07-01,22,120,60,6,48000
+584357,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/4/NISE4659_20250704_222000.wav,24,Sítio Carnaúba,site_24_station_37,2025-07-04 22:20:00,2025-07-04,22,120,60,6,48000
+587928,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/6/ZUMBI658_20250706_114000.wav,24,Sítio Carnaúba,site_24_station_36,2025-07-06 11:40:00,2025-07-06,11,0,60,6,48000
+564091,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/10/NISE4659_20250710_173000.wav,24,Sítio Carnaúba,site_24_station_37,2025-07-10 17:30:00,2025-07-10,17,0,60,6,48000
+567748,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/NISE4659_20250714_014000.wav,24,Sítio Carnaúba,site_24_station_37,2025-07-14 01:40:00,2025-07-14,1,0,60,6,48000
+595307,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/5/ZILA4575_20250805_030900.wav,24,Sítio Carnaúba,site_24_station_35,2025-08-05 03:09:00,2025-08-05,3,120,60,6,48000
+593609,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/26/ZILA4575_20250826_092700.wav,24,Sítio Carnaúba,site_24_station_35,2025-08-26 09:27:00,2025-08-26,9,0,60,6,48000
+593499,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/26/ZILA4575_20250826_195700.wav,24,Sítio Carnaúba,site_24_station_35,2025-08-26 19:57:00,2025-08-26,19,0,60,6,48000
+596909,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/9/3/ZILA4575_20250903_041200.wav,24,Sítio Carnaúba,site_24_station_35,2025-09-03 04:12:00,2025-09-03,4,0,60,6,48000
+597105,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/9/8/ZILA4575_20250908_210000.wav,24,Sítio Carnaúba,site_24_station_35,2025-09-08 21:00:00,2025-09-08,21,60,60,6,48000
+596720,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/9/13/ZILA4575_20250913_133900.wav,24,Sítio Carnaúba,site_24_station_35,2025-09-13 13:39:00,2025-09-13,13,0,60,6,48000
+596862,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/9/19/ZILA4575_20250919_113300.wav,24,Sítio Carnaúba,site_24_station_35,2025-09-19 11:33:00,2025-09-19,11,120,60,6,48000
+596832,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/9/22/ZILA4575_20250922_092700.wav,24,Sítio Carnaúba,site_24_station_35,2025-09-22 09:27:00,2025-09-22,9,60,60,6,48000
+596935,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/9/25/ZILA4575_20250925_164800.wav,24,Sítio Carnaúba,site_24_station_35,2025-09-25 16:48:00,2025-09-25,16,0,60,6,48000
+178937,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/21/SONIA570_20241021_061000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-10-21 06:10:00,2024-10-21,6,120,60,6,48000
+135766,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/21/NISE4659_20241021_201000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-10-21 20:10:00,2024-10-21,20,0,60,6,48000
+136286,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/24/NISE4659_20241024_215000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-10-24 21:50:00,2024-10-24,21,0,60,6,48000
+179510,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/25/SONIA570_20241025_220000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-10-25 22:00:00,2024-10-25,22,0,60,6,48000
+136224,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/NISE4659_20241026_004000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-10-26 00:40:00,2024-10-26,0,0,60,6,48000
+179915,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/SONIA570_20241026_062000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-10-26 06:20:00,2024-10-26,6,120,60,6,48000
+136492,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/26/NISE4659_20241026_132000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-10-26 13:20:00,2024-10-26,13,60,60,6,48000
+136212,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/NISE4659_20241027_033000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-10-27 03:30:00,2024-10-27,3,120,60,6,48000
+179999,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/28/SONIA570_20241028_160000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-10-28 16:00:00,2024-10-28,16,0,60,6,48000
+179994,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/31/SONIA570_20241031_122000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-10-31 12:20:00,2024-10-31,12,0,60,6,48000
+137669,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/1/NISE4659_20241101_040000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-01 04:00:00,2024-11-01,4,120,60,6,48000
+137556,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/3/NISE4659_20241103_092000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-03 09:20:00,2024-11-03,9,60,60,6,48000
+137664,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/3/NISE4659_20241103_160000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-03 16:00:00,2024-11-03,16,60,60,6,48000
+137304,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/3/NISE4659_20241103_180000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-03 18:00:00,2024-11-03,18,0,60,6,48000
+137923,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/5/NISE4659_20241105_234000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-05 23:40:00,2024-11-05,23,0,60,6,48000
+138041,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/8/NISE4659_20241108_013000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-08 01:30:00,2024-11-08,1,0,60,6,48000
+138088,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/8/NISE4659_20241108_092000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-08 09:20:00,2024-11-08,9,120,60,6,48000
+138218,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/8/NISE4659_20241108_135000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-08 13:50:00,2024-11-08,13,60,60,6,48000
+181717,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/10/SONIA570_20241110_041000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-11-10 04:10:00,2024-11-10,4,120,60,6,48000
+138486,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/10/NISE4659_20241110_070000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2024-11-10 07:00:00,2024-11-10,7,0,60,6,48000
+182032,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/14/SONIA570_20241114_001000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-11-14 00:10:00,2024-11-14,0,120,60,6,48000
+181857,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/14/SONIA570_20241114_081000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-11-14 08:10:00,2024-11-14,8,60,60,6,48000
+181954,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/14/SONIA570_20241114_152000.wav,25,Fazenda Alívio (Garrancho),site_25_station_39,2024-11-14 15:20:00,2024-11-14,15,0,60,6,48000
+542751,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/5/PAULO4225_20250505_002000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-05 00:20:00,2025-05-05,0,0,60,6,48000
+542403,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/5/PAULO4225_20250505_125000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-05 12:50:00,2025-05-05,12,0,60,6,48000
+536473,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/11/PAULO4225_20250511_225000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-11 22:50:00,2025-05-11,22,0,60,6,48000
+536995,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/13/PAULO4225_20250513_111000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-13 11:10:00,2025-05-13,11,120,60,6,48000
+537090,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/14/PAULO4225_20250514_011000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-14 01:10:00,2025-05-14,1,60,60,6,48000
+537227,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/14/PAULO4225_20250514_120000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-14 12:00:00,2025-05-14,12,120,60,6,48000
+537232,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/14/PAULO4225_20250514_201000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-14 20:10:00,2025-05-14,20,120,60,6,48000
+537773,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/16/PAULO4225_20250516_204000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-16 20:40:00,2025-05-16,20,0,60,6,48000
+537926,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/18/PAULO4225_20250518_160000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-18 16:00:00,2025-05-18,16,120,60,6,48000
+538553,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/21/PAULO4225_20250521_062000.wav,25,Fazenda Alívio (Garrancho),site_25_station_38,2025-05-21 06:20:00,2025-05-21,6,120,60,6,48000
+209144,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/Data/ELBA4536_20241110_211000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-10 21:10:00,2024-11-10,21,0,60,6,48000
+208533,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241111_115000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-11 11:50:00,2024-11-11,11,120,60,6,48000
+210686,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241114_174000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-14 17:40:00,2024-11-14,17,60,60,6,48000
+209694,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241115_062000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-15 06:20:00,2024-11-15,6,120,60,6,48000
+209377,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241117_071000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-17 07:10:00,2024-11-17,7,60,60,6,48000
+210251,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241117_203000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-17 20:30:00,2024-11-17,20,60,60,6,48000
+210111,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241118_142000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-18 14:20:00,2024-11-18,14,60,60,6,48000
+210354,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241119_062000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-19 06:20:00,2024-11-19,6,0,60,6,48000
+209968,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241119_200000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-19 20:00:00,2024-11-19,20,0,60,6,48000
+210588,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241120_130000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-20 13:00:00,2024-11-20,13,60,60,6,48000
+209818,/escutado-audios/HD1/Elba - Tenente l. Cuz/Data/ELBA4536_20241121_101000.wav,26,Chácara vovô Emídio,site_26_station_41,2024-11-21 10:10:00,2024-11-21,10,120,60,6,48000
+534970,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/8/RAMOS657_20250408_232000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-08 23:20:00,2025-04-08,23,60,60,6,48000
+500316,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/10/RAMOS657_20250410_232000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-10 23:20:00,2025-04-10,23,0,60,6,48000
+503344,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/12/RAMOS657_20250412_004000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-12 00:40:00,2025-04-12,0,60,60,6,48000
+505476,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/13/RAMOS657_20250413_030000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-13 03:00:00,2025-04-13,3,0,60,6,48000
+506466,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/14/RAMOS657_20250414_034000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-14 03:40:00,2025-04-14,3,120,60,6,48000
+508842,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/15/RAMOS657_20250415_021000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-15 02:10:00,2025-04-15,2,60,60,6,48000
+508724,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/15/RAMOS657_20250415_105000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-15 10:50:00,2025-04-15,10,0,60,6,48000
+511361,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/RAMOS657_20250417_052000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-17 05:20:00,2025-04-17,5,120,60,6,48000
+511161,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/RAMOS657_20250417_080000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-17 08:00:00,2025-04-17,8,120,60,6,48000
+511876,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/RAMOS657_20250417_122000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-17 12:20:00,2025-04-17,12,120,60,6,48000
+511771,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/17/RAMOS657_20250417_181000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-17 18:10:00,2025-04-17,18,120,60,6,48000
+513182,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/18/RAMOS657_20250418_034000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-18 03:40:00,2025-04-18,3,60,60,6,48000
+514241,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/19/RAMOS657_20250419_185000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-19 18:50:00,2025-04-19,18,0,60,6,48000
+517589,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/20/RAMOS657_20250420_014000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-20 01:40:00,2025-04-20,1,120,60,6,48000
+517894,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/20/RAMOS657_20250420_064000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-20 06:40:00,2025-04-20,6,0,60,6,48000
+516937,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/20/RAMOS657_20250420_220000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-20 22:00:00,2025-04-20,22,120,60,6,48000
+518372,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/21/RAMOS657_20250421_151000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-21 15:10:00,2025-04-21,15,60,60,6,48000
+520922,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/22/RAMOS657_20250422_171000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-22 17:10:00,2025-04-22,17,120,60,6,48000
+525457,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/25/RAMOS657_20250425_152000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-25 15:20:00,2025-04-25,15,60,60,6,48000
+528010,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/27/RAMOS657_20250427_134000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-27 13:40:00,2025-04-27,13,60,60,6,48000
+528803,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/28/RAMOS657_20250428_232000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-28 23:20:00,2025-04-28,23,0,60,6,48000
+532183,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/30/RAMOS657_20250430_014000.wav,26,Chácara vovô Emídio,site_26_station_41,2025-04-30 01:40:00,2025-04-30,1,0,60,6,48000
+259836,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/15/ZUMBI658_20241115_045000.wav,27,ESEC Castanhão,site_27_station_44,2024-11-15 04:50:00,2024-11-15,4,0,60,6,48000
+249923,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/15/RAMOS657_20241115_144000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-15 14:40:00,2024-11-15,14,60,60,6,48000
+250150,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/17/RAMOS657_20241117_201000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-17 20:10:00,2024-11-17,20,60,60,6,48000
+250693,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/19/RAMOS657_20241119_133000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-19 13:30:00,2024-11-19,13,0,60,6,48000
+155398,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/19/NISIA651_20241119_140000.wav,27,ESEC Castanhão,site_27_station_42,2024-11-19 14:00:00,2024-11-19,14,60,60,6,48000
+260093,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/19/ZUMBI658_20241119_205000.wav,27,ESEC Castanhão,site_27_station_44,2024-11-19 20:50:00,2024-11-19,20,60,60,6,48000
+155847,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/21/NISIA651_20241121_101000.wav,27,ESEC Castanhão,site_27_station_42,2024-11-21 10:10:00,2024-11-21,10,60,60,6,48000
+251710,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/25/RAMOS657_20241125_215000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-25 21:50:00,2024-11-25,21,120,60,6,48000
+251378,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/26/RAMOS657_20241126_123000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-26 12:30:00,2024-11-26,12,120,60,6,48000
+250451,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/27/RAMOS657_20241127_092000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-27 09:20:00,2024-11-27,9,120,60,6,48000
+251160,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/27/RAMOS657_20241127_141000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-27 14:10:00,2024-11-27,14,60,60,6,48000
+250391,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/27/RAMOS657_20241127_235000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-27 23:50:00,2024-11-27,23,120,60,6,48000
+156885,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/29/NISIA651_20241129_004000.wav,27,ESEC Castanhão,site_27_station_42,2024-11-29 00:40:00,2024-11-29,0,0,60,6,48000
+250711,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/29/RAMOS657_20241129_050000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-29 05:00:00,2024-11-29,5,60,60,6,48000
+157620,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/29/NISIA651_20241129_154000.wav,27,ESEC Castanhão,site_27_station_42,2024-11-29 15:40:00,2024-11-29,15,0,60,6,48000
+156757,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/29/NISIA651_20241129_204000.wav,27,ESEC Castanhão,site_27_station_42,2024-11-29 20:40:00,2024-11-29,20,120,60,6,48000
+261339,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/30/ZUMBI658_20241130_033000.wav,27,ESEC Castanhão,site_27_station_44,2024-11-30 03:30:00,2024-11-30,3,120,60,6,48000
+261407,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/30/ZUMBI658_20241130_091000.wav,27,ESEC Castanhão,site_27_station_44,2024-11-30 09:10:00,2024-11-30,9,0,60,6,48000
+251833,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/30/RAMOS657_20241130_103000.wav,27,ESEC Castanhão,site_27_station_43,2024-11-30 10:30:00,2024-11-30,10,0,60,6,48000
+251445,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/3/RAMOS657_20241203_032000.wav,27,ESEC Castanhão,site_27_station_43,2024-12-03 03:20:00,2024-12-03,3,0,60,6,48000
+252533,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/3/RAMOS657_20241203_225000.wav,27,ESEC Castanhão,site_27_station_43,2024-12-03 22:50:00,2024-12-03,22,120,60,6,48000
+252168,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/4/RAMOS657_20241204_045000.wav,27,ESEC Castanhão,site_27_station_43,2024-12-04 04:50:00,2024-12-04,4,60,60,6,48000
+539554,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/27/NISE4659_20250527_130000.wav,27,ESEC Castanhão,site_27_station_42,2025-05-27 13:00:00,2025-05-27,13,0,60,6,48000
+540681,/escutado-audios/HD4/paulo_esec_castanhao_junho_2025/Data/PAULO4225_20250528_093000.wav,27,ESEC Castanhão,site_27_station_44,2025-05-28 09:30:00,2025-05-28,9,120,60,6,48000
+540863,/escutado-audios/HD4/paulo_esec_castanhao_junho_2025/Data/PAULO4225_20250529_023000.wav,27,ESEC Castanhão,site_27_station_44,2025-05-29 02:30:00,2025-05-29,2,60,60,6,48000
+542320,/escutado-audios/HD4/paulo_esec_castanhao_junho_2025/Data/PAULO4225_20250531_094000.wav,27,ESEC Castanhão,site_27_station_44,2025-05-31 09:40:00,2025-05-31,9,0,60,6,48000
+544176,/escutado-audios/HD4/paulo_esec_castanhao_junho_2025/Data/PAULO4225_20250601_002000.wav,27,ESEC Castanhão,site_27_station_44,2025-06-01 00:20:00,2025-06-01,0,60,60,6,48000
+544339,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/1/NISE4659_20250601_102000.wav,27,ESEC Castanhão,site_27_station_42,2025-06-01 10:20:00,2025-06-01,10,0,60,6,48000
+560351,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/5/NISE4659_20250605_055000.wav,27,ESEC Castanhão,site_27_station_42,2025-06-05 05:50:00,2025-06-05,5,0,60,6,48000
+561914,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/7/NISE4659_20250607_192000.wav,27,ESEC Castanhão,site_27_station_42,2025-06-07 19:20:00,2025-06-07,19,60,60,6,48000
+544646,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/10/NISE4659_20250610_145000.wav,27,ESEC Castanhão,site_27_station_42,2025-06-10 14:50:00,2025-06-10,14,60,60,6,48000
+544944,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/11/NISE4659_20250611_204000.wav,27,ESEC Castanhão,site_27_station_42,2025-06-11 20:40:00,2025-06-11,20,120,60,6,48000
+545437,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/13/NISE4659_20250613_085000.wav,27,ESEC Castanhão,site_27_station_42,2025-06-13 08:50:00,2025-06-13,8,120,60,6,48000
+199024,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241116_061000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-16 06:10:00,2024-11-16,6,120,60,6,48000
+199384,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241118_191000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-18 19:10:00,2024-11-18,19,120,60,6,48000
+198741,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241119_050000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-19 05:00:00,2024-11-19,5,0,60,6,48000
+199479,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241120_042000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-20 04:20:00,2024-11-20,4,60,60,6,48000
+199553,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241120_084000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-20 08:40:00,2024-11-20,8,120,60,6,48000
+200053,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241121_121000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-21 12:10:00,2024-11-21,12,0,60,6,48000
+199793,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241122_040000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-22 04:00:00,2024-11-22,4,120,60,6,48000
+200344,/escutado-audios/HD2/DULCE580 - Pau dos Ferros/Data/DULCE580_20241123_104000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2024-11-23 10:40:00,2024-11-23,10,120,60,6,48000
+567060,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/13/SONIA570_20250713_142000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-13 14:20:00,2025-07-13,14,120,60,6,48000
+567672,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/13/SONIA570_20250713_181000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-13 18:10:00,2025-07-13,18,60,60,6,48000
+569445,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/15/SONIA570_20250715_182000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-15 18:20:00,2025-07-15,18,0,60,6,48000
+570290,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/16/SONIA570_20250716_022000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-16 02:20:00,2025-07-16,2,120,60,6,48000
+571302,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/17/SONIA570_20250717_001000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-17 00:10:00,2025-07-17,0,0,60,6,48000
+571629,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/18/SONIA570_20250718_005000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-18 00:50:00,2025-07-18,0,0,60,6,48000
+571655,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/18/SONIA570_20250718_110000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-18 11:00:00,2025-07-18,11,0,60,6,48000
+572426,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/SONIA570_20250719_074000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-19 07:40:00,2025-07-19,7,120,60,6,48000
+572055,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/SONIA570_20250719_170000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-19 17:00:00,2025-07-19,17,60,60,6,48000
+572597,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/SONIA570_20250719_181000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-19 18:10:00,2025-07-19,18,120,60,6,48000
+574547,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/SONIA570_20250720_012000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-20 01:20:00,2025-07-20,1,120,60,6,48000
+575056,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/21/SONIA570_20250721_070000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-21 07:00:00,2025-07-21,7,60,60,6,48000
+576265,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/22/SONIA570_20250722_154000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-22 15:40:00,2025-07-22,15,0,60,6,48000
+577001,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/23/SONIA570_20250723_071000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-23 07:10:00,2025-07-23,7,60,60,6,48000
+577734,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/SONIA570_20250724_162000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-24 16:20:00,2025-07-24,16,120,60,6,48000
+578190,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/25/SONIA570_20250725_111000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-25 11:10:00,2025-07-25,11,0,60,6,48000
+579177,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/26/SONIA570_20250726_144000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-26 14:40:00,2025-07-26,14,0,60,6,48000
+583130,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/SONIA570_20250730_034000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-30 03:40:00,2025-07-30,3,60,60,6,48000
+583444,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/SONIA570_20250730_121000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-07-30 12:10:00,2025-07-30,12,60,60,6,48000
+592850,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/SONIA570_20250801_143000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-08-01 14:30:00,2025-08-01,14,120,60,6,48000
+592678,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/SONIA570_20250801_180000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-08-01 18:00:00,2025-08-01,18,120,60,6,48000
+595066,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/4/SONIA570_20250804_185000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-08-04 18:50:00,2025-08-04,18,0,60,6,48000
+595264,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/5/SONIA570_20250805_091000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-08-05 09:10:00,2025-08-05,9,120,60,6,48000
+595981,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/6/SONIA570_20250806_180000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-08-06 18:00:00,2025-08-06,18,60,60,6,48000
+596228,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/8/SONIA570_20250807_225000.wav,29,SITIO ALAGOINHAS,site_29_station_48,2025-08-07 22:50:00,2025-08-07,22,0,60,6,48000
+225665,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/14/JORGE660_20241114_163000.wav,30,IFCE,site_30_station_50,2024-11-14 16:30:00,2024-11-14,16,120,60,6,48000
+172923,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241114_170000.wav,30,IFCE,site_30_station_51,2024-11-14 17:00:00,2024-11-14,17,60,60,6,48000
+193423,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241114_184000.wav,30,IFCE,site_30_station_49,2024-11-14 18:40:00,2024-11-14,18,60,60,6,48000
+194202,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241117_110000.wav,30,IFCE,site_30_station_49,2024-11-17 11:00:00,2024-11-17,11,60,60,6,48000
+226096,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/17/JORGE660_20241117_163000.wav,30,IFCE,site_30_station_50,2024-11-17 16:30:00,2024-11-17,16,60,60,6,48000
+193753,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241117_183000.wav,30,IFCE,site_30_station_49,2024-11-17 18:30:00,2024-11-17,18,0,60,6,48000
+173394,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241118_174000.wav,30,IFCE,site_30_station_51,2024-11-18 17:40:00,2024-11-18,17,0,60,6,48000
+173546,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241120_112000.wav,30,IFCE,site_30_station_51,2024-11-20 11:20:00,2024-11-20,11,120,60,6,48000
+173710,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241121_082000.wav,30,IFCE,site_30_station_51,2024-11-21 08:20:00,2024-11-21,8,120,60,6,48000
+194959,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241122_004000.wav,30,IFCE,site_30_station_49,2024-11-22 00:40:00,2024-11-22,0,0,60,6,48000
+173956,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241122_052000.wav,30,IFCE,site_30_station_51,2024-11-22 05:20:00,2024-11-22,5,0,60,6,48000
+194761,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241124_204000.wav,30,IFCE,site_30_station_49,2024-11-24 20:40:00,2024-11-24,20,120,60,6,48000
+194218,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241125_201000.wav,30,IFCE,site_30_station_49,2024-11-25 20:10:00,2024-11-25,20,0,60,6,48000
+174317,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241126_064000.wav,30,IFCE,site_30_station_51,2024-11-26 06:40:00,2024-11-26,6,60,60,6,48000
+174575,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241126_230000.wav,30,IFCE,site_30_station_51,2024-11-26 23:00:00,2024-11-26,23,120,60,6,48000
+174602,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241127_153000.wav,30,IFCE,site_30_station_51,2024-11-27 15:30:00,2024-11-27,15,60,60,6,48000
+174548,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241127_235000.wav,30,IFCE,site_30_station_51,2024-11-27 23:50:00,2024-11-27,23,0,60,6,48000
+196234,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241130_162000.wav,30,IFCE,site_30_station_49,2024-11-30 16:20:00,2024-11-30,16,120,60,6,48000
+196543,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241201_162000.wav,30,IFCE,site_30_station_49,2024-12-01 16:20:00,2024-12-01,16,120,60,6,48000
+175434,/escutado-audios/HD2/ALCEU525 - IFCE/Data/ALCEU525_20241203_221000.wav,30,IFCE,site_30_station_51,2024-12-03 22:10:00,2024-12-03,22,60,60,6,48000
+195751,/escutado-audios/HD2/CELI4565 - IFCE/Data/CELI4565_20241204_081000.wav,30,IFCE,site_30_station_49,2024-12-04 08:10:00,2024-12-04,8,0,60,6,48000
+539468,/escutado-audios/HD3/Chuvoso2/nisia_ifce/NISIA651_20250526_114000.wav,30,IFCE,site_30_station_49,2025-05-26 11:40:00,2025-05-26,11,120,60,6,48000
+540157,/escutado-audios/HD3/Chuvoso2/zila_ifce_limoeiro_junho_2025/Data/ZILA4575_20250527_030900.wav,30,IFCE,site_30_station_50,2025-05-27 03:09:00,2025-05-27,3,60,60,6,48000
+540446,/escutado-audios/HD3/Chuvoso2/nisia_ifce/NISIA651_20250528_032000.wav,30,IFCE,site_30_station_49,2025-05-28 03:20:00,2025-05-28,3,120,60,6,48000
+338678,/escutado-audios/HD3/Chuvoso2/elba_ifce_limoeiro_junho_2025/Data/ELBA4536_20250528_110000.wav,30,IFCE,site_30_station_51,2025-05-28 11:00:00,2025-05-28,11,0,60,6,48000
+540760,/escutado-audios/HD3/Chuvoso2/nisia_ifce/NISIA651_20250529_140000.wav,30,IFCE,site_30_station_49,2025-05-29 14:00:00,2025-05-29,14,60,60,6,48000
+541468,/escutado-audios/HD3/Chuvoso2/zila_ifce_limoeiro_junho_2025/Data/ZILA4575_20250530_210000.wav,30,IFCE,site_30_station_50,2025-05-30 21:00:00,2025-05-30,21,120,60,6,48000
+339673,/escutado-audios/HD3/Chuvoso2/elba_ifce_limoeiro_junho_2025/Data/ELBA4536_20250603_022000.wav,30,IFCE,site_30_station_51,2025-06-03 02:20:00,2025-06-03,2,120,60,6,48000
+339606,/escutado-audios/HD3/Chuvoso2/elba_ifce_limoeiro_junho_2025/Data/ELBA4536_20250604_002000.wav,30,IFCE,site_30_station_51,2025-06-04 00:20:00,2025-06-04,0,60,60,6,48000
+340368,/escutado-audios/HD3/Chuvoso2/elba_ifce_limoeiro_junho_2025/Data/ELBA4536_20250607_160000.wav,30,IFCE,site_30_station_51,2025-06-07 16:00:00,2025-06-07,16,0,60,6,48000
+340063,/escutado-audios/HD3/Chuvoso2/elba_ifce_limoeiro_junho_2025/Data/ELBA4536_20250611_114000.wav,30,IFCE,site_30_station_51,2025-06-11 11:40:00,2025-06-11,11,60,60,6,48000
+546502,/escutado-audios/HD3/Chuvoso2/zila_ifce_limoeiro_junho_2025/Data/ZILA4575_20250616_000000.wav,30,IFCE,site_30_station_50,2025-06-16 00:00:00,2025-06-16,0,60,60,6,48000
+340960,/escutado-audios/HD3/Chuvoso2/elba_ifce_limoeiro_junho_2025/Data/ELBA4536_20250616_034000.wav,30,IFCE,site_30_station_51,2025-06-16 03:40:00,2025-06-16,3,120,60,6,48000
+181993,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/5/SONIA570_20241205_202000.wav,31,Sítio Lírio Branco,site_31_station_52,2024-12-05 20:20:00,2024-12-05,20,60,60,6,48000
+112070,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/6/RAUL4247_20241206_024000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-06 02:40:00,2024-12-06,2,60,60,6,48000
+182168,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/6/SONIA570_20241206_220000.wav,31,Sítio Lírio Branco,site_31_station_52,2024-12-06 22:00:00,2024-12-06,22,0,60,6,48000
+112501,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/8/RAUL4247_20241208_040000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-08 04:00:00,2024-12-08,4,0,60,6,48000
+113896,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/11/RAUL4247_20241211_100000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-11 10:00:00,2024-12-11,10,120,60,6,48000
+113567,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/15/RAUL4247_20241215_033000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-15 03:30:00,2024-12-15,3,120,60,6,48000
+183765,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/18/SONIA570_20241218_075000.wav,31,Sítio Lírio Branco,site_31_station_52,2024-12-18 07:50:00,2024-12-18,7,0,60,6,48000
+114348,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/18/RAUL4247_20241218_095000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-18 09:50:00,2024-12-18,9,120,60,6,48000
+114425,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/21/RAUL4247_20241221_220000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-21 22:00:00,2024-12-21,22,120,60,6,48000
+114523,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/22/RAUL4247_20241222_003000.wav,31,Sítio Lírio Branco,site_31_station_53,2024-12-22 00:30:00,2024-12-22,0,0,60,6,48000
+184185,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/22/SONIA570_20241222_205000.wav,31,Sítio Lírio Branco,site_31_station_52,2024-12-22 20:50:00,2024-12-22,20,0,60,6,48000
+184816,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/26/SONIA570_20241226_095000.wav,31,Sítio Lírio Branco,site_31_station_52,2024-12-26 09:50:00,2024-12-26,9,0,60,6,48000
+185093,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/26/SONIA570_20241226_123000.wav,31,Sítio Lírio Branco,site_31_station_52,2024-12-26 12:30:00,2024-12-26,12,60,60,6,48000
+548016,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/22/PATATIVA_20250622_194000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-06-22 19:40:00,2025-06-22,19,60,60,6,48000
+549527,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/PATATIVA_20250623_043000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-06-23 04:30:00,2025-06-23,4,0,60,6,48000
+324992,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/CHICO244_20250623_045000.wav,31,Sítio Lírio Branco,site_31_station_54,2025-06-23 04:50:00,2025-06-23,4,120,60,6,48000
+555156,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/27/SONIA570_20250627_192000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-06-27 19:20:00,2025-06-27,19,0,60,6,48000
+325273,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/27/CHICO244_20250627_212000.wav,31,Sítio Lírio Branco,site_31_station_54,2025-06-27 21:20:00,2025-06-27,21,0,60,6,48000
+558082,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/29/PATATIVA_20250629_013000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-06-29 01:30:00,2025-06-29,1,0,60,6,48000
+557306,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/29/PATATIVA_20250629_123000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-06-29 12:30:00,2025-06-29,12,60,60,6,48000
+560373,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/30/SONIA570_20250630_132000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-06-30 13:20:00,2025-06-30,13,60,60,6,48000
+562655,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/1/PATATIVA_20250701_151000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-07-01 15:10:00,2025-07-01,15,120,60,6,48000
+573666,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/2/SONIA570_20250702_025000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-07-02 02:50:00,2025-07-02,2,120,60,6,48000
+573662,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/2/SONIA570_20250702_111000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-07-02 11:10:00,2025-07-02,11,0,60,6,48000
+582784,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/3/SONIA570_20250703_105000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-07-03 10:50:00,2025-07-03,10,120,60,6,48000
+326048,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/3/CHICO244_20250703_174000.wav,31,Sítio Lírio Branco,site_31_station_54,2025-07-03 17:40:00,2025-07-03,17,0,60,6,48000
+585179,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/4/SONIA570_20250703_224000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-07-03 22:40:00,2025-07-03,22,60,60,6,48000
+326465,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/4/CHICO244_20250704_163000.wav,31,Sítio Lírio Branco,site_31_station_54,2025-07-04 16:30:00,2025-07-04,16,60,60,6,48000
+587097,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/5/SONIA570_20250704_225000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-07-04 22:50:00,2025-07-04,22,60,60,6,48000
+586339,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/5/PATATIVA_20250705_134000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-07-05 13:40:00,2025-07-05,13,0,60,6,48000
+589611,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/8/PATATIVA_20250708_105000.wav,31,Sítio Lírio Branco,site_31_station_52,2025-07-08 10:50:00,2025-07-08,10,120,60,6,48000
+564854,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/10/SONIA570_20250710_171000.wav,31,Sítio Lírio Branco,site_31_station_53,2025-07-10 17:10:00,2025-07-10,17,60,60,6,48000
+327290,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/11/CHICO244_20250711_085000.wav,31,Sítio Lírio Branco,site_31_station_54,2025-07-11 08:50:00,2025-07-11,8,120,60,6,48000
+238110,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/7/PATATIVA_20241207_071000.wav,32,Sítio Curral,site_32_station_57,2024-12-07 07:10:00,2024-12-07,7,60,60,6,48000
+188804,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/8/CELI4565_20241208_120000.wav,32,Sítio Curral,site_32_station_56,2024-12-08 12:00:00,2024-12-08,12,60,60,6,48000
+169292,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/8/ALCEU525_20241208_233000.wav,32,Sítio Curral,site_32_station_55,2024-12-08 23:30:00,2024-12-08,23,120,60,6,48000
+204053,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/10/PATATIVA_20241210_024000.wav,32,Sítio Curral,site_32_station_57,2024-12-10 02:40:00,2024-12-10,2,0,60,6,48000
+238310,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/11/PATATIVA_20241211_094000.wav,32,Sítio Curral,site_32_station_57,2024-12-11 09:40:00,2024-12-11,9,0,60,6,48000
+169398,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/12/ALCEU525_20241212_040000.wav,32,Sítio Curral,site_32_station_55,2024-12-12 04:00:00,2024-12-12,4,120,60,6,48000
+204151,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/12/PATATIVA_20241212_160000.wav,32,Sítio Curral,site_32_station_57,2024-12-12 16:00:00,2024-12-12,16,60,60,6,48000
+189478,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/13/CELI4565_20241213_011000.wav,32,Sítio Curral,site_32_station_56,2024-12-13 01:10:00,2024-12-13,1,0,60,6,48000
+239522,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/13/PATATIVA_20241213_053000.wav,32,Sítio Curral,site_32_station_57,2024-12-13 05:30:00,2024-12-13,5,120,60,6,48000
+237760,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/13/PATATIVA_20241213_151000.wav,32,Sítio Curral,site_32_station_57,2024-12-13 15:10:00,2024-12-13,15,120,60,6,48000
+168553,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/15/ALCEU525_20241215_111000.wav,32,Sítio Curral,site_32_station_55,2024-12-15 11:10:00,2024-12-15,11,120,60,6,48000
+241535,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/17/PATATIVA_20241217_191000.wav,32,Sítio Curral,site_32_station_57,2024-12-17 19:10:00,2024-12-17,19,120,60,6,48000
+169131,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/19/ALCEU525_20241219_155000.wav,32,Sítio Curral,site_32_station_55,2024-12-19 15:50:00,2024-12-19,15,120,60,6,48000
+241482,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/24/PATATIVA_20241224_235000.wav,32,Sítio Curral,site_32_station_57,2024-12-24 23:50:00,2024-12-24,23,0,60,6,48000
+547801,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/21/NISIA651_20250621_081000.wav,32,Sítio Curral,site_32_station_56,2025-06-21 08:10:00,2025-06-21,8,60,60,6,48000
+547676,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/21/NISIA651_20250621_213000.wav,32,Sítio Curral,site_32_station_56,2025-06-21 21:30:00,2025-06-21,21,60,60,6,48000
+286362,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/CELI4565_20250623_102000.wav,32,Sítio Curral,site_32_station_57,2025-06-23 10:20:00,2025-06-23,10,0,60,6,48000
+288300,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/CELI4565_20250623_193000.wav,32,Sítio Curral,site_32_station_57,2025-06-23 19:30:00,2025-06-23,19,60,60,6,48000
+551021,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/24/NISIA651_20250624_034000.wav,32,Sítio Curral,site_32_station_56,2025-06-24 03:40:00,2025-06-24,3,0,60,6,48000
+287835,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/24/CELI4565_20250624_113000.wav,32,Sítio Curral,site_32_station_57,2025-06-24 11:30:00,2025-06-24,11,60,60,6,48000
+550806,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/24/RAMOS657_20250624_181000.wav,32,Sítio Curral,site_32_station_55,2025-06-24 18:10:00,2025-06-24,18,120,60,6,48000
+552206,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/25/RAMOS657_20250625_154000.wav,32,Sítio Curral,site_32_station_55,2025-06-25 15:40:00,2025-06-25,15,0,60,6,48000
+553795,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/26/NISIA651_20250626_101000.wav,32,Sítio Curral,site_32_station_56,2025-06-26 10:10:00,2025-06-26,10,60,60,6,48000
+554473,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/27/NISIA651_20250627_141000.wav,32,Sítio Curral,site_32_station_56,2025-06-27 14:10:00,2025-06-27,14,60,60,6,48000
+288254,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/29/CELI4565_20250629_041000.wav,32,Sítio Curral,site_32_station_57,2025-06-29 04:10:00,2025-06-29,4,60,60,6,48000
+310553,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/29/CELI4565_20250629_205000.wav,32,Sítio Curral,site_32_station_57,2025-06-29 20:50:00,2025-06-29,20,120,60,6,48000
+563130,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/1/RAMOS657_20250701_003000.wav,32,Sítio Curral,site_32_station_55,2025-07-01 00:30:00,2025-07-01,0,60,60,6,48000
+288724,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/1/CELI4565_20250701_020000.wav,32,Sítio Curral,site_32_station_57,2025-07-01 02:00:00,2025-07-01,2,60,60,6,48000
+288836,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/2/CELI4565_20250702_003000.wav,32,Sítio Curral,site_32_station_57,2025-07-02 00:30:00,2025-07-02,0,0,60,6,48000
+586029,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/5/NISIA651_20250705_164000.wav,32,Sítio Curral,site_32_station_56,2025-07-05 16:40:00,2025-07-05,16,60,60,6,48000
+310914,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/8/CELI4565_20250708_160000.wav,32,Sítio Curral,site_32_station_57,2025-07-08 16:00:00,2025-07-08,16,120,60,6,48000
+590529,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/9/NISIA651_20250709_074000.wav,32,Sítio Curral,site_32_station_56,2025-07-09 07:40:00,2025-07-09,7,60,60,6,48000
+564038,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/10/NISIA651_20250710_205000.wav,32,Sítio Curral,site_32_station_56,2025-07-10 20:50:00,2025-07-10,20,60,60,6,48000
+96244,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/7/LUIZ4223_20241207_070000.wav,33,Gitirana,site_33_station_58,2024-12-07 07:00:00,2024-12-07,7,60,60,6,48000
+130536,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/8/PAULO4225_20241208_204000.wav,33,Gitirana,site_33_station_59,2024-12-08 20:40:00,2024-12-08,20,60,60,6,48000
+129790,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/9/PAULO4225_20241209_062000.wav,33,Gitirana,site_33_station_59,2024-12-09 06:20:00,2024-12-09,6,120,60,6,48000
+201530,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/10/MARIA581_20241210_023000.wav,33,Gitirana,site_33_station_60,2024-12-10 02:30:00,2024-12-10,2,60,60,6,48000
+226603,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/10/MARIA581_20241210_074000.wav,33,Gitirana,site_33_station_60,2024-12-10 07:40:00,2024-12-10,7,60,60,6,48000
+227325,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/10/MARIA581_20241210_181000.wav,33,Gitirana,site_33_station_60,2024-12-10 18:10:00,2024-12-10,18,0,60,6,48000
+130135,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/11/PAULO4225_20241211_125000.wav,33,Gitirana,site_33_station_59,2024-12-11 12:50:00,2024-12-11,12,60,60,6,48000
+130185,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/12/PAULO4225_20241212_011000.wav,33,Gitirana,site_33_station_59,2024-12-12 01:10:00,2024-12-12,1,120,60,6,48000
+97338,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/13/LUIZ4223_20241213_013000.wav,33,Gitirana,site_33_station_58,2024-12-13 01:30:00,2024-12-13,1,120,60,6,48000
+97157,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/13/LUIZ4223_20241213_113000.wav,33,Gitirana,site_33_station_58,2024-12-13 11:30:00,2024-12-13,11,0,60,6,48000
+227427,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/15/MARIA581_20241215_163000.wav,33,Gitirana,site_33_station_60,2024-12-15 16:30:00,2024-12-15,16,60,60,6,48000
+228592,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/20/MARIA581_20241220_092000.wav,33,Gitirana,site_33_station_60,2024-12-20 09:20:00,2024-12-20,9,120,60,6,48000
+98333,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/21/LUIZ4223_20241221_064000.wav,33,Gitirana,site_33_station_58,2024-12-21 06:40:00,2024-12-21,6,0,60,6,48000
+131921,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/22/PAULO4225_20241222_012000.wav,33,Gitirana,site_33_station_59,2024-12-22 01:20:00,2024-12-22,1,120,60,6,48000
+98585,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/23/LUIZ4223_20241223_124000.wav,33,Gitirana,site_33_station_58,2024-12-23 12:40:00,2024-12-23,12,60,60,6,48000
+548056,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/22/MARIA581_20250622_102000.wav,33,Gitirana,site_33_station_59,2025-06-22 10:20:00,2025-06-22,10,0,60,6,48000
+549040,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/22/RAUL4247_20250622_162000.wav,33,Gitirana,site_33_station_58,2025-06-22 16:20:00,2025-06-22,16,60,60,6,48000
+549966,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/PAULO4225_20250623_143000.wav,33,Gitirana,site_33_station_60,2025-06-23 14:30:00,2025-06-23,14,0,60,6,48000
+549772,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/23/PAULO4225_20250623_213000.wav,33,Gitirana,site_33_station_60,2025-06-23 21:30:00,2025-06-23,21,60,60,6,48000
+551538,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/24/RAUL4247_20250624_044000.wav,33,Gitirana,site_33_station_58,2025-06-24 04:40:00,2025-06-24,4,60,60,6,48000
+551859,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/25/MARIA581_20250625_200000.wav,33,Gitirana,site_33_station_59,2025-06-25 20:00:00,2025-06-25,20,60,60,6,48000
+553756,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/26/RAUL4247_20250626_112000.wav,33,Gitirana,site_33_station_58,2025-06-26 11:20:00,2025-06-26,11,120,60,6,48000
+554886,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/27/RAUL4247_20250627_055000.wav,33,Gitirana,site_33_station_58,2025-06-27 05:50:00,2025-06-27,5,0,60,6,48000
+554339,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/6/27/PAULO4225_20250627_180000.wav,33,Gitirana,site_33_station_60,2025-06-27 18:00:00,2025-06-27,18,60,60,6,48000
+572817,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/2/MARIA581_20250702_191000.wav,33,Gitirana,site_33_station_59,2025-07-02 19:10:00,2025-07-02,19,0,60,6,48000
+573564,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/2/PAULO4225_20250702_194000.wav,33,Gitirana,site_33_station_60,2025-07-02 19:40:00,2025-07-02,19,60,60,6,48000
+584792,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/5/MARIA581_20250705_022000.wav,33,Gitirana,site_33_station_59,2025-07-05 02:20:00,2025-07-05,2,120,60,6,48000
+585897,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/5/MARIA581_20250705_144000.wav,33,Gitirana,site_33_station_59,2025-07-05 14:40:00,2025-07-05,14,60,60,6,48000
+587300,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/6/MARIA581_20250706_172000.wav,33,Gitirana,site_33_station_59,2025-07-06 17:20:00,2025-07-06,17,60,60,6,48000
+588763,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/7/RAUL4247_20250707_100000.wav,33,Gitirana,site_33_station_58,2025-07-07 10:00:00,2025-07-07,10,0,60,6,48000
+589453,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/8/MARIA581_20250708_194000.wav,33,Gitirana,site_33_station_59,2025-07-08 19:40:00,2025-07-08,19,60,60,6,48000
+564648,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/10/RAUL4247_20250710_024000.wav,33,Gitirana,site_33_station_58,2025-07-10 02:40:00,2025-07-10,2,120,60,6,48000
+565787,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/11/PAULO4225_20250711_151000.wav,33,Gitirana,site_33_station_60,2025-07-11 15:10:00,2025-07-11,15,0,60,6,48000
+151820,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/7/NISIA651_20241207_190000.wav,34,Sítio Mimoso,site_34_station_62,2024-12-07 19:00:00,2024-12-07,19,0,60,6,48000
+263059,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/10/ZUMBI658_20241210_001000.wav,34,Sítio Mimoso,site_34_station_63,2024-12-10 00:10:00,2024-12-10,0,60,60,6,48000
+244723,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/11/RAMOS657_20241211_144000.wav,34,Sítio Mimoso,site_34_station_61,2024-12-11 14:40:00,2024-12-11,14,120,60,6,48000
+264814,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/14/ZUMBI658_20241214_040000.wav,34,Sítio Mimoso,site_34_station_63,2024-12-14 04:00:00,2024-12-14,4,60,60,6,48000
+263287,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/16/ZUMBI658_20241216_151000.wav,34,Sítio Mimoso,site_34_station_63,2024-12-16 15:10:00,2024-12-16,15,120,60,6,48000
+245962,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/18/RAMOS657_20241218_102000.wav,34,Sítio Mimoso,site_34_station_61,2024-12-18 10:20:00,2024-12-18,10,120,60,6,48000
+264410,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/22/ZUMBI658_20241222_130000.wav,34,Sítio Mimoso,site_34_station_63,2024-12-22 13:00:00,2024-12-22,13,0,60,6,48000
+153905,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/22/NISIA651_20241222_140000.wav,34,Sítio Mimoso,site_34_station_62,2024-12-22 14:00:00,2024-12-22,14,0,60,6,48000
+246204,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/24/RAMOS657_20241224_185000.wav,34,Sítio Mimoso,site_34_station_61,2024-12-24 18:50:00,2024-12-24,18,0,60,6,48000
+154383,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/26/NISIA651_20241226_055000.wav,34,Sítio Mimoso,site_34_station_62,2024-12-26 05:50:00,2024-12-26,5,0,60,6,48000
+247021,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/27/RAMOS657_20241227_064000.wav,34,Sítio Mimoso,site_34_station_61,2024-12-27 06:40:00,2024-12-27,6,120,60,6,48000
+300411,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250527_235000.wav,34,Sítio Mimoso,site_34_station_61,2025-05-27 23:50:00,2025-05-27,23,120,60,6,48000
+541818,/escutado-audios/HD4/raul_gitirana_riachuelo_junho_2025/raul_gitirana_riachuelo_junho_2025/Data/RAUL4247_20250529_185000.wav,34,Sítio Mimoso,site_34_station_63,2025-05-29 18:50:00,2025-05-29,18,60,60,6,48000
+541503,/escutado-audios/HD4/raul_gitirana_riachuelo_junho_2025/raul_gitirana_riachuelo_junho_2025/Data/RAUL4247_20250530_053000.wav,34,Sítio Mimoso,site_34_station_63,2025-05-30 05:30:00,2025-05-30,5,0,60,6,48000
+300857,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250530_185000.wav,34,Sítio Mimoso,site_34_station_61,2025-05-30 18:50:00,2025-05-30,18,0,60,6,48000
+544370,/escutado-audios/HD3/Chuvoso2/raul_sitiomimoso_paulista_junho_2025/Data/RAUL4247_20250601_214000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-01 21:40:00,2025-06-01,21,60,60,6,48000
+301678,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250604_222000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-04 22:20:00,2025-06-04,22,60,60,6,48000
+301758,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250605_125000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-05 12:50:00,2025-06-05,12,120,60,6,48000
+301841,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250606_034000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-06 03:40:00,2025-06-06,3,0,60,6,48000
+353941,/escutado-audios/HD4/gal_sitiomimoso_paulista_junho_2025/Data/GAL24576_20250606_084000.wav,34,Sítio Mimoso,site_34_station_62,2025-06-06 08:40:00,2025-06-06,8,60,60,6,48000
+301295,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250606_120000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-06 12:00:00,2025-06-06,12,0,60,6,48000
+561944,/escutado-audios/HD4/raul_gitirana_riachuelo_junho_2025/raul_gitirana_riachuelo_junho_2025/Data/RAUL4247_20250608_051000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-08 05:10:00,2025-06-08,5,120,60,6,48000
+302176,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250608_062000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-08 06:20:00,2025-06-08,6,60,60,6,48000
+301979,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250608_221000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-08 22:10:00,2025-06-08,22,0,60,6,48000
+545323,/escutado-audios/HD3/Chuvoso2/raul_sitiomimoso_paulista_junho_2025/Data/RAUL4247_20250612_150000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-12 15:00:00,2025-06-12,15,120,60,6,48000
+545550,/escutado-audios/HD3/Chuvoso2/raul_sitiomimoso_paulista_junho_2025/Data/RAUL4247_20250613_160000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-13 16:00:00,2025-06-13,16,120,60,6,48000
+302812,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250614_051000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-14 05:10:00,2025-06-14,5,0,60,6,48000
+546181,/escutado-audios/HD4/raul_gitirana_riachuelo_junho_2025/raul_gitirana_riachuelo_junho_2025/Data/RAUL4247_20250614_095000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-14 09:50:00,2025-06-14,9,0,60,6,48000
+354447,/escutado-audios/HD4/gal_sitiomimoso_paulista_junho_2025/Data/GAL24576_20250614_105000.wav,34,Sítio Mimoso,site_34_station_62,2025-06-14 10:50:00,2025-06-14,10,60,60,6,48000
+546230,/escutado-audios/HD4/raul_gitirana_riachuelo_junho_2025/raul_gitirana_riachuelo_junho_2025/Data/RAUL4247_20250615_033000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-15 03:30:00,2025-06-15,3,0,60,6,48000
+303091,/escutado-audios/HD4/alceu_sitiomimoso_paulista_junho_2025/Data/ALCEU525_20250615_144000.wav,34,Sítio Mimoso,site_34_station_61,2025-06-15 14:40:00,2025-06-15,14,0,60,6,48000
+354973,/escutado-audios/HD4/gal_sitiomimoso_paulista_junho_2025/Data/GAL24576_20250616_101000.wav,34,Sítio Mimoso,site_34_station_62,2025-06-16 10:10:00,2025-06-16,10,0,60,6,48000
+546322,/escutado-audios/HD4/raul_gitirana_riachuelo_junho_2025/raul_gitirana_riachuelo_junho_2025/Data/RAUL4247_20250617_063000.wav,34,Sítio Mimoso,site_34_station_63,2025-06-17 06:30:00,2025-06-17,6,120,60,6,48000
+190270,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/21/CELI4565_20241021_235000.wav,35,FLONA de Açu,site_35_station_23,2024-10-21 23:50:00,2024-10-21,23,0,60,6,48000
+122232,/escutado-audios/HD1/chico244_flona_assu/Data/CHICO244_20241024_021000.wav,35,FLONA de Açu,site_35_station_22,2024-10-24 02:10:00,2024-10-24,2,0,60,6,48000
+176124,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/25/ALCEU525_20241025_063000.wav,35,FLONA de Açu,site_35_station_24,2024-10-25 06:30:00,2024-10-25,6,120,60,6,48000
+190881,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/25/CELI4565_20241025_073000.wav,35,FLONA de Açu,site_35_station_23,2024-10-25 07:30:00,2024-10-25,7,0,60,6,48000
+122243,/escutado-audios/HD1/chico244_flona_assu/Data/CHICO244_20241025_095000.wav,35,FLONA de Açu,site_35_station_22,2024-10-25 09:50:00,2024-10-25,9,0,60,6,48000
+190930,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/27/CELI4565_20241027_135000.wav,35,FLONA de Açu,site_35_station_23,2024-10-27 13:50:00,2024-10-27,13,0,60,6,48000
+177608,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/29/ALCEU525_20241029_085000.wav,35,FLONA de Açu,site_35_station_24,2024-10-29 08:50:00,2024-10-29,8,120,60,6,48000
+176978,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/31/ALCEU525_20241031_144000.wav,35,FLONA de Açu,site_35_station_24,2024-10-31 14:40:00,2024-10-31,14,120,60,6,48000
+176997,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/10/31/ALCEU525_20241031_204000.wav,35,FLONA de Açu,site_35_station_24,2024-10-31 20:40:00,2024-10-31,20,120,60,6,48000
+191678,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/2/CELI4565_20241102_080000.wav,35,FLONA de Açu,site_35_station_23,2024-11-02 08:00:00,2024-11-02,8,60,60,6,48000
+177291,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/3/ALCEU525_20241103_154000.wav,35,FLONA de Açu,site_35_station_24,2024-11-03 15:40:00,2024-11-03,15,120,60,6,48000
+178438,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/4/ALCEU525_20241104_073000.wav,35,FLONA de Açu,site_35_station_24,2024-11-04 07:30:00,2024-11-04,7,0,60,6,48000
+191849,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/4/CELI4565_20241104_171000.wav,35,FLONA de Açu,site_35_station_23,2024-11-04 17:10:00,2024-11-04,17,60,60,6,48000
+192587,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/7/CELI4565_20241107_193000.wav,35,FLONA de Açu,site_35_station_23,2024-11-07 19:30:00,2024-11-07,19,60,60,6,48000
+178735,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/11/ALCEU525_20241111_143000.wav,35,FLONA de Açu,site_35_station_24,2024-11-11 14:30:00,2024-11-11,14,60,60,6,48000
+487092,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/18/PATATIVA_20250318_002000.wav,35,FLONA de Açu,site_35_station_23,2025-03-18 00:20:00,2025-03-18,0,60,60,6,48000
+487520,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/19/PATATIVA_20250319_194000.wav,35,FLONA de Açu,site_35_station_23,2025-03-19 19:40:00,2025-03-19,19,0,60,6,48000
+489731,/escutado-audios/HD3/Chuvoso1/nisia_acu_abr_2025/Data/NISIA651_20250323_195000.wav,35,FLONA de Açu,site_35_station_24,2025-03-23 19:50:00,2025-03-23,19,0,60,6,48000
+492506,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/26/PATATIVA_20250326_153000.wav,35,FLONA de Açu,site_35_station_23,2025-03-26 15:30:00,2025-03-26,15,120,60,6,48000
+493284,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/27/PATATIVA_20250327_104000.wav,35,FLONA de Açu,site_35_station_23,2025-03-27 10:40:00,2025-03-27,10,120,60,6,48000
+494109,/escutado-audios/HD3/Chuvoso1/nisia_acu_abr_2025/Data/NISIA651_20250328_012000.wav,35,FLONA de Açu,site_35_station_24,2025-03-28 01:20:00,2025-03-28,1,120,60,6,48000
+532944,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/4/PATATIVA_20250404_035000.wav,35,FLONA de Açu,site_35_station_23,2025-04-04 03:50:00,2025-04-04,3,120,60,6,48000
+532158,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/4/PATATIVA_20250404_195000.wav,35,FLONA de Açu,site_35_station_23,2025-04-04 19:50:00,2025-04-04,19,60,60,6,48000
+532665,/escutado-audios/HD3/Chuvoso1/nisia_acu_abr_2025/Data/NISIA651_20250405_004000.wav,35,FLONA de Açu,site_35_station_24,2025-04-05 00:40:00,2025-04-05,0,120,60,6,48000
+533629,/escutado-audios/HD3/Chuvoso1/nisia_acu_abr_2025/Data/NISIA651_20250406_214000.wav,35,FLONA de Açu,site_35_station_24,2025-04-06 21:40:00,2025-04-06,21,0,60,6,48000
+532253,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/30/ZILA4575_20250430_000000.wav,35,FLONA de Açu,site_35_station_24,2025-04-30 00:00:00,2025-04-30,0,120,60,6,48000
+541393,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/3/ZILA4575_20250503_072100.wav,35,FLONA de Açu,site_35_station_24,2025-05-03 07:21:00,2025-05-03,7,120,60,6,48000
+543624,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/8/ZILA4575_20250508_123600.wav,35,FLONA de Açu,site_35_station_24,2025-05-08 12:36:00,2025-05-08,12,120,60,6,48000
+537205,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/13/ZILA4575_20250513_020600.wav,35,FLONA de Açu,site_35_station_24,2025-05-13 02:06:00,2025-05-13,2,60,60,6,48000
+537540,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/16/ZILA4575_20250516_154500.wav,35,FLONA de Açu,site_35_station_24,2025-05-16 15:45:00,2025-05-16,15,120,60,6,48000
+537971,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/18/ZILA4575_20250518_195700.wav,35,FLONA de Açu,site_35_station_24,2025-05-18 19:57:00,2025-05-18,19,0,60,6,48000
+538637,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/20/ZILA4575_20250520_185400.wav,35,FLONA de Açu,site_35_station_24,2025-05-20 18:54:00,2025-05-20,18,120,60,6,48000
+538719,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/5/22/ZILA4575_20250522_030900.wav,35,FLONA de Açu,site_35_station_24,2025-05-22 03:09:00,2025-05-22,3,60,60,6,48000
+132331,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/14/PAULO4225_20241114_110000.wav,36,COCO SI,site_36_station_47,2024-11-14 11:00:00,2024-11-14,11,0,60,6,48000
+230325,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/15/MARIA581_20241115_001000.wav,36,COCO SI,site_36_station_46,2024-11-15 00:10:00,2024-11-15,0,120,60,6,48000
+132899,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/17/PAULO4225_20241117_142000.wav,36,COCO SI,site_36_station_47,2024-11-17 14:20:00,2024-11-17,14,0,60,6,48000
+230919,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/19/MARIA581_20241119_061000.wav,36,COCO SI,site_36_station_46,2024-11-19 06:10:00,2024-11-19,6,0,60,6,48000
+231118,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/20/MARIA581_20241120_224000.wav,36,COCO SI,site_36_station_46,2024-11-20 22:40:00,2024-11-20,22,0,60,6,48000
+133063,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/21/PAULO4225_20241121_021000.wav,36,COCO SI,site_36_station_47,2024-11-21 02:10:00,2024-11-21,2,120,60,6,48000
+103196,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/21/LUIZ4223_20241121_214000.wav,36,COCO SI,site_36_station_45,2024-11-21 21:40:00,2024-11-21,21,60,60,6,48000
+230435,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/22/MARIA581_20241122_042000.wav,36,COCO SI,site_36_station_46,2024-11-22 04:20:00,2024-11-22,4,0,60,6,48000
+134735,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/11/30/PAULO4225_20241130_224000.wav,36,COCO SI,site_36_station_47,2024-11-30 22:40:00,2024-11-30,22,0,60,6,48000
+135061,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/3/PAULO4225_20241203_015000.wav,36,COCO SI,site_36_station_47,2024-12-03 01:50:00,2024-12-03,1,60,60,6,48000
+233608,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/3/MARIA581_20241203_093000.wav,36,COCO SI,site_36_station_46,2024-12-03 09:30:00,2024-12-03,9,60,60,6,48000
+232462,/escutado-audios/escutado-importados/escutado-importados/Recordings/2024/12/3/MARIA581_20241203_202000.wav,36,COCO SI,site_36_station_46,2024-12-03 20:20:00,2024-12-03,20,0,60,6,48000
+567968,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/14/PAULO4225_20250714_010000.wav,36,COCO SI,site_36_station_47,2025-07-14 01:00:00,2025-07-14,1,0,60,6,48000
+319005,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/CHICO244_20250719_045000.wav,36,COCO SI,site_36_station_45,2025-07-19 04:50:00,2025-07-19,4,60,60,6,48000
+571445,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/19/PAULO4225_20250719_081000.wav,36,COCO SI,site_36_station_47,2025-07-19 08:10:00,2025-07-19,8,60,60,6,48000
+319110,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/20/CHICO244_20250720_204000.wav,36,COCO SI,site_36_station_45,2025-07-20 20:40:00,2025-07-20,20,0,60,6,48000
+576613,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/PAULO4225_20250724_022000.wav,36,COCO SI,site_36_station_47,2025-07-24 02:20:00,2025-07-24,2,120,60,6,48000
+576993,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/24/PAULO4225_20250724_124000.wav,36,COCO SI,site_36_station_47,2025-07-24 12:40:00,2025-07-24,12,0,60,6,48000
+579035,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/26/RAMOS657_20250726_083000.wav,36,COCO SI,site_36_station_46,2025-07-26 08:30:00,2025-07-26,8,0,60,6,48000
+579214,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/27/RAMOS657_20250727_142000.wav,36,COCO SI,site_36_station_46,2025-07-27 14:20:00,2025-07-27,14,0,60,6,48000
+581069,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/29/PAULO4225_20250729_025000.wav,36,COCO SI,site_36_station_47,2025-07-29 02:50:00,2025-07-29,2,60,60,6,48000
+580435,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/29/PAULO4225_20250729_232000.wav,36,COCO SI,site_36_station_47,2025-07-29 23:20:00,2025-07-29,23,120,60,6,48000
+583302,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/7/30/RAMOS657_20250730_090000.wav,36,COCO SI,site_36_station_46,2025-07-30 09:00:00,2025-07-30,9,60,60,6,48000
+321150,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/CHICO244_20250801_073000.wav,36,COCO SI,site_36_station_45,2025-08-01 07:30:00,2025-08-01,7,0,60,6,48000
+592325,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/1/RAMOS657_20250801_122000.wav,36,COCO SI,site_36_station_46,2025-08-01 12:20:00,2025-08-01,12,60,60,6,48000
+593280,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/2/PAULO4225_20250802_044000.wav,36,COCO SI,site_36_station_47,2025-08-02 04:40:00,2025-08-02,4,120,60,6,48000
+593648,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/2/PAULO4225_20250802_203000.wav,36,COCO SI,site_36_station_47,2025-08-02 20:30:00,2025-08-02,20,0,60,6,48000
+594123,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/3/RAMOS657_20250803_170000.wav,36,COCO SI,site_36_station_46,2025-08-03 17:00:00,2025-08-03,17,60,60,6,48000
+594613,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/4/RAMOS657_20250804_115000.wav,36,COCO SI,site_36_station_46,2025-08-04 11:50:00,2025-08-04,11,120,60,6,48000
+321384,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/4/CHICO244_20250804_120000.wav,36,COCO SI,site_36_station_45,2025-08-04 12:00:00,2025-08-04,12,60,60,6,48000
+594745,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/4/RAMOS657_20250804_141000.wav,36,COCO SI,site_36_station_46,2025-08-04 14:10:00,2025-08-04,14,60,60,6,48000
+594864,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/4/RAMOS657_20250804_220000.wav,36,COCO SI,site_36_station_46,2025-08-04 22:00:00,2025-08-04,22,120,60,6,48000
+595624,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/8/6/PAULO4225_20250806_170000.wav,36,COCO SI,site_36_station_47,2025-08-06 17:00:00,2025-08-06,17,0,60,6,48000
+493635,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/28/MARIA581_20250328_165000.wav,46,Espaço ASA,site_46_station_64,2025-03-28 16:50:00,2025-03-28,16,60,60,6,48000
+493841,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/28/MARIA581_20250328_171000.wav,46,Espaço ASA,site_46_station_64,2025-03-28 17:10:00,2025-03-28,17,60,60,6,48000
+494008,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/28/MARIA581_20250328_181000.wav,46,Espaço ASA,site_46_station_64,2025-03-28 18:10:00,2025-03-28,18,0,60,6,48000
+493319,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/28/MARIA581_20250328_215000.wav,46,Espaço ASA,site_46_station_64,2025-03-28 21:50:00,2025-03-28,21,0,60,6,48000
+494757,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_002000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 00:20:00,2025-03-29,0,60,60,6,48000
+494840,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_021000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 02:10:00,2025-03-29,2,0,60,6,48000
+494911,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_023000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 02:30:00,2025-03-29,2,120,60,6,48000
+494836,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_035000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 03:50:00,2025-03-29,3,120,60,6,48000
+494329,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_060000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 06:00:00,2025-03-29,6,120,60,6,48000
+494403,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_072000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 07:20:00,2025-03-29,7,120,60,6,48000
+494385,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_085000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 08:50:00,2025-03-29,8,120,60,6,48000
+494400,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_091000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 09:10:00,2025-03-29,9,0,60,6,48000
+494876,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_102000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 10:20:00,2025-03-29,10,120,60,6,48000
+494937,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_111000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 11:10:00,2025-03-29,11,120,60,6,48000
+494765,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_115000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 11:50:00,2025-03-29,11,0,60,6,48000
+494280,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_155000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 15:50:00,2025-03-29,15,0,60,6,48000
+494373,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_174000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 17:40:00,2025-03-29,17,120,60,6,48000
+494819,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_201000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 20:10:00,2025-03-29,20,0,60,6,48000
+494501,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_203000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 20:30:00,2025-03-29,20,60,60,6,48000
+495112,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/29/MARIA581_20250329_204000.wav,46,Espaço ASA,site_46_station_64,2025-03-29 20:40:00,2025-03-29,20,0,60,6,48000
+496207,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/30/MARIA581_20250330_040000.wav,46,Espaço ASA,site_46_station_64,2025-03-30 04:00:00,2025-03-30,4,60,60,6,48000
+495564,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/30/MARIA581_20250330_095000.wav,46,Espaço ASA,site_46_station_64,2025-03-30 09:50:00,2025-03-30,9,120,60,6,48000
+495840,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/30/MARIA581_20250330_162000.wav,46,Espaço ASA,site_46_station_64,2025-03-30 16:20:00,2025-03-30,16,60,60,6,48000
+495496,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/30/MARIA581_20250330_163000.wav,46,Espaço ASA,site_46_station_64,2025-03-30 16:30:00,2025-03-30,16,60,60,6,48000
+495800,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/30/MARIA581_20250330_170000.wav,46,Espaço ASA,site_46_station_64,2025-03-30 17:00:00,2025-03-30,17,0,60,6,48000
+495803,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/30/MARIA581_20250330_223000.wav,46,Espaço ASA,site_46_station_64,2025-03-30 22:30:00,2025-03-30,22,0,60,6,48000
+496525,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/31/MARIA581_20250331_005000.wav,46,Espaço ASA,site_46_station_64,2025-03-31 00:50:00,2025-03-31,0,60,60,6,48000
+496583,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/31/MARIA581_20250331_112000.wav,46,Espaço ASA,site_46_station_64,2025-03-31 11:20:00,2025-03-31,11,60,60,6,48000
+497789,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/31/MARIA581_20250331_145000.wav,46,Espaço ASA,site_46_station_64,2025-03-31 14:50:00,2025-03-31,14,0,60,6,48000
+496800,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/31/MARIA581_20250331_205000.wav,46,Espaço ASA,site_46_station_64,2025-03-31 20:50:00,2025-03-31,20,0,60,6,48000
+496694,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/3/31/MARIA581_20250331_212000.wav,46,Espaço ASA,site_46_station_64,2025-03-31 21:20:00,2025-03-31,21,60,60,6,48000
+514733,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/2/MARIA581_20250402_001000.wav,46,Espaço ASA,site_46_station_64,2025-04-02 00:10:00,2025-04-02,0,60,60,6,48000
+530111,/escutado-audios/escutado-importados/escutado-importados/Recordings/2025/4/3/MARIA581_20250403_014000.wav,46,Espaço ASA,site_46_station_64,2025-04-03 01:40:00,2025-04-03,1,0,60,6,48000
