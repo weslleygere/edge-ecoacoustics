@@ -6,3 +6,6 @@ msclap
 Unidecode
 matplotlib
 scikit-learn
+scipy
+joblib
+tensorflow

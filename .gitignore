@@ -16,3 +16,7 @@ __pycache__/
 # Generated feature cache (hundreds of MB)
 *.npy
 data/processed*/
+
+results/training/
+*.keras
+*.joblib
