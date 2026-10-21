@@ -5,3 +5,4 @@ torch
 msclap
 Unidecode
 matplotlib
+scikit-learn

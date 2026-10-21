@@ -8,7 +8,7 @@ The current dataset uses **1,000 terrestrial recordings** sampled from the Caati
 
 ```text
 dataset/            Sampling, teacher label generation, visualizations, prompts
-model/              Future student-model code
+model/              48-kHz MFCC/Log-Mel feature extraction and student models
 firmware/esp32s3/   Future embedded implementation
 data/               Selected recording manifest and final labels
 results/            Figures and model/hardware metrics
@@ -58,13 +58,42 @@ python dataset/visualize.py --csv data/cei_6s.csv --sample data/recordings_1000.
 
 Figures and summary tables are written under the output directory selected by the visualization script (see `--help`).
 
-The current verified figures and summary tables from the continuous-label run are included under `results/figures/` and `results/metrics/`. **The complete 10,000-row continuous-label CSV is not stored in the provided source branch or available attachments, so `data/cei_6s.csv` is intentionally not fabricated.** Copy your already generated CSV to that path, or recreate it using the generator.
+The current figures and summary tables from the continuous-label run are
+included under `results/figures/` and `results/metrics/`. The **actual
+10,000-row continuous-label CSV** supplied for this project is now included
+as `data/cei_6s.csv`. The manifest and label identifiers were checked: 1,000
+unique recordings, ten windows per recording, with matching source paths.
+You do **not** need to run CLAP again for training.
+
+## Prepare the model inputs (48 kHz)
+
+The 48-kHz Log-Mel and MFCC preprocessors are implemented in
+[`model/features.py`](model/features.py), with offline and simulated 20-ms
+DMA-streaming modes. Full documentation is in [`model/README.md`](model/README.md).
+
+```bash
+python -m unittest discover -s tests -v
+python model/prepare_data.py --limit 10 --out data/processed_smoke
+python model/prepare_data.py
+```
+
+Source audio must be accessible on the machine doing the preparation; the WAVs
+are not included in Git. To remap `/escutado-audios` to a new mount point, use
+`--audio-root /your/mount`. The script enforces the original 48-kHz sampling
+rate, converts stereo to mono by channel average (as in label generation),
+and does not resample.
+
+The output cache includes `logmel.npy`, `mfcc.npy`, `metadata.csv` with
+train/val/test assignments, and `feature_config.json`. The two feature arrays
+are large (~635 MB combined) and are excluded from version control.
+Recordings are split by **station/date group** (stronger than grouping by
+recording alone) to prevent leakage from nearby source recordings.
 
 ## Roadmap
 
-1. Implement embedded-compatible Log-Mel/MFCC preprocessing.
-2. Train and evaluate a compact three-output regression model, splitting datasets by recording (not window).
-3. Deploy to the ESP32-S3 with I²S DMA recording, inference, transmission, and deep sleep.
+1. Train and evaluate MLP, compact CNN and DS-CNN regressors for both features.
+2. Convert shortlisted networks to fully-quantized INT8 TFLite Micro models.
+3. Implement ESP32-S3 I²S DMA + ring buffer, streaming DSP, inference, transmission and deep sleep.
 
 ## References
 
