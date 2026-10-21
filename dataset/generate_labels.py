@@ -1,12 +1,4 @@
 """Generate 6-second ecoacoustic targets from a selected-recordings manifest.
-
-Uses CLAP 2023 and continuous Top-2 aggregation:
-
-    q(s) = clip((s - 5) / 15, 0, 1)
-    index = 0.75 * top1(q within category) + 0.25 * top2(q within category)
-
-Anthropophony and technophony prompts are combined into one category BEFORE
-pooling. These are adapted continuous targets, not physical intensity measurements.
 """
 import argparse
 import tempfile

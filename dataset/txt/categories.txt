@@ -1,0 +1,4 @@
+Biophony: sounds produced by all living organisms in an habitat or ecosystem (natural species, animals, birds, insects, etc.) and features biological or ecological acoustic properties of an environment.
+Geophony: sounds produced by non-biological elements in the environment (wind, water, rain, thunder, all weather conditions, geological processes, natural noise) and represents the non-biological or abiotic sounds that shape the acoustic properties of a place.
+Anthropophony: sounds produced by human activities or human interactions or recreational activities (speech, singing, music, music instrument, crying, screaming, laugh, voice, phonation, etc.).
+Technophony: sounds produced by machines and technologies (generated sounds, transportation, vehicles, objects, machines, industry, construction, urban development, etc.).
