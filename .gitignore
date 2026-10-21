@@ -20,3 +20,5 @@ data/processed*/
 results/training/
 *.keras
 *.joblib
+
+data/audio_quality_integrated.csv
