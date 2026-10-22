@@ -1,3 +1,26 @@
 {
-    "r.lsp.promptToInstall": false
+    "r.lsp.promptToInstall": false,
+    "idf.currentSetup": "C:\\esp\\v6.0.2\\esp-idf",
+    "idf.customExtraVars": {
+        "IDF_TARGET": "esp32s3"
+    },
+    "idf.buildPath": "C:/esp/edge-ecoacoustics-build/build",
+    "idf.sdkconfigFilePath": "C:/esp/edge-ecoacoustics-build/source/sdkconfig",
+    "idf.preBuildTask": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./firmware/esp32s3/build.ps1 -Action Prepare",
+    "idf.cmakeCompilerArgs": [
+        "-G", "Ninja", "-DPYTHON_DEPS_CHECKED=1", "-DESP_PLATFORM=1",
+        "-S", "C:/esp/edge-ecoacoustics-build/source"
+    ],
+    "cmake.sourceDirectory": "C:/esp/edge-ecoacoustics-build/source",
+    "cmake.buildDirectory": "C:/esp/edge-ecoacoustics-build/build",
+    "cmake.configureOnOpen": false,
+    "cmake.autoDetectSourceDirectory": false,
+    "idf.port": "COM10",
+    "idf.flashType": "UART",
+    "clangd.path": "C:\\Espressif\\tools\\esp-clang\\esp-20.1.1_20250829\\esp-clang\\bin\\clangd.exe",
+    "clangd.arguments": [
+      "--background-index",
+      "--query-driver=**",
+      "--compile-commands-dir=C:/esp/edge-ecoacoustics-build/build"
+    ]
 }

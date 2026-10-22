@@ -1,0 +1,46 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.extensionActivationMode": "always",
+  "cmake.configureOnOpen": false,
+  "cmake.configureOnEdit": false,
+  "cmake.automaticReconfigure": false,
+  "cmake.autoSelectActiveFolder": false,
+  "cmake.options.advanced": {
+    "build": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "hidden"
+    },
+    "launch": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "hidden"
+    },
+    "debug": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "hidden"
+    }
+  },
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.currentSetup": "C:\\esp\\v6.0.2\\esp-idf",
+  "idf.buildPath": "C:/esp/edge-ecoacoustics-build/build",
+  "idf.sdkconfigFilePath": "C:/esp/edge-ecoacoustics-build/source/sdkconfig",
+  "idf.preBuildTask": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -Action Prepare",
+  "idf.cmakeCompilerArgs": [
+    "-G", "Ninja", "-DPYTHON_DEPS_CHECKED=1", "-DESP_PLATFORM=1",
+    "-S", "C:/esp/edge-ecoacoustics-build/source"
+  ],
+  "cmake.sourceDirectory": "C:/esp/edge-ecoacoustics-build/source",
+  "cmake.buildDirectory": "C:/esp/edge-ecoacoustics-build/build",
+  "idf.port": "COM10",
+  "idf.flashType": "UART",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32s3"
+  },
+  "clangd.path": "C:\\Espressif\\tools\\esp-clang\\esp-20.1.1_20250829\\esp-clang\\bin\\clangd.exe",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=C:/esp/edge-ecoacoustics-build/build"
+  ]
+}
