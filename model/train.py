@@ -69,11 +69,11 @@ def load_data(root):
         index[split] = np.flatnonzero(meta.split.to_numpy() == split)
         if len(index[split]) < 2:
             raise ValueError(f'Missing or insufficient {split} examples')
-    if 'station_id' in meta and 'recording_date_local' in meta:
-        groups = meta.station_id.astype(str) + '|' + meta.recording_date_local.astype(str)
+    if 'site_id' in meta and 'recording_date_local' in meta:
+        groups = meta.site_id.astype(str) + '|' + meta.recording_date_local.astype(str)
         splits_per_group = pd.DataFrame({'group': groups, 'split': meta.split}).groupby('group').split.nunique()
         if (splits_per_group > 1).any():
-            raise ValueError('Station/day leakage detected in split assignments')
+            raise ValueError('Site/day leakage detected in split assignments')
     return meta, index
 
 

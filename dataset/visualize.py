@@ -4,7 +4,7 @@
 Uso (a partir da raiz do repositório):
     python dataset/visualize.py \
       --csv data/cei_6s.csv \
-      --sample data/recordings_1000.csv
+      --sample data/recordings.csv
 
 Requer apenas: pandas, numpy, matplotlib.
 O CSV de amostragem é opcional: sem ele, histogramas, dispersões e resumo
@@ -62,7 +62,7 @@ def preparar_dados(arquivo_cei: Path, arquivo_amostra: Path | None) -> pd.DataFr
         print("CSV de amostra sem audio_id; gráficos por local/horário serão ignorados.")
         return df
 
-    colunas = ["audio_id", "site_name", "hour_of_day", "station_id", "recording_datetime_local"]
+    colunas = ["audio_id", "site_name", "hour_of_day", "recording_datetime_local"]
     colunas = [coluna for coluna in colunas if coluna in meta.columns and (coluna == "audio_id" or coluna not in df.columns)]
     meta = meta[colunas].copy()
     df["audio_id"] = df["audio_id"].astype("string")
@@ -188,8 +188,8 @@ def resumo_geral(df: pd.DataFrame, saida: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Gráficos exploratórios dos CEI por janela de 6 segundos")
     parser.add_argument("--csv", default="data/cei_6s.csv", type=Path,
-                        help="CSV gerado por generate_cei_3class_6s.py")
-    parser.add_argument("--sample", default=Path("data/recordings_1000.csv"), type=Path,
+                        help="CSV gerado por generate_labels.py")
+    parser.add_argument("--sample", default=Path("data/recordings.csv"), type=Path,
                         help="CSV original de amostragem, para comparar horários e locais")
     parser.add_argument("--out", default=Path("results/figures"), type=Path)
     parser.add_argument("--top-sites", default=12, type=int, help="Máximo de locais por boxplot")

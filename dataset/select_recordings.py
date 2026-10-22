@@ -12,7 +12,7 @@ import soundfile as sf
 
 AUDIT_CSV = 'audio_quality_integrated.csv'
 COLUMNS = [
-    'Id', 'Url', 'CaptureSiteId', 'SiteName', 'station_id',
+    'Id', 'Url', 'CaptureSiteId', 'SiteName',
     'audio_datetime_local', 'hour_of_day', 'wav_status', 'file_exists',
     'actual_rate', 'actual_channels', 'actual_bits', 'actual_duration_seconds',
 ]
@@ -39,7 +39,7 @@ def load_inventory(path):
         df['hour_of_day'].between(0, 23)
     )
     df = df.loc[good].dropna(subset=[
-        'Id', 'Url', 'CaptureSiteId', 'SiteName', 'station_id',
+        'Id', 'Url', 'CaptureSiteId', 'SiteName',
         'audio_datetime_local', 'hour_of_day', 'actual_duration_seconds',
     ]).drop_duplicates('Id').reset_index(drop=True)
     if df.empty:
@@ -171,7 +171,6 @@ def select(args):
                     selected.append({
                         'audio_id': r.Id, 'source_path': r.Url,
                         'site_id': r.CaptureSiteId, 'site_name': r.SiteName,
-                        'station_id': r.station_id,
                         'recording_datetime_local': r.audio_datetime_local,
                         'recording_date_local': str(r.audio_datetime_local)[:10],
                         'hour_of_day': int(r.hour_of_day),

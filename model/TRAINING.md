@@ -20,7 +20,7 @@ Prepare the original **48-kHz** audio features first:
 python model/prepare_data.py
 ```
 
-Expect `data/processed/{mfcc.npy,logmel.npy,metadata.csv,feature_config.json}`. Features and labels are already aligned and split by station/day. No teacher rerun is needed.
+Expect `data/processed/{mfcc.npy,logmel.npy,metadata.csv,feature_config.json}`. Features and labels are already aligned and split by site/day. No teacher rerun is needed.
 
 ## Training
 

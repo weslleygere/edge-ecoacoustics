@@ -43,8 +43,6 @@ def main():
     p.add_argument('--similarities-out', default='data/cei_6s_similarities.npz',
                    help='Save raw CLAP similarities so future formulas do not need another inference')
     p.add_argument('--limit', type=int, default=None, help='First N recordings for a smoke test')
-    p.add_argument('--channel', choices=('right', 'mix'), default='right',
-                   help='right: stereo right channel; mix: channel average (legacy V1)')
     p.add_argument('--batch-size', type=int, default=32)
     p.add_argument('--cpu', action='store_true', help='GPU enabled by default')
     args = p.parse_args()
@@ -129,7 +127,7 @@ def main():
                 audio = wav.read(length, dtype='float32', always_2d=True)
                 if len(audio) != length:
                     raise ValueError('Incomplete 60-second read')
-            mono = audio[:, 1] if args.channel == 'right' else audio.mean(axis=1)
+            mono = audio[:, 1]
             n = 6 * sr
             for j in range(10):
                 segment = mono[j*n:(j+1)*n]
@@ -180,11 +178,11 @@ def main():
             segment_index=result['segment_index'].to_numpy(),
             start_s=result['start_s'].to_numpy(),
             end_s=result['end_s'].to_numpy(),
-            audio_channel=np.asarray(args.channel),
+            audio_channel=np.asarray('right'),
             input_sample_rate_hz=np.asarray(48_000),
         )
         print(f'Saved raw CLAP similarities -> {sim_dest}')
-    print(f'Input: {args.channel} channel, 48000 Hz')
+    print('Input: right channel, 48000 Hz')
     print('Method: q=clip((s-5)/15,0,1); index=0.75*top1 + 0.25*top2')
 
 

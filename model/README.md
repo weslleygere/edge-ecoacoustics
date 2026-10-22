@@ -7,12 +7,12 @@ The student will predict three independent continuous values: `bio`, `geo`, and
 ## Prepare features
 
 Run from the repository root, with the original 48-kHz WAVs accessible via the
-paths listed in `data/recordings_1000.csv`:
+paths listed in `data/recordings.csv`:
 
 ```bash
 python -m unittest discover -s tests -v   # check offline vs 20-ms streaming
 python model/prepare_data.py --limit 10 --out data/processed_smoke
-python model/prepare_data.py              # all 10,000 windows
+python model/prepare_data.py              # all 50,000 windows
 ```
 
 If the archive is mounted somewhere other than `/escutado-audios`, use:
@@ -27,8 +27,8 @@ The full feature cache under `data/processed/` contains:
 
 | File | Description |
 | --- | --- |
-| `logmel.npy` | `[N, 299, 40]` float32, ~479 MB at N=10,000 |
-| `mfcc.npy` | `[N, 299, 13]` float32, ~156 MB at N=10,000 |
+| `logmel.npy` | `[N, 299, 40]` float32, ~2,392 MB at N=50,000 |
+| `mfcc.npy` | `[N, 299, 13]` float32, ~777 MB at N=50,000 |
 | `metadata.csv` | Row-aligned labels, original IDs, sites, and train/val/test split |
 | `feature_config.json` | Exact DSP specification for later firmware implementation |
 
@@ -47,7 +47,7 @@ train_rows = (meta['split'] == 'train').to_numpy()
 
 ## Audio/DSP contract
 
-- Sample rate: **48,000 Hz mono** (original stereo WAVs are averaged to mono).
+- Sample rate: **48,000 Hz mono** (the right channel is selected from original stereo WAVs).
 - Segment: **6 seconds = 288,000 samples**, independently framed.
 - Window: **1,200 samples (25 ms)**, periodic Hann.
 - Hop: **960 samples (20 ms)**, yielding **299 frames** per segment.
@@ -74,7 +74,7 @@ be resampled to 48 kHz **before** feeding the identical feature pipeline.
 ## Data split
 
 A deterministic seed (`42`) assigns approximately 70/15/15 of recordings to
-training, validation and test, grouping recordings by **station and calendar
+training, validation and test, grouping recordings by **site and calendar
 date** to avoid leaking near-neighbor recordings between splits. The exact
 assigned set for every window is in `metadata.csv`; the percentages are only
 approximate because groups must remain intact.
