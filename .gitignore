@@ -12,6 +12,7 @@ __pycache__/
 *.pth
 *.tflite
 *.h5
+*.crt
 
 # Generated feature cache (hundreds of MB)
 *.npy
@@ -21,4 +22,3 @@ results/training/
 *.keras
 *.joblib
 
-data/audio_quality_integrated.csv

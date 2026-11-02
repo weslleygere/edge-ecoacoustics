@@ -1,4 +1,5 @@
 
 dependencies:
+  espressif/mqtt: "^1.1.0"
   espressif/esp-dsp: "^1.4.7"
   espressif/esp-tflite-micro: "^1.4.1"

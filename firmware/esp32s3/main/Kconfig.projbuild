@@ -1,0 +1,16 @@
+
+menu "Ecoacoustics Network"
+
+config ECO_WIFI_SSID
+    string "Wi-Fi SSID"
+    default ""
+
+config ECO_WIFI_PASSWORD
+    string "Wi-Fi password"
+    default ""
+
+config ECO_MQTT_PASSWORD
+    string "EMQX MQTT password"
+    default ""
+
+endmenu

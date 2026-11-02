@@ -18,6 +18,7 @@ $env:IDF_TARGET = 'esp32s3'
 $env:ESP_ROM_ELF_DIR = Join-Path $ToolsPath 'esp-rom-elfs\20241011'
 $env:PATH = (@(
     (Split-Path $python),
+    (Join-Path $ToolsPath 'ccache\4.12.1\ccache-4.12.1-windows-x86_64'),
     (Join-Path $ToolsPath 'cmake\4.0.3\bin'),
     (Join-Path $ToolsPath 'ninja\1.12.1'),
     (Join-Path $ToolsPath 'xtensa-esp-elf\esp-15.2.0_20251204\xtensa-esp-elf\bin'),

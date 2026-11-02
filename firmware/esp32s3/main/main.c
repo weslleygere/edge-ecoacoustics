@@ -3,7 +3,7 @@
  * Edge Ecoacoustics
  * ESP32-S3 / ESP-IDF 6.x
  *
- * I2S -> DMA -> Ring Buffer -> Log-Mel -> CNN float32
+ * I2S -> DMA -> Ring Buffer -> Log-Mel -> CNN float32 -> MQTT/TLS
  * Continuous audio at 48 kHz; one inference every 6 seconds.
  */
 
@@ -25,6 +25,7 @@
 
 #include "feature.h"
 #include "inference.h"
+#include "network.h"
 
 #define MIC_BCLK_GPIO GPIO_NUM_4
 #define MIC_WS_GPIO   GPIO_NUM_5
@@ -170,8 +171,9 @@ static void dsp_task(void *arg)
         if (eco_features_complete(&features)) {
             windows++;
 
+            int64_t window_end_us = esp_timer_get_time();
             double rms = sqrt(sum_squares / ECO_SEGMENT_SAMPLES);
-            double elapsed_s = (double)(esp_timer_get_time() - window_start_us) / 1e6;
+            double elapsed_s = (double)(window_end_us - window_start_us) / 1e6;
             float indices[3] = {0};
             int64_t inference_us = 0;
 
@@ -186,6 +188,20 @@ static void dsp_task(void *arg)
 
             ESP_LOGI(TAG, "CNN | Bio=%.4f | Geo=%.4f | Antro=%.4f | inference_ms=%.2f",
                      indices[0], indices[1], indices[2], (double)inference_us / 1000.0);
+
+            eco_telemetry_t telemetry = {
+                .end_us = window_end_us,
+                .seq = windows,
+                .bio = indices[0],
+                .geo = indices[1],
+                .antro = indices[2],
+                .rms = (float)rms,
+                .inference_ms = (float)inference_us / 1000.0f,
+                .errors = audio_errors,
+                .overflows = audio_overflows,
+            };
+
+            eco_network_publish(&telemetry);
 
             ESP_LOGI(TAG, "Blocks | captured=%" PRIu32 " | processed=%" PRIu32
                      " | errors=%" PRIu32 " | overflows=%" PRIu32 " | stack_free=%u",
@@ -206,7 +222,7 @@ static void dsp_task(void *arg)
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Edge Ecoacoustics - Continuous CNN float32");
+    ESP_LOGI(TAG, "Edge Ecoacoustics - Continuous CNN float32 + MQTT");
     ESP_ERROR_CHECK(eco_features_init());
 
     audio_ring = xRingbufferCreate(RING_BYTES, RINGBUF_TYPE_NOSPLIT);
@@ -237,11 +253,13 @@ void app_main(void)
     ESP_ERROR_CHECK(eco_inference_init());
     log_memory_status("after_cnn");
 
+    ESP_ERROR_CHECK(eco_network_init());
+
     BaseType_t result = xTaskCreate(dsp_task, "dsp_task", DSP_STACK, NULL, 5, NULL);
     assert(result == pdPASS);
 
     result = xTaskCreate(capture_task, "audio_capture", CAPTURE_STACK, NULL, 7, NULL);
     assert(result == pdPASS);
 
-    ESP_LOGI(TAG, "Continuous capture | 48 kHz | left slot | CNN float32 every 6 seconds");
+    ESP_LOGI(TAG, "Continuous capture | 48 kHz | left slot | CNN float32 every 6 seconds | MQTT/TLS");
 }
