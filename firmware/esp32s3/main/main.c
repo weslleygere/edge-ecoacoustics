@@ -2,12 +2,16 @@
 /*
  * Edge Ecoacoustics
  *
- * Stage 1: I2S DMA -> FreeRTOS Ring Buffer
- *
  * ESP32-S3 / ESP-IDF 6.x
- * 48 kHz, right channel, 20 ms blocks, 60 s capture.
  *
- * No DSP, neural inference, network or deep sleep yet.
+ * Stage 2:
+ * - Deterministic Log-Mel validation
+ * - Continuous I2S acquisition
+ * - Streaming ESP-DSP features
+ * - DC and RMS diagnostics
+ *
+ * Audio: 48 kHz, PCM16, 20-ms blocks.
+ * Features: 299 frames x 40 Mel bands / 6 seconds.
  */
 
 #include <assert.h>
@@ -15,10 +19,14 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "driver/gpio.h"
 #include "driver/i2s_std.h"
+
 #include "esp_check.h"
+#include "esp_heap_caps.h"
 #include "esp_log.h"
 #include "esp_timer.h"
 
@@ -26,297 +34,626 @@
 #include "freertos/ringbuf.h"
 #include "freertos/task.h"
 
-/* Change these to your actual microphone wiring. */
+#include "feature.h"
+
+/* Actual pins must match the microphone wiring. */
 #define MIC_BCLK_GPIO GPIO_NUM_4
 #define MIC_WS_GPIO   GPIO_NUM_5
 #define MIC_DIN_GPIO  GPIO_NUM_6
 
-#define SAMPLE_RATE       48000
-#define BLOCK_MS          20
-#define BLOCK_SAMPLES     960
-#define TOTAL_BLOCKS      3000
+#define DMA_FRAME_NUM 480
+#define DMA_DESC_NUM  8
 
-#define I2S_SLOTS         2
-#define I2S_SAMPLE_BYTES  4
+#define RING_BYTES    (96 * 1024)
+#define CAPTURE_STACK 6144
+#define DSP_STACK     6144
 
-#define DMA_FRAME_NUM     480
-#define DMA_DESC_NUM      8
+#define READ_TIMEOUT_MS 1000
+#define RING_TIMEOUT_MS 100
 
-#define RING_BYTES        (96 * 1024)
-#define CAPTURE_STACK     6144
-#define PROCESS_STACK     4096
+#define RAW_WORDS (ECO_BLOCK_SAMPLES * 2)
+#define BLOCKS_PER_WINDOW \
+    (ECO_SEGMENT_SAMPLES / ECO_BLOCK_SAMPLES)
 
-#define READ_TIMEOUT_MS   1000
-#define RING_TIMEOUT_MS   100
+#define DIAGNOSTIC_INTERVAL_BLOCKS 300
 
-#define RAW_BYTES (BLOCK_SAMPLES * I2S_SLOTS * I2S_SAMPLE_BYTES)
+/* Set to 0 after completing the validation. */
+#define ENABLE_DSP_SELFTEST 0
+
+/* The microphone was confirmed on the LEFT I2S slot. */
+#define AUDIO_SLOT_INDEX 0
 
 static const char *TAG = "eco_audio";
 
-static RingbufHandle_t ring = NULL;
-static i2s_chan_handle_t rx = NULL;
+static RingbufHandle_t audio_ring = NULL;
+static i2s_chan_handle_t i2s_rx = NULL;
+
+static int32_t raw_buffer[RAW_WORDS];
+static int16_t mono_buffer[ECO_BLOCK_SAMPLES];
+
+static eco_features_t feature_context;
+
+/* Reused for synthetic validation before I2S starts. */
+static int16_t test_block[ECO_BLOCK_SAMPLES];
+
+static volatile uint32_t audio_blocks = 0;
+static volatile uint32_t audio_errors = 0;
+static volatile uint32_t audio_overflows = 0;
+static volatile bool capture_stopped = false;
 
 /*
- * Static buffers: do not consume the capture task stack.
+ * ------------------------------------------------------------
+ * SYNTHETIC TEST SIGNAL
+ * ------------------------------------------------------------
  *
- * Raw:   960 stereo frames * 2 channels * 4 bytes = 7680 B
- * Right: 960 mono samples * 2 bytes            = 1920 B
+ * Periodic triangular ramp:
+ *
+ * sample[n] = ((n % 48) * 500) - 12000
+ *
+ * This generates a deterministic PCM16 signal.
+ * Its period is 48 samples (1 ms at 48 kHz).
+ *
+ * We use integer arithmetic on both ESP32 and Python
+ * to guarantee identical input samples.
  */
-static int32_t raw_buffer[BLOCK_SAMPLES * I2S_SLOTS];
-static int16_t right_buffer[BLOCK_SAMPLES];
+static void generate_test_block(
+    int16_t *buffer,
+    uint32_t block_index
+)
+{
+    uint32_t first_sample =
+        block_index * ECO_BLOCK_SAMPLES;
 
-static volatile bool acquisition_done = false;
-static volatile uint32_t overflow_blocks = 0;
-static volatile uint32_t read_errors = 0;
+    for (size_t i = 0; i < ECO_BLOCK_SAMPLES; ++i) {
+        uint32_t n = first_sample + i;
 
+        buffer[i] = (int16_t)(
+            ((n % 48U) * 500U) - 12000
+        );
+    }
+}
+
+/*
+ * Print 40 coefficients in groups of 10.
+ * This avoids long serial log lines.
+ *
+ * The Python validation script parses this format.
+ */
+static void print_test_frame(
+    const eco_features_t *ctx,
+    int frame_index
+)
+{
+    for (int start = 0; start < ECO_MEL_BANDS; start += 10) {
+        char values[180];
+        size_t used = 0;
+
+        values[0] = '\0';
+
+        for (int j = 0; j < 10; ++j) {
+            int m = start + j;
+
+            int written = snprintf(
+                values + used,
+                sizeof(values) - used,
+                j == 0 ? "%.6f" : ",%.6f",
+                ctx->logmel[frame_index][m]
+            );
+
+            if (written < 0 ||
+                (size_t)written >= sizeof(values) - used) {
+                ESP_LOGE(TAG, "DSP_TEST output truncated");
+                return;
+            }
+
+            used += (size_t)written;
+        }
+
+        ESP_LOGI(
+            TAG,
+            "DSP_TEST frame=%d start=%d values=%s",
+            frame_index,
+            start,
+            values
+        );
+    }
+}
+
+/*
+ * ------------------------------------------------------------
+ * LOG-MEL SELF-TEST
+ * ------------------------------------------------------------
+ *
+ * Runs before the microphone is enabled.
+ *
+ * Generates exactly 288000 synthetic PCM16 samples
+ * and feeds them in 300 blocks of 960 samples.
+ *
+ * This exercises the same streaming features.c used
+ * by the actual audio processing task.
+ *
+ * Frames 0, 149 and 298 are exported for comparison
+ * against model/features.py.
+ */
+static esp_err_t run_dsp_selftest(void)
+{
+    ESP_LOGI(TAG, "========== DSP SELFTEST START ==========");
+
+    eco_features_reset(&feature_context);
+
+    int64_t start_us = esp_timer_get_time();
+
+    for (uint32_t block = 0;
+         block < BLOCKS_PER_WINDOW;
+         ++block) {
+
+        generate_test_block(test_block, block);
+
+        esp_err_t err = eco_features_push(
+            &feature_context,
+            test_block,
+            ECO_BLOCK_SAMPLES
+        );
+
+        if (err != ESP_OK) {
+            ESP_LOGE(
+                TAG,
+                "DSP_TEST FAIL: feature extraction: %s",
+                esp_err_to_name(err)
+            );
+
+            return err;
+        }
+
+        /*
+         * Yield occasionally during the synthetic test.
+         */
+        if ((block % 25U) == 24U) {
+            vTaskDelay(1);
+        }
+    }
+
+    if (!eco_features_complete(&feature_context)) {
+        ESP_LOGE(
+            TAG,
+            "DSP_TEST FAIL: samples=%u frames=%u",
+            (unsigned)feature_context.samples_received,
+            (unsigned)feature_context.frames_generated
+        );
+
+        return ESP_FAIL;
+    }
+
+    const int frames_to_check[] = {
+        0,
+        149,
+        298
+    };
+
+    for (size_t i = 0;
+         i < sizeof(frames_to_check) /
+             sizeof(frames_to_check[0]);
+         ++i) {
+
+        int frame = frames_to_check[i];
+
+        for (int m = 0; m < ECO_MEL_BANDS; ++m) {
+            if (!isfinite(
+                feature_context.logmel[frame][m]
+            )) {
+                ESP_LOGE(
+                    TAG,
+                    "DSP_TEST FAIL: non-finite value"
+                );
+
+                return ESP_FAIL;
+            }
+        }
+
+        print_test_frame(
+            &feature_context,
+            frame
+        );
+    }
+
+    double elapsed_ms =
+        (double)(esp_timer_get_time() - start_us) / 1000.0;
+
+    ESP_LOGI(
+        TAG,
+        "DSP_TEST frames=%u samples=%u elapsed_ms=%.2f",
+        (unsigned)feature_context.frames_generated,
+        (unsigned)feature_context.samples_received,
+        elapsed_ms
+    );
+
+    ESP_LOGI(
+        TAG,
+        "DSP_TEST generated successfully; "
+        "compare with Python before declaring PASS"
+    );
+
+    ESP_LOGI(TAG, "========== DSP SELFTEST END ==========");
+
+    /*
+     * Important: don't mix synthetic and microphone data.
+     */
+    eco_features_reset(&feature_context);
+
+    return ESP_OK;
+}
+
+/*
+ * ------------------------------------------------------------
+ * OPTIONAL I2S CHANNEL DIAGNOSTICS
+ * ------------------------------------------------------------
+ */
+static void log_i2s_diagnostics(const int32_t *raw)
+{
+    uint32_t left_nonzero = 0;
+    uint32_t right_pcm_nonzero = 0;
+
+    int16_t left_min = INT16_MAX;
+    int16_t left_max = INT16_MIN;
+
+    for (size_t i = 0; i < ECO_BLOCK_SAMPLES; ++i) {
+        int16_t left = (int16_t)(raw[2 * i] >> 16);
+        int16_t right = (int16_t)(raw[2 * i + 1] >> 16);
+
+        if (left != 0) {
+            left_nonzero++;
+        }
+
+        if (right != 0) {
+            right_pcm_nonzero++;
+        }
+
+        if (left < left_min) {
+            left_min = left;
+        }
+
+        if (left > left_max) {
+            left_max = left;
+        }
+    }
+
+    ESP_LOGI(
+        TAG,
+        "I2S LEFT pcm_nonzero=%" PRIu32
+        "/%d min=%d max=%d | RIGHT pcm_nonzero=%" PRIu32,
+        left_nonzero,
+        ECO_BLOCK_SAMPLES,
+        (int)left_min,
+        (int)left_max,
+        right_pcm_nonzero
+    );
+}
+
+/*
+ * ------------------------------------------------------------
+ * CONTINUOUS I2S CAPTURE
+ * ------------------------------------------------------------
+ */
 static void capture_task(void *arg)
 {
     (void)arg;
 
-    esp_err_t err = i2s_channel_enable(rx);
+    esp_err_t err = i2s_channel_enable(i2s_rx);
 
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Cannot enable I2S: %s",
-                 esp_err_to_name(err));
-        read_errors++;
-        acquisition_done = true;
+        audio_errors++;
+        capture_stopped = true;
+
+        ESP_LOGE(
+            TAG,
+            "Cannot enable I2S: %s",
+            esp_err_to_name(err)
+        );
+
         vTaskDelete(NULL);
         return;
     }
 
-    ESP_LOGI(TAG, "Acquisition started");
+    ESP_LOGI(TAG, "Continuous audio capture started");
 
-    for (uint32_t block = 0; block < TOTAL_BLOCKS; block++) {
+    while (true) {
+        size_t received = 0;
 
         /*
-         * A single I2S read is not guaranteed to fill the
-         * requested buffer. Accumulate until exactly 20 ms.
+         * Accumulate partial DMA reads until 20 ms of
+         * stereo samples have been received.
          */
-        size_t total_bytes = 0;
-
-        while (total_bytes < sizeof(raw_buffer)) {
-
+        while (received < sizeof(raw_buffer)) {
             size_t bytes_read = 0;
 
             err = i2s_channel_read(
-                rx,
-                (uint8_t *)raw_buffer + total_bytes,
-                sizeof(raw_buffer) - total_bytes,
+                i2s_rx,
+                (uint8_t *)raw_buffer + received,
+                sizeof(raw_buffer) - received,
                 &bytes_read,
                 pdMS_TO_TICKS(READ_TIMEOUT_MS)
             );
 
             if (err != ESP_OK || bytes_read == 0) {
+                audio_errors++;
+
                 ESP_LOGE(
                     TAG,
-                    "I2S read error: block=%" PRIu32
-                    ", bytes=%u/%u, err=%s",
-                    block,
-                    (unsigned)total_bytes,
-                    (unsigned)sizeof(raw_buffer),
+                    "I2S read failure: %s",
                     esp_err_to_name(err)
                 );
 
-                read_errors++;
-                goto capture_finished;
+                goto capture_exit;
             }
 
-            total_bytes += bytes_read;
+            received += bytes_read;
         }
 
         /*
-         * Philips stereo I2S:
-         * [left_0, right_0, left_1, right_1, ...]
-         *
-         * Provisional PCM16 representation:
-         * retain the upper 16 bits of the right 32-bit slot.
-         *
-         * The actual microphone's alignment/gain must
-         * still be verified before running the CNN.
+         * The microphone has been identified in LEFT.
+         * Convert its upper 16 bits into provisional PCM16.
          */
-        for (size_t i = 0; i < BLOCK_SAMPLES; i++) {
-            right_buffer[i] =
-                (int16_t)(raw_buffer[2 * i + 1] >> 16);
+        for (size_t i = 0; i < ECO_BLOCK_SAMPLES; ++i) {
+            mono_buffer[i] = (int16_t)(
+                raw_buffer[2 * i + AUDIO_SLOT_INDEX] >> 16
+            );
         }
 
-        /*
-         * Preserve one complete 20-ms block per ring item.
-         * Never silently discard audio.
-         */
-        BaseType_t sent = xRingbufferSend(
-            ring,
-            right_buffer,
-            sizeof(right_buffer),
+        if ((audio_blocks %
+             DIAGNOSTIC_INTERVAL_BLOCKS) == 0) {
+            log_i2s_diagnostics(raw_buffer);
+        }
+
+        BaseType_t ok = xRingbufferSend(
+            audio_ring,
+            mono_buffer,
+            sizeof(mono_buffer),
             pdMS_TO_TICKS(RING_TIMEOUT_MS)
         );
 
-        if (sent != pdTRUE) {
-            overflow_blocks++;
+        if (ok != pdTRUE) {
+            audio_overflows++;
 
             ESP_LOGE(
                 TAG,
-                "Ring Buffer overflow at block %" PRIu32,
-                block
+                "Ring Buffer overflow: block=%" PRIu32,
+                audio_blocks
             );
 
-            break;
+            goto capture_exit;
         }
+
+        audio_blocks++;
     }
 
-capture_finished:
+capture_exit:
 
-    err = i2s_channel_disable(rx);
+    capture_stopped = true;
+
+    err = i2s_channel_disable(i2s_rx);
 
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Cannot disable I2S: %s",
-                 esp_err_to_name(err));
+        ESP_LOGE(
+            TAG,
+            "I2S disable failed: %s",
+            esp_err_to_name(err)
+        );
     }
 
-    acquisition_done = true;
-
-    ESP_LOGI(
+    ESP_LOGE(
         TAG,
-        "Acquisition ended. Overflows=%" PRIu32
-        ", read_errors=%" PRIu32,
-        overflow_blocks,
-        read_errors
+        "Capture stopped | blocks=%" PRIu32
+        " errors=%" PRIu32
+        " overflows=%" PRIu32,
+        audio_blocks,
+        audio_errors,
+        audio_overflows
     );
 
     vTaskDelete(NULL);
 }
 
-static void processing_task(void *arg)
+/*
+ * ------------------------------------------------------------
+ * STREAMING DSP TASK
+ * ------------------------------------------------------------
+ */
+static void dsp_task(void *arg)
 {
     (void)arg;
 
-    uint32_t received_blocks = 0;
-    uint64_t received_samples = 0;
+    uint32_t windows = 0;
+    uint32_t blocks_processed = 0;
+
+    /*
+     * Diagnostic statistics. These do not modify
+     * the audio passed to eco_features_push().
+     */
+    double sum = 0.0;
     double sum_squares = 0.0;
+    uint32_t sample_count = 0;
 
-    int64_t start_us = esp_timer_get_time();
+    eco_features_reset(&feature_context);
 
-    while (received_blocks < TOTAL_BLOCKS) {
+    int64_t window_start_us = esp_timer_get_time();
 
+    ESP_LOGI(TAG, "DSP task started");
+
+    while (true) {
         size_t bytes = 0;
 
-        int16_t *item = (int16_t *)xRingbufferReceive(
-            ring,
+        int16_t *audio = (int16_t *)xRingbufferReceive(
+            audio_ring,
             &bytes,
             pdMS_TO_TICKS(100)
         );
 
-        if (item == NULL) {
-            if (acquisition_done) {
+        if (!audio) {
+            if (capture_stopped) {
+                ESP_LOGE(TAG, "DSP stopped: capture unavailable");
                 break;
             }
+
             continue;
         }
 
-        if (bytes != sizeof(right_buffer)) {
+        if (bytes != ECO_BLOCK_SAMPLES * sizeof(int16_t)) {
             ESP_LOGE(
                 TAG,
-                "Invalid ring item size: %u bytes",
+                "Unexpected audio block size: %u",
                 (unsigned)bytes
             );
 
-            vRingbufferReturnItem(ring, item);
+            vRingbufferReturnItem(audio_ring, audio);
             break;
         }
 
-        for (size_t i = 0; i < BLOCK_SAMPLES; i++) {
-            double value = (double)item[i] / 32768.0;
-            sum_squares += value * value;
+        for (size_t i = 0; i < ECO_BLOCK_SAMPLES; ++i) {
+            double x = (double)audio[i] / 32768.0;
+
+            sum += x;
+            sum_squares += x * x;
         }
 
-        received_samples += BLOCK_SAMPLES;
-        received_blocks++;
+        sample_count += ECO_BLOCK_SAMPLES;
 
         /*
-         * Return the item promptly so the producer can
-         * reuse ring buffer memory.
+         * Preserve the original samples.
+         * Do not remove DC or alter the feature pipeline.
          */
-        vRingbufferReturnItem(ring, item);
+        esp_err_t err = eco_features_push(
+            &feature_context,
+            audio,
+            ECO_BLOCK_SAMPLES
+        );
 
-        if (received_blocks % 300 == 0) {
+        vRingbufferReturnItem(audio_ring, audio);
+
+        if (err != ESP_OK) {
+            ESP_LOGE(
+                TAG,
+                "Log-Mel processing failed: %s",
+                esp_err_to_name(err)
+            );
+            break;
+        }
+
+        blocks_processed++;
+
+        if (eco_features_complete(&feature_context)) {
+            windows++;
+
+            double mean = sum / sample_count;
+            double mean_square = sum_squares / sample_count;
+
+            double rms = sqrt(mean_square);
+
+            double variance = mean_square - mean * mean;
+
+            if (variance < 0.0) {
+                variance = 0.0;
+            }
+
+            double rms_without_dc = sqrt(variance);
+
+            float first_mel =
+                feature_context.logmel[0][0];
+
+            float last_mel =
+                feature_context.logmel
+                    [ECO_FRAMES_PER_SEGMENT - 1]
+                    [ECO_MEL_BANDS - 1];
+
+            double elapsed_s =
+                (double)(esp_timer_get_time() -
+                         window_start_us) / 1e6;
+
             ESP_LOGI(
                 TAG,
-                "Processed %.1f seconds (%" PRIu32 " blocks)",
-                (double)received_samples / SAMPLE_RATE,
-                received_blocks
+                "Window %" PRIu32
+                " | frames=%u"
+                " | RMS=%.6f"
+                " | mean=%.6f"
+                " | RMS_no_DC=%.6f",
+                windows,
+                (unsigned)feature_context.frames_generated,
+                rms,
+                mean,
+                rms_without_dc
             );
+
+            ESP_LOGI(
+                TAG,
+                "mel_first=%.4f"
+                " mel_last=%.4f"
+                " elapsed=%.2fs",
+                first_mel,
+                last_mel,
+                elapsed_s
+            );
+
+            ESP_LOGI(
+                TAG,
+                "Blocks=%" PRIu32
+                " processed=%" PRIu32
+                " errors=%" PRIu32
+                " overflows=%" PRIu32
+                " heap=%u stack_free=%u",
+                audio_blocks,
+                blocks_processed,
+                audio_errors,
+                audio_overflows,
+                (unsigned)esp_get_free_heap_size(),
+                (unsigned)uxTaskGetStackHighWaterMark(NULL)
+            );
+
+            if (!isfinite(first_mel) ||
+                !isfinite(last_mel)) {
+                ESP_LOGE(TAG, "Non-finite Log-Mel value");
+            }
+
+            /*
+             * Future:
+             * - Normalize Log-Mel
+             * - Quantize INT8
+             * - TFLite Micro inference
+             * - MQTT queue
+             */
+            eco_features_reset(&feature_context);
+
+            sum = 0.0;
+            sum_squares = 0.0;
+            sample_count = 0;
+
+            window_start_us = esp_timer_get_time();
         }
     }
 
-    double rms = 0.0;
-
-    if (received_samples > 0) {
-        rms = sqrt(
-            sum_squares / (double)received_samples
-        );
-    }
-
-    double elapsed_s =
-        (double)(esp_timer_get_time() - start_us) / 1e6;
-
-    ESP_LOGI(TAG, "==============================");
-    ESP_LOGI(TAG, "ACQUISITION REPORT");
-    ESP_LOGI(
-        TAG,
-        "Blocks: %" PRIu32 " / %d",
-        received_blocks,
-        TOTAL_BLOCKS
-    );
-    ESP_LOGI(
-        TAG,
-        "Samples: %" PRIu64,
-        received_samples
-    );
-    ESP_LOGI(
-        TAG,
-        "Read errors: %" PRIu32,
-        read_errors
-    );
-    ESP_LOGI(
-        TAG,
-        "Ring overflows: %" PRIu32,
-        overflow_blocks
-    );
-    ESP_LOGI(TAG, "RMS: %.6f", rms);
-    ESP_LOGI(TAG, "Elapsed: %.2f s", elapsed_s);
-
-    if (received_blocks == TOTAL_BLOCKS &&
-        read_errors == 0 &&
-        overflow_blocks == 0) {
-
-        ESP_LOGI(TAG, "RESULT: PASS");
-    } else {
-        ESP_LOGE(TAG, "RESULT: FAIL");
-    }
-
-    ESP_LOGI(TAG, "==============================");
-
+    ESP_LOGE(TAG, "DSP task ended");
     vTaskDelete(NULL);
 }
 
+/*
+ * ------------------------------------------------------------
+ * APPLICATION ENTRY POINT
+ * ------------------------------------------------------------
+ */
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Edge Ecoacoustics - I2S acquisition");
-    ESP_LOGI(TAG, "Sample rate: %d Hz", SAMPLE_RATE);
-    ESP_LOGI(TAG, "Block: %d samples / %d ms",
-             BLOCK_SAMPLES, BLOCK_MS);
-    ESP_LOGI(TAG, "Capture: %d blocks / 60 seconds",
-             TOTAL_BLOCKS);
+    ESP_LOGI(TAG, "Edge Ecoacoustics - DSP validation");
 
-    /*
-     * NO_SPLIT preserves each 20-ms PCM block as one
-     * complete item for the consumer task.
-     */
-    ring = xRingbufferCreate(
+    ESP_ERROR_CHECK(eco_features_init());
+
+#if ENABLE_DSP_SELFTEST
+    ESP_ERROR_CHECK(run_dsp_selftest());
+#endif
+
+    audio_ring = xRingbufferCreate(
         RING_BYTES,
         RINGBUF_TYPE_NOSPLIT
     );
 
-    assert(ring != NULL);
+    assert(audio_ring != NULL);
 
     i2s_chan_config_t chan_cfg =
         I2S_CHANNEL_DEFAULT_CONFIG(
@@ -328,12 +665,12 @@ void app_main(void)
     chan_cfg.dma_frame_num = DMA_FRAME_NUM;
 
     ESP_ERROR_CHECK(
-        i2s_new_channel(&chan_cfg, NULL, &rx)
+        i2s_new_channel(&chan_cfg, NULL, &i2s_rx)
     );
 
-    i2s_std_config_t i2s_cfg = {
+    i2s_std_config_t cfg = {
         .clk_cfg =
-            I2S_STD_CLK_DEFAULT_CONFIG(SAMPLE_RATE),
+            I2S_STD_CLK_DEFAULT_CONFIG(ECO_SAMPLE_RATE),
 
         .slot_cfg =
             I2S_STD_PHILIPS_SLOT_DEFAULT_CONFIG(
@@ -352,16 +689,13 @@ void app_main(void)
     };
 
     ESP_ERROR_CHECK(
-        i2s_channel_init_std_mode(rx, &i2s_cfg)
+        i2s_channel_init_std_mode(i2s_rx, &cfg)
     );
 
-    /*
-     * Start consumer before producer.
-     */
     BaseType_t result = xTaskCreate(
-        processing_task,
-        "audio_processing",
-        PROCESS_STACK,
+        dsp_task,
+        "dsp_task",
+        DSP_STACK,
         NULL,
         5,
         NULL
@@ -380,5 +714,9 @@ void app_main(void)
 
     assert(result == pdPASS);
 
-    ESP_LOGI(TAG, "Tasks started");
+    ESP_LOGI(
+        TAG,
+        "Continuous capture enabled | 48 kHz"
+        " | left slot | 6-second windows"
+    );
 }
