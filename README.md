@@ -1,38 +1,163 @@
+
 # Edge Ecoacoustics
 
-**Ecoacoustic monitoring at the edge using an ESP32-S3 and a compact student model.**
+Ecoacoustic monitoring at the edge using an ESP32-S3, streaming audio processing and a compact CNN.
+
+## Overview
+
+The system captures environmental audio and estimates three continuous ecoacoustic indices:
+
+- **Bio:** biophony
+- **Geo:** geophony
+- **Antro:** anthropophony, including technophony
+
+The indices are independent values in [0, 1]. They are not calibrated probabilities and are not constrained to sum to 1.
+
+The current firmware processes audio continuously and produces one set of indices for each non-overlapping six-second window.
+
+## System architecture
+
+```text
+I2S microphone (48 kHz)
+        |
+      DMA
+        |
+  FreeRTOS ring buffer
+        |
+ Streaming Log-Mel DSP
+        |
+  CNN float32 / TFLite Micro
+        |
+ BIO / GEO / ANTRO
+        |
+   Wi-Fi + MQTT/TLS
+        |
+     EMQX Cloud
+        |
+ Telegraf -> InfluxDB -> Grafana
+```
+
+The ESP32-S3 acquisition, inference and MQTT publication stages have been validated on hardware. Telegraf, InfluxDB and Grafana are the next integration stage and are not yet operational.
 
 ## Dataset
 
-The current dataset contains **5,000 terrestrial recordings**, with one 60-second interval per recording and ten non-overlapping 6-second windows each (**50,000 labeled windows**). Original recordings are stereo WAVs sampled at 48 kHz. Only the **right channel** is used for pseudo-label generation and student features.
+The dataset contains 5,000 terrestrial recordings, each contributing one 60-second interval divided into ten non-overlapping six-second windows, for 50,000 labeled examples.
 
-Recording candidates are balanced across the **30 sites** and **24 hours**, with randomized 60-second offsets. Clipping is screened on the right channel; silence is retained. The identifiers for recording stations are not used for sampling or splitting.
+Original recordings are stereo WAV files sampled at 48 kHz. The right channel is used for training-data preparation and pseudo-label generation.
 
-- `data/recordings.csv`: selected 5,000-recording manifest.
-- `data/recordings_clipping.csv`: clipping audit of examined candidates.
-- `data/cei_6s.csv`: 50,000 CLAP-derived labels (`bio`, `geo`, `antro`).
+The dataset selection covers 30 recording sites and 24 hours of the day.
 
-The 48-kHz original WAVs are stored outside Git and referenced via `source_path` in the manifest.
+Main files:
 
-## Pipeline
+- `data/recordings.csv`: selected recording manifest.
+- `data/recordings_clipping.csv`: clipping audit.
+- `data/cei_6s.csv`: CLAP-derived labels for the 50,000 windows.
 
-1. **Select recordings:** `python dataset/select_recordings.py --metadata /path/to/audio_quality_integrated.csv` (requires original WAVs and reproduces the selection only with the same source inventory).
-2. **Generate labels:** `python dataset/generate_labels.py` (CLAP 2023, right-channel only, Continuous Top-2).
-3. **Visualize:** `python dataset/visualize.py` (figures and summary tables in `results/figures/`).
-4. **Prepare features:** `python model/prepare_data.py` (48-kHz MFCC/Log-Mel; output in `data/processed/`).
-5. **Train models:** `python model/train.py --model all --feature all` (Ridge, MLP, CNN, DS-CNN × MFCC/Log-Mel; outputs in `results/training/`).
+Original WAV files are not stored in Git.
 
-For dependencies: `python -m pip install -r requirements.txt`. Tests: `python -m unittest discover -s tests -v`.
+## Pseudo-label generation
 
-The three targets are independent continuous indices in [0,1], **not calibrated probabilities** and not constrained to sum to 1. The teacher uses prompts in `dataset/prompts.txt`, originating from Teytaut et al. (2026), and pools anthropophony and technophony prompts together. Labels use `q = clip((similarity-5)/15, 0, 1)` followed by `0.75*top1 + 0.25*top2` for each category.
+Pseudo-labels are derived from CLAP 2023 using prompts adapted from the Contrastive Ecoacoustic Indices methodology of Teytaut et al. (2026).
 
-## Model and firmware
+For each category, similarity scores are rescaled using:
 
-MFCC and Log-Mel features are generated from six-second frames at 48 kHz. The CNN + Log-Mel pipeline is the selected initial deployment candidate. Planned ESP32-S3 firmware uses I²S + DMA + ring buffer, streaming Log-Mel extraction, one inference per 6-second window, transmission after 60 seconds of acquisition, and deep sleep between ten-minute cycles.
+```python
+q = clip((similarity - 5) / 15, 0, 1)
+index = 0.75 * top1 + 0.25 * top2
+```
 
-See [`model/README.md`](model/README.md) and [`model/TRAINING.md`](model/TRAINING.md).
+Anthropophony and technophony prompts are combined into the Antro category.
+
+The three indices are independently computed for each six-second window. No temporal aggregation is performed on the device.
+
+## Student model
+
+The selected model is `cnn_logmel`:
+
+- Input: 299 Log-Mel frames x 40 Mel bands.
+- Output: three float32 indices (`bio`, `geo`, `antro`).
+- Parameters: 5,403.
+- TFLite model: 25,540 bytes.
+- Validation macro MAE: 0.068134 against CLAP-derived pseudo-labels.
+
+The ESP32-S3 uses TensorFlow Lite Micro, with the tensor arena allocated in PSRAM.
+
+Observed on-device inference latency is approximately 490 ms per six-second window.
+
+See `model/README.md` and `model/TRAINING.md`.
+
+## ESP32-S3 firmware
+
+Hardware:
+
+- ESP32-S3 with 16 MB Flash and 8 MB PSRAM.
+- I2S microphone at 48 kHz.
+- BCLK: GPIO 4.
+- WS: GPIO 5.
+- DIN: GPIO 6.
+- Left I2S slot.
+
+Firmware:
+
+- ESP-IDF 6.0.2.
+- Continuous I2S acquisition through DMA.
+- FreeRTOS ring buffer.
+- Streaming Log-Mel feature extraction.
+- CNN float32 inference every six seconds.
+- Wi-Fi connectivity and NTP clock synchronization.
+- MQTT/TLS publication to EMQX Cloud.
+
+Each MQTT message includes the three indices, a UTC timestamp, sequence number, RMS, inference duration and error counters.
+
+The device does not currently use deep sleep or periodic wake/sleep acquisition cycles.
+
+See `firmware/esp32s3/README.md` for build and configuration instructions.
+
+## Cloud communication
+
+Broker: EMQX Cloud Serverless.
+
+MQTT topic:
+
+```text
+eco/esp32s3_01/indices
+```
+
+Transport: MQTT over TLS, port 8883, QoS 1.
+
+The ESP32-S3 publishes one JSON message approximately every six seconds. Connectivity has been verified using Mosquitto clients on Windows.
+
+The remaining monitoring stack will use Telegraf, InfluxDB and Grafana on Windows, without Docker.
+
+## Project structure
+
+```text
+data/                  Dataset manifests and pseudo-labels
+dataset/               Recording selection and CLAP labeling
+firmware/esp32s3/      ESP32-S3 firmware and build tools
+model/                 Feature extraction, training and export
+results/               Figures and experiment results
+tests/                 Python tests
+```
+
+## Reproducibility
+
+Python dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Model and firmware artifacts are intentionally not all stored in Git. See the firmware README for required local files.
 
 ## References
 
 - [Teytaut et al. (2026), Contrastive Ecoacoustic Indices](https://doi.org/10.1111/2041-210x.70369)
 - [Microsoft CLAP](https://github.com/microsoft/CLAP)
+- [ESP-IDF](https://docs.espressif.com/projects/esp-idf/)

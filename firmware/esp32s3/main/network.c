@@ -1,6 +1,7 @@
 
 #include "network.h"
 
+#include <assert.h>
 #include <inttypes.h>
 #include <stdio.h>
 #include <sys/time.h>
@@ -29,7 +30,7 @@ static const char *TAG = "eco_network";
 static QueueHandle_t telemetry_queue;
 static EventGroupHandle_t network_events;
 static esp_mqtt_client_handle_t mqtt_client;
-static volatile uint32_t dropped = 0;
+static uint32_t dropped = 0;
 
 extern const uint8_t emqx_ca_start[] asm("_binary_emqxsl_ca_crt_start");
 
@@ -54,7 +55,8 @@ static void mqtt_event_handler(void *arg, esp_event_base_t base, int32_t id, voi
 {
     (void)arg;
     (void)base;
-    (void)data;
+
+    esp_mqtt_event_handle_t event = (esp_mqtt_event_handle_t)data;
 
     if (id == MQTT_EVENT_CONNECTED) {
         xEventGroupSetBits(network_events, MQTT_READY);
@@ -62,6 +64,8 @@ static void mqtt_event_handler(void *arg, esp_event_base_t base, int32_t id, voi
     } else if (id == MQTT_EVENT_DISCONNECTED) {
         xEventGroupClearBits(network_events, MQTT_READY);
         ESP_LOGW(TAG, "MQTT disconnected");
+    } else if (id == MQTT_EVENT_PUBLISHED) {
+        ESP_LOGI(TAG, "MQTT acknowledged | id=%d", event->msg_id);
     } else if (id == MQTT_EVENT_ERROR) {
         ESP_LOGW(TAG, "MQTT connection error");
     }
@@ -147,10 +151,11 @@ static void network_task(void *arg)
             ",\"errors\":%" PRIu32 ",\"overflows\":%" PRIu32
             ",\"dropped\":%" PRIu32 "}",
             ts_ms, item.seq, item.bio, item.geo, item.antro,
-            item.rms, item.inference_ms, item.errors, item.overflows, dropped);
+            item.rms, item.inference_ms, item.errors, item.overflows,
+            __atomic_load_n(&dropped, __ATOMIC_RELAXED));
 
         if (len < 0 || len >= sizeof(payload)) {
-            dropped++;
+            __atomic_fetch_add(&dropped, 1, __ATOMIC_RELAXED);
             ESP_LOGE(TAG, "Telemetry payload too large");
             continue;
         }
@@ -160,7 +165,7 @@ static void network_task(void *arg)
 
         if (msg_id < 0) {
             if (xQueueSendToFront(telemetry_queue, &item, 0) != pdTRUE) {
-                dropped++;
+                __atomic_fetch_add(&dropped, 1, __ATOMIC_RELAXED);
             }
             ESP_LOGW(TAG, "MQTT enqueue failed: %d", msg_id);
             vTaskDelay(pdMS_TO_TICKS(1000));
@@ -185,7 +190,8 @@ esp_err_t eco_network_init(void)
 bool eco_network_publish(const eco_telemetry_t *data)
 {
     if (xQueueSend(telemetry_queue, data, 0) == pdTRUE) return true;
-    dropped++;
-    ESP_LOGW(TAG, "Telemetry queue full | dropped=%" PRIu32, dropped);
+
+    uint32_t total = __atomic_add_fetch(&dropped, 1, __ATOMIC_RELAXED);
+    ESP_LOGW(TAG, "Telemetry queue full | dropped=%" PRIu32, total);
     return false;
 }

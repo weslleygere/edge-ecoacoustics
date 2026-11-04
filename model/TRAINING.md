@@ -1,56 +1,190 @@
-# Student-model training and comparison
 
-Place `model/architectures.py`, `model/train.py` and `tests/test_training.py` at the corresponding paths in the existing repository. Keep the previously validated feature extractor and data-preparation scripts unchanged.
+# Student-model training and evaluation
+
+This document describes the training and evaluation of ecoacoustic student models using CLAP-derived pseudo-labels.
+
+## Objective
+
+Predict three independent continuous indices:
+
+- Bio: biophony.
+- Geo: geophony.
+- Antro: anthropophony and technophony.
+
+The targets are values in [0, 1]. Neural models use three independent sigmoid outputs rather than Softmax.
+
+The indices measure agreement with CLAP-derived pseudo-labels and should not be interpreted as independently validated ecological ground truth.
 
 ## Dependencies
 
-The existing `requirements.txt` already installs NumPy, pandas and scikit-learn. For training, also install TensorFlow, SciPy and joblib in a compatible Python environment:
+Install project dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+The full neural training workflow also requires TensorFlow, SciPy and joblib:
 
 ```bash
 python -m pip install tensorflow scipy joblib
 ```
 
-For CUDA support, follow the TensorFlow installation procedure that matches your GPU drivers and operating system. The linear Ridge baseline runs without TensorFlow, although this implementation imports the architecture module without initializing TensorFlow.
+## Dataset and features
 
-## Data
-
-Prepare the original **48-kHz** audio features first:
+Feature preparation:
 
 ```bash
 python model/prepare_data.py
 ```
 
-Expect `data/processed/{mfcc.npy,logmel.npy,metadata.csv,feature_config.json}`. Features and labels are already aligned and split by site/day. No teacher rerun is needed.
+Expected outputs:
 
-## Training
+```text
+data/processed/
+    mfcc.npy
+    logmel.npy
+    metadata.csv
+    feature_config.json
+```
 
-Smoke test the Ridge baseline first:
+The dataset contains 50,000 six-second examples.
+
+Data splits are assigned by site and calendar date to reduce leakage between nearby recordings.
+
+Training-only statistics are used for feature normalization.
+
+## Model comparison
+
+The experiment compares four architectures:
+
+- Ridge.
+- MLP.
+- CNN.
+- DS-CNN.
+
+Each architecture is evaluated with:
+
+- MFCC features.
+- Log-Mel features.
+
+Eight model-feature combinations are compared.
+
+## Running experiments
+
+First run tests:
 
 ```bash
 python -m unittest discover -s tests -v
+```
+
+Run an individual baseline:
+
+```bash
 python model/train.py --model ridge --feature mfcc
 ```
 
-Then run all **8 pipelines** (Ridge/MLP/CNN/DS-CNN × MFCC/Log-Mel):
+Run all experiments:
 
 ```bash
 python model/train.py --model all --feature all
 ```
 
-To rerun a finished experiment, use `--overwrite`. To try a small neural run, use e.g. `--model cnn --feature mfcc --epochs 2` before the full run. By default training allows up to 100 epochs with early stopping after 12 epochs without validation-loss improvement.
+Use `--overwrite` to rerun completed experiments.
 
-## Outputs
+A small neural smoke test can be performed with:
 
-Each `results/training/<architecture>_<feature>/` directory includes `metrics.json`, `test_predictions.csv`, a saved model (`model.keras` or `model.joblib`), and neural models also include `history.csv` and `normalization.npz`. `results/training/comparison.csv` combines all completed experiments, **ranked by validation MAE**, not by test MAE.
+```bash
+python model/train.py --model cnn --feature mfcc --epochs 2
+```
 
-Each CEI pseudo-label is evaluated independently with MAE, RMSE, R² and Spearman correlation. The macro MAE is an unweighted average across Bio, Geo and Antro. Metrics represent fidelity to CLAP-derived pseudo-labels, not an independent ecological ground truth.
+Neural training uses early stopping to limit unnecessary epochs.
 
-The Ridge baseline pools feature time series with mean, standard deviation and maximum, standardizes these pooled statistics using training data only, and fits three Ridge outputs. The neural MLP uses temporal mean and maximum inside the model, while CNN and DS-CNN receive full frame matrices. Comparisons therefore concern entire pipelines, not architecture-only ablations.
+## Evaluation
 
-The neural models share identical training hyperparameters and split assignments. Neural normalization uses only training frames and is serialized for eventual on-device reproduction. Model outputs use three independent sigmoids; no Softmax.
+Models are evaluated separately for Bio, Geo and Antro using:
 
-**Important:** choose deployment candidates using validation metrics and estimated complexity. The test set should only support final reporting. The `saved_model_bytes` column is the size of the serialized artifact, **not** INT8 size, peak SRAM or Flash usage. Quantization, TFLite Micro compatibility and actual ESP32-S3 benchmarks are intentionally deferred.
+- MAE.
+- RMSE.
+- R².
+- Spearman correlation.
 
-## Validation limits
+Macro MAE is the unweighted mean of the three category MAEs.
 
-The script is syntax-checked and its CPU-only metrics, pooling and Ridge path can be tested locally with synthetic features. Running the complete experiment requires your large `data/processed` cache and a TensorFlow-capable environment; the project audio is not part of Git.
+Model selection uses validation metrics. The test set is reserved for final reporting.
+
+The comparison concerns complete feature-model pipelines rather than isolated neural architectures.
+
+## Experiment artifacts
+
+Training outputs are stored under:
+
+```text
+results/training/
+```
+
+A completed experiment may include:
+
+- `metrics.json`.
+- `test_predictions.csv`.
+- `model.keras` or `model.joblib`.
+- `history.csv`.
+- `normalization.npz`.
+
+The comparison table is saved as:
+
+```text
+results/training/comparison.csv
+```
+
+Large training artifacts are excluded from Git.
+
+## Selected deployment model
+
+The selected model is `cnn_logmel`.
+
+| Property | Value |
+| --- | --- |
+| Parameters | 5,403 |
+| Input | `[1, 299, 40, 1]` |
+| Output | `[1, 3]` |
+| Precision | float32 |
+| Validation macro MAE | 0.068134 |
+| TFLite model size | 25,540 bytes |
+
+The float32 TFLite model was checked against the Keras model.
+
+Observed validation metrics:
+
+- Keras macro MAE: 0.068134.
+- TFLite macro MAE: 0.068134.
+- Maximum absolute prediction difference: approximately `4.17e-7`.
+
+The model is deployed on the ESP32-S3 using TensorFlow Lite Micro.
+
+## On-device evaluation
+
+The ESP32-S3 uses:
+
+- ESP-IDF 6.0.2.
+- Streaming Log-Mel DSP.
+- CNN float32 inference.
+- 256 KiB PSRAM tensor arena.
+- Approximately 146 KiB actual arena usage.
+
+Observed inference latency is approximately 490 ms per six-second segment.
+
+The firmware publishes Bio, Geo and Antro over MQTT/TLS.
+
+Initial hardware tests confirmed continuous acquisition and inference without I2S errors or ring-buffer overflows.
+
+A 24-hour unattended stability test remains pending.
+
+## Interpretation and limitations
+
+The student learns to approximate the CLAP-derived indices.
+
+Its outputs should be interpreted as continuous measures of acoustic-category evidence, not calibrated event probabilities.
+
+The training dataset emphasizes natural environments. Generalization to substantially different acoustic environments has not been established.
+
+Future evaluations can compare student predictions against CLAP on newly collected in-domain audio.
