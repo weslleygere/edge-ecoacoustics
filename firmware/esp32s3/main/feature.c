@@ -1,368 +1,195 @@
-
 /*
- * Edge Ecoacoustics
- *
- * Streaming Log-Mel feature extraction.
- *
- * ESP32-S3 / ESP-IDF 6.x / ESP-DSP
- *
- * Reference: model/features.py
- *
- * 48 kHz mono PCM16
- * 6 seconds per segment
- * 1200-sample periodic Hann
- * 960-sample hop
- * 2048-point complex FFT with zero imaginary input
- * Power spectrum = abs(FFT)^2 / 2048
- * 40 HTK Mel filters, 60 Hz to 20000 Hz
- * Natural logarithm, floor 1e-10
- * 299 x 40 Log-Mel output
+ * tinyCLAP frontend matched to model/tinyclap_indices.py:
+ * 44.1 kHz, 6 s PCM, Hann(periodic), FFT=1024, hop=320,
+ * center=True, reflect padding, power=abs(FFT)^2,
+ * librosa Slaney Mel (50..14000 Hz, 64 bands), 10*log10(max(x,1e-10)).
+ * The Slaney filter matrix is generated offline by build_tinyclap_assets.py.
  */
-
 #include "feature.h"
 
 #include <math.h>
 #include <stdbool.h>
-#include <stdint.h>
 #include <string.h>
-
 #include "esp_dsp.h"
+#include "esp_log.h"
 
-#define ECO_PI 3.14159265358979323846f
-#define MEL_FMIN 60.0f
-#define MEL_FMAX 20000.0f
-#define LOG_FLOOR 1e-10f
+// Validation-only: set 0 to remove the synthetic Log-Mel self-test.
+#define ECO_LOGMEL_SELFTEST 1
+#if ECO_LOGMEL_SELFTEST
+#include "esp_heap_caps.h"
+#include "logmel_validation_reference.h"
+static void run_logmel_selftest(void);
+#endif
 
 #define FFT_BINS (ECO_FFT_LENGTH / 2 + 1)
+#define LOG_FLOOR 1e-10f
+#define PI_F 3.14159265358979323846f
 
-/*
- * Precomputed analysis window and Mel filter boundaries.
- */
-static float hann[ECO_FRAME_LENGTH];
-static float mel_edges[ECO_MEL_BANDS + 2];
+static const char *TAG = "eco_features";
 
-/*
- * Complex FFT buffer:
- *
- * [Re(0), Im(0), Re(1), Im(1), ...]
- *
- * Even though the original signal is real, the complex FFT
- * receives zero imaginary components.
- */
-static __attribute__((aligned(16)))
-float fft_buffer[2 * ECO_FFT_LENGTH];
+extern const uint8_t mel_start[] asm("_binary_tinyclap_mel_filters_bin_start");
+extern const uint8_t mel_end[]   asm("_binary_tinyclap_mel_filters_bin_end");
 
-/*
- * One-sided power spectrum, including DC and Nyquist.
- */
-static float power_spectrum[FFT_BINS];
+static const float *mel_weights = NULL;   // [64, 513], stored in Flash
+static float hann[ECO_FFT_LENGTH];
+static __attribute__((aligned(16))) float fft[2 * ECO_FFT_LENGTH];
+static float power[FFT_BINS];
+static bool initialized = false;
 
-static float hz_to_mel(float hz)
+static int reflect_index(int index)
 {
-    return 2595.0f * log10f(1.0f + hz / 700.0f);
+    // The only out-of-bounds distances are <= 512 for this configuration.
+    if (index < 0) index = -index;
+    if (index >= ECO_SEGMENT_SAMPLES) {
+        index = 2 * ECO_SEGMENT_SAMPLES - 2 - index;
+    }
+    return index;
 }
 
-static float mel_to_hz(float mel)
-{
-    return 700.0f *
-        (powf(10.0f, mel / 2595.0f) - 1.0f);
-}
-
-/*
- * Initialize FFT tables and feature-extraction constants.
- * Call once before starting acquisition.
- */
 esp_err_t eco_features_init(void)
 {
-    /*
-     * Periodic Hann:
-     *
-     * w[n] = 0.5 - 0.5*cos(2*pi*n/1200)
-     *
-     * Note: denominator is 1200, not 1199.
-     */
-    for (int i = 0; i < ECO_FRAME_LENGTH; ++i) {
-        hann[i] =
-            0.5f -
-            0.5f * cosf(
-                2.0f * ECO_PI * (float)i /
-                (float)ECO_FRAME_LENGTH
-            );
+    const size_t expected = sizeof(float) * ECO_MEL_BANDS * FFT_BINS;
+    const size_t actual = (size_t)(mel_end - mel_start);
+    if (actual != expected) {
+        ESP_LOGE(TAG, "Invalid mel matrix size: %u, expected %u",
+                 (unsigned)actual, (unsigned)expected);
+        return ESP_ERR_INVALID_SIZE;
     }
-
-    /*
-     * Equally spaced HTK Mel points converted to Hz.
-     *
-     * 40 triangular filters require 42 boundary points.
-     */
-    float mel_min = hz_to_mel(MEL_FMIN);
-    float mel_max = hz_to_mel(MEL_FMAX);
-
-    for (int i = 0; i < ECO_MEL_BANDS + 2; ++i) {
-        float mel =
-            mel_min +
-            (mel_max - mel_min) *
-            (float)i / (float)(ECO_MEL_BANDS + 1);
-
-        mel_edges[i] = mel_to_hz(mel);
+    if (((uintptr_t)mel_start % _Alignof(float)) != 0) {
+        ESP_LOGE(TAG, "Mel matrix is unaligned");
+        return ESP_ERR_INVALID_STATE;
     }
-
-    return dsps_fft2r_init_fc32(
-        NULL,
-        ECO_FFT_LENGTH
-    );
+    mel_weights = (const float *)mel_start;
+    for (size_t i = 0; i < ECO_FFT_LENGTH; ++i) {
+        hann[i] = 0.5f - 0.5f * cosf(2.0f * PI_F * (float)i /
+                                     (float)ECO_FFT_LENGTH);
+    }
+    esp_err_t err = dsps_fft2r_init_fc32(NULL, ECO_FFT_LENGTH);
+    if (err == ESP_OK) {
+        initialized = true;
+        ESP_LOGI(TAG, "Frontend ready | %d Hz | 827x64 | Slaney mel | dB",
+                 ECO_SAMPLE_RATE);
+#if ECO_LOGMEL_SELFTEST
+        run_logmel_selftest();
+#endif
+    }
+    return err;
 }
 
-/*
- * Reset the current six-second segment.
- */
-void eco_features_reset(eco_features_t *ctx)
+esp_err_t eco_features_compute(const int16_t *pcm, size_t samples,
+                               eco_features_t *output)
 {
-    if (ctx == NULL) {
+    if (!initialized || pcm == NULL || output == NULL) {
+        return ESP_ERR_INVALID_STATE;
+    }
+    if (samples != ECO_SEGMENT_SAMPLES) return ESP_ERR_INVALID_SIZE;
+
+    for (size_t frame = 0; frame < ECO_FRAMES_PER_SEGMENT; ++frame) {
+        const int center = (int)(frame * ECO_HOP_LENGTH);
+        for (int i = 0; i < ECO_FFT_LENGTH; ++i) {
+            const int pos = reflect_index(center + i - ECO_FFT_LENGTH / 2);
+            fft[2 * i] = ((float)pcm[pos] / 32768.0f) * hann[i];
+            fft[2 * i + 1] = 0.0f;
+        }
+        esp_err_t err = dsps_fft2r_fc32(fft, ECO_FFT_LENGTH);
+        if (err != ESP_OK) return err;
+        err = dsps_bit_rev_fc32(fft, ECO_FFT_LENGTH);
+        if (err != ESP_OK) return err;
+
+        for (size_t k = 0; k < FFT_BINS; ++k) {
+            const float re = fft[2 * k];
+            const float im = fft[2 * k + 1];
+            // IMPORTANT: torchlibrosa does NOT divide spectrum by FFT size.
+            power[k] = re * re + im * im;
+        }
+        for (size_t m = 0; m < ECO_MEL_BANDS; ++m) {
+            const float *weights = mel_weights + m * FFT_BINS;
+            float energy = 0.0f;
+            for (size_t k = 0; k < FFT_BINS; ++k) {
+                energy += power[k] * weights[k];
+            }
+            output->logmel[frame][m] = 10.0f * log10f(fmaxf(energy, LOG_FLOOR));
+        }
+    }
+    return ESP_OK;
+}
+
+#if ECO_LOGMEL_SELFTEST
+/* Validate all 52,928 Log-Mel values against the desktop NumPy reference.
+ * Runs once at boot, before normal capture buffers are allocated.
+ * Failures are logged without disrupting the regular device operation.
+ */
+static void run_logmel_selftest(void)
+{
+    int16_t *pcm = (int16_t *)heap_caps_malloc(
+        ECO_SEGMENT_SAMPLES * sizeof(int16_t), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+    eco_features_t *features = (eco_features_t *)heap_caps_malloc(
+        sizeof(eco_features_t), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+    if (!pcm || !features) {
+        ESP_LOGE(TAG, "VALIDATION LOGMEL | insufficient PSRAM");
+        heap_caps_free(features);
+        heap_caps_free(pcm);
         return;
     }
 
-    ctx->buffered = 0;
-    ctx->samples_received = 0;
-    ctx->frames_generated = 0;
-}
-
-/*
- * Process one 1200-sample analysis frame.
- */
-static esp_err_t process_frame(
-    const float *samples,
-    float *output
-)
-{
-    /*
-     * Clear real and imaginary FFT components.
-     */
-    memset(
-        fft_buffer,
-        0,
-        sizeof(fft_buffer)
-    );
-
-    /*
-     * Apply Hann window to 1200 real samples.
-     * The remaining 848 samples are right-zero-padded.
-     */
-    for (int i = 0; i < ECO_FRAME_LENGTH; ++i) {
-        fft_buffer[2 * i] =
-            samples[i] * hann[i];
-
-        fft_buffer[2 * i + 1] = 0.0f;
+    uint32_t state = 0x12345678u;
+    uint32_t hash = 2166136261u;
+    for (size_t i = 0; i < ECO_SEGMENT_SAMPLES; ++i) {
+        state ^= state << 13;
+        state ^= state >> 17;
+        state ^= state << 5;
+        const uint16_t bits = (uint16_t)(state >> 16);
+        pcm[i] = (int16_t)bits;
+        hash = (hash ^ (uint8_t)bits) * 16777619u;
+        hash = (hash ^ (uint8_t)(bits >> 8)) * 16777619u;
     }
+    ESP_LOGI(TAG, "VALIDATION PCM FNV1A=%08x | first8=%d,%d,%d,%d,%d,%d,%d,%d",
+             (unsigned)hash, (int)pcm[0], (int)pcm[1], (int)pcm[2], (int)pcm[3],
+             (int)pcm[4], (int)pcm[5], (int)pcm[6], (int)pcm[7]);
 
-    /*
-     * Perform 2048-point COMPLEX FFT.
-     *
-     * Input imaginary components are already zero.
-     */
-    esp_err_t err = dsps_fft2r_fc32(
-        fft_buffer,
-        ECO_FFT_LENGTH
-    );
-
+    ESP_LOGI(TAG, "VALIDATION LOGMEL start | elements=%u", (unsigned)LOGMEL_VALIDATION_ELEMENTS);
+    const esp_err_t err = eco_features_compute(pcm, ECO_SEGMENT_SAMPLES, features);
     if (err != ESP_OK) {
-        return err;
-    }
-
-    /*
-     * Reorder FFT output into natural frequency order.
-     */
-    err = dsps_bit_rev_fc32(
-        fft_buffer,
-        ECO_FFT_LENGTH
-    );
-
-    if (err != ESP_OK) {
-        return err;
-    }
-
-    /*
-     * IMPORTANT FIX:
-     *
-     * Do NOT call dsps_cplx2reC_fc32() here.
-     *
-     * Our input is one real signal stored as a complex
-     * sequence with imaginary components set to zero.
-     *
-     * The ordinary complex FFT already gives the
-     * frequency bins needed to match numpy.fft.rfft().
-     *
-     * Calling dsps_cplx2reC_fc32() would incorrectly
-     * change their amplitudes.
-     */
-
-    /*
-     * One-sided power spectrum:
-     *
-     * P[k] = (Re[k]^2 + Im[k]^2) / 2048
-     *
-     * Bins 0 through 1024, inclusive.
-     *
-     * No additional factor of 2.
-     */
-    for (int k = 0; k < FFT_BINS; ++k) {
-        float re = fft_buffer[2 * k];
-        float im = fft_buffer[2 * k + 1];
-
-        power_spectrum[k] =
-            (re * re + im * im) /
-            (float)ECO_FFT_LENGTH;
-    }
-
-    /*
-     * Apply unit-height HTK triangular Mel filters.
-     *
-     * No Slaney area normalization.
-     */
-    for (int m = 0; m < ECO_MEL_BANDS; ++m) {
-        float left = mel_edges[m];
-        float center = mel_edges[m + 1];
-        float right = mel_edges[m + 2];
-
-        float energy = 0.0f;
-
-        for (int k = 0; k < FFT_BINS; ++k) {
-            float hz =
-                (float)k *
-                (float)ECO_SAMPLE_RATE /
-                (float)ECO_FFT_LENGTH;
-
-            if (hz <= left || hz >= right) {
-                continue;
-            }
-
-            float weight;
-
-            if (hz <= center) {
-                weight =
-                    (hz - left) /
-                    (center - left);
-            } else {
-                weight =
-                    (right - hz) /
-                    (right - center);
-            }
-
-            energy +=
-                power_spectrum[k] * weight;
+        ESP_LOGE(TAG, "VALIDATION LOGMEL compute failed: %s", esp_err_to_name(err));
+    } else {
+        const float *got = &features->logmel[0][0];
+        double abs_sum = 0.0, sq_sum = 0.0;
+        double x_sum = 0.0, y_sum = 0.0, xx_sum = 0.0, yy_sum = 0.0, xy_sum = 0.0;
+        double max_abs = 0.0;
+        size_t small_01 = 0, small_1 = 0;
+        for (size_t i = 0; i < LOGMEL_VALIDATION_ELEMENTS; ++i) {
+            float expected;
+            const uint32_t bits = kLogmelValidationReference[i];
+            memcpy(&expected, &bits, sizeof(expected));
+            const double x = got[i];
+            const double y = expected;
+            const double a = fabs(x - y);
+            abs_sum += a;
+            sq_sum += (x - y) * (x - y);
+            if (a > max_abs) max_abs = a;
+            if (a <= 0.01) ++small_01;
+            if (a <= 0.1) ++small_1;
+            x_sum += x; y_sum += y;
+            xx_sum += x*x; yy_sum += y*y; xy_sum += x*y;
         }
-
-        /*
-         * Natural logarithm with numerical floor.
-         */
-        if (energy < LOG_FLOOR) {
-            energy = LOG_FLOOR;
-        }
-
-        output[m] = logf(energy);
+        const double n = (double)LOGMEL_VALIDATION_ELEMENTS;
+        const double den = (n*xx_sum - x_sum*x_sum) * (n*yy_sum - y_sum*y_sum);
+        const double corr = den > 0.0 ? (n*xy_sum - x_sum*y_sum)/sqrt(den) : NAN;
+        ESP_LOGI(TAG, "VALIDATION LOGMEL | MAE_dB=%.6f | RMSE_dB=%.6f | MAX_dB=%.6f | corr=%.8f",
+                 abs_sum/n, sqrt(sq_sum/n), max_abs, corr);
+        ESP_LOGI(TAG, "VALIDATION LOGMEL | abs_le_0.01=%u/%u | abs_le_0.1=%u/%u",
+                 (unsigned)small_01, (unsigned)LOGMEL_VALIDATION_ELEMENTS,
+                 (unsigned)small_1, (unsigned)LOGMEL_VALIDATION_ELEMENTS);
+        float ref_first, ref_last;
+        const uint32_t first_bits = kLogmelValidationReference[0];
+        const uint32_t last_bits = kLogmelValidationReference[LOGMEL_VALIDATION_ELEMENTS-1];
+        memcpy(&ref_first, &first_bits, sizeof(ref_first));
+        memcpy(&ref_last, &last_bits, sizeof(ref_last));
+        ESP_LOGI(TAG, "VALIDATION LOGMEL samples | got[0]=%.5f ref[0]=%.5f | got[last]=%.5f ref[last]=%.5f",
+                 (double)got[0], (double)ref_first,
+                 (double)got[LOGMEL_VALIDATION_ELEMENTS-1], (double)ref_last);
     }
-
-    return ESP_OK;
+    heap_caps_free(features);
+    heap_caps_free(pcm);
 }
-
-/*
- * Push successive PCM16 blocks into the streaming extractor.
- *
- * The function produces a Log-Mel frame whenever 1200
- * samples are available.
- *
- * Consecutive frames advance by 960 samples.
- */
-esp_err_t eco_features_push(
-    eco_features_t *ctx,
-    const int16_t *samples,
-    size_t count
-)
-{
-    if (ctx == NULL || samples == NULL) {
-        return ESP_ERR_INVALID_ARG;
-    }
-
-    if (count >
-        ECO_SEGMENT_SAMPLES - ctx->samples_received) {
-        return ESP_ERR_INVALID_SIZE;
-    }
-
-    size_t offset = 0;
-
-    while (offset < count) {
-        size_t capacity =
-            ECO_FRAME_LENGTH - ctx->buffered;
-
-        size_t take = count - offset;
-
-        if (take > capacity) {
-            take = capacity;
-        }
-
-        /*
-         * Convert PCM16 to float in approximately [-1, 1).
-         *
-         * No DC removal or normalization is performed.
-         */
-        for (size_t i = 0; i < take; ++i) {
-            ctx->pcm[ctx->buffered + i] =
-                (float)samples[offset + i] /
-                32768.0f;
-        }
-
-        ctx->buffered += take;
-        ctx->samples_received += take;
-        offset += take;
-
-        /*
-         * Once 1200 samples are available,
-         * generate one 40-band Log-Mel frame.
-         */
-        if (ctx->buffered == ECO_FRAME_LENGTH) {
-            if (ctx->frames_generated >=
-                ECO_FRAMES_PER_SEGMENT) {
-                return ESP_ERR_INVALID_SIZE;
-            }
-
-            esp_err_t err = process_frame(
-                ctx->pcm,
-                ctx->logmel[ctx->frames_generated]
-            );
-
-            if (err != ESP_OK) {
-                return err;
-            }
-
-            ctx->frames_generated++;
-
-            /*
-             * Preserve the 240-sample overlap:
-             *
-             * 1200 - 960 = 240
-             */
-            memmove(
-                ctx->pcm,
-                ctx->pcm + ECO_HOP_LENGTH,
-                (ECO_FRAME_LENGTH - ECO_HOP_LENGTH) *
-                    sizeof(float)
-            );
-
-            ctx->buffered =
-                ECO_FRAME_LENGTH - ECO_HOP_LENGTH;
-        }
-    }
-
-    return ESP_OK;
-}
-
-/*
- * A complete 6-second segment contains 288000 samples
- * and exactly 299 analysis frames.
- */
-bool eco_features_complete(const eco_features_t *ctx)
-{
-    return ctx != NULL &&
-        ctx->samples_received == ECO_SEGMENT_SAMPLES &&
-        ctx->frames_generated == ECO_FRAMES_PER_SEGMENT;
-}
+#endif

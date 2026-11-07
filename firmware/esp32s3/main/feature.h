@@ -1,37 +1,30 @@
-
 #pragma once
 
 #include <stddef.h>
 #include <stdint.h>
 #include "esp_err.h"
-#include <stdbool.h>
 
-#define ECO_SAMPLE_RATE       48000
-#define ECO_BLOCK_SAMPLES     960
-#define ECO_FRAME_LENGTH      1200
-#define ECO_HOP_LENGTH        960
-#define ECO_FFT_LENGTH        2048
-#define ECO_MEL_BANDS         40
-#define ECO_SEGMENT_SAMPLES   288000
-#define ECO_FRAMES_PER_SEGMENT 299
+// Exact six-second input shape used by tinyCLAP / torchlibrosa.
+#define ECO_SAMPLE_RATE          44100
+#define ECO_SEGMENT_SECONDS      6
+#define ECO_SEGMENT_SAMPLES      (ECO_SAMPLE_RATE * ECO_SEGMENT_SECONDS)
+#define ECO_BLOCK_SAMPLES        882       // 20 ms at 44.1 kHz
+#define ECO_FFT_LENGTH           1024
+#define ECO_HOP_LENGTH           320
+#define ECO_MEL_BANDS            64
+#define ECO_FRAMES_PER_SEGMENT   (ECO_SEGMENT_SAMPLES / ECO_HOP_LENGTH + 1)
 
 typedef struct {
-    float pcm[ECO_FRAME_LENGTH];
+    // time-major, exactly [827, 64], as required by the TFLite input
     float logmel[ECO_FRAMES_PER_SEGMENT][ECO_MEL_BANDS];
-
-    size_t buffered;
-    size_t samples_received;
-    size_t frames_generated;
 } eco_features_t;
 
+// Initialize ESP-DSP FFT and verify precomputed Slaney mel matrix.
 esp_err_t eco_features_init(void);
 
-void eco_features_reset(eco_features_t *ctx);
-
-esp_err_t eco_features_push(
-    eco_features_t *ctx,
-    const int16_t *samples,
-    size_t count
+// Compute 827 centered/reflect-padded log-mel frames from 6 s of PCM16.
+esp_err_t eco_features_compute(
+    const int16_t *pcm,
+    size_t samples,
+    eco_features_t *output
 );
-
-bool eco_features_complete(const eco_features_t *ctx);

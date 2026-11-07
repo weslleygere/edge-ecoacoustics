@@ -1,12 +1,12 @@
-
 /*
- * Edge Ecoacoustics
- * ESP32-S3 / ESP-IDF 6.x
+ * Edge Ecoacoustics: tinyCLAP end-to-end on ESP32-S3 N16R8.
  *
- * I2S -> DMA -> Ring Buffer -> Log-Mel -> CNN float32 -> MQTT/TLS
- * Continuous audio at 48 kHz; one inference every 6 seconds.
+ * First deployment scheduling (deliberately non-continuous):
+ * 6 s I2S capture at 44.1 kHz -> pause I2S -> 827x64 Log-Mel ->
+ * PhiNet INT8 -> 41-prompt similarities -> Bio/Geo/Antro -> MQTT/TLS.
+ * Capture resumes only after inference; no Ring Buffer overflow/lost blocks.
+ * No legacy CNN is initialized or included in firmware.
  */
-
 #include <assert.h>
 #include <inttypes.h>
 #include <math.h>
@@ -20,213 +20,163 @@
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
-#include "freertos/ringbuf.h"
 #include "freertos/task.h"
 
 #include "feature.h"
 #include "inference.h"
 #include "network.h"
 
-#define MIC_BCLK_GPIO GPIO_NUM_4
-#define MIC_WS_GPIO   GPIO_NUM_5
-#define MIC_DIN_GPIO  GPIO_NUM_6
-
-#define DMA_FRAME_NUM 480
-#define DMA_DESC_NUM 8
-#define RING_BYTES (96 * 1024)
-#define CAPTURE_STACK 6144
-#define DSP_STACK 6144
+#define MIC_BCLK_GPIO  GPIO_NUM_4
+#define MIC_WS_GPIO    GPIO_NUM_5
+#define MIC_DIN_GPIO   GPIO_NUM_6
+#define DMA_FRAME_NUM  441
+#define DMA_DESC_NUM   8
+#define CAPTURE_STACK  8192
 #define READ_TIMEOUT_MS 1000
-#define RING_TIMEOUT_MS 100
 
 static const char *TAG = "eco_audio";
-
-static RingbufHandle_t audio_ring = NULL;
 static i2s_chan_handle_t i2s_rx = NULL;
-static eco_features_t features;
-
 static int32_t raw_buffer[ECO_BLOCK_SAMPLES * 2];
-static int16_t mono_buffer[ECO_BLOCK_SAMPLES];
-
-static volatile uint32_t audio_blocks = 0;
-static volatile uint32_t audio_errors = 0;
-static volatile uint32_t audio_overflows = 0;
-static volatile bool capture_stopped = false;
+static uint32_t audio_errors = 0;
+static uint32_t windows = 0;
+static int16_t *pcm_buffer = NULL;
+static eco_features_t *feature_buffer = NULL;
 
 static void log_memory_status(const char *stage)
 {
-    ESP_LOGI(TAG, "Memory %s | internal_free=%u | internal_largest=%u | psram_free=%u | psram_largest=%u",
+    ESP_LOGI(TAG, "Memory %s | internal=%u psram=%u largest_psram=%u",
              stage,
              (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT),
-             (unsigned)heap_caps_get_largest_free_block(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT),
              (unsigned)heap_caps_get_free_size(MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT),
              (unsigned)heap_caps_get_largest_free_block(MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT));
 }
 
-static void capture_task(void *arg)
+static esp_err_t capture_segment(int16_t *pcm, double *rms, int64_t *end_us)
 {
-    (void)arg;
-
     esp_err_t err = i2s_channel_enable(i2s_rx);
-    if (err != ESP_OK) {
-        audio_errors++;
-        capture_stopped = true;
-        ESP_LOGE(TAG, "Cannot enable I2S: %s", esp_err_to_name(err));
-        vTaskDelete(NULL);
-        return;
-    }
+    if (err != ESP_OK) return err;
+    const int64_t start_us = esp_timer_get_time();
+    double sum_squares = 0.0;
+    size_t collected = 0;
 
-    ESP_LOGI(TAG, "Continuous audio capture started");
-
-    while (true) {
+    while (collected < ECO_SEGMENT_SAMPLES) {
+        const size_t count = (ECO_SEGMENT_SAMPLES - collected > ECO_BLOCK_SAMPLES)
+            ? ECO_BLOCK_SAMPLES : (ECO_SEGMENT_SAMPLES - collected);
+        const size_t need_bytes = count * 2 * sizeof(int32_t);
         size_t received = 0;
-
-        while (received < sizeof(raw_buffer)) {
-            size_t bytes_read = 0;
-            err = i2s_channel_read(i2s_rx, (uint8_t *)raw_buffer + received,
-                                   sizeof(raw_buffer) - received, &bytes_read,
+        while (received < need_bytes) {
+            size_t just_read = 0;
+            err = i2s_channel_read(i2s_rx,
+                                   (uint8_t *)raw_buffer + received,
+                                   need_bytes - received,
+                                   &just_read,
                                    pdMS_TO_TICKS(READ_TIMEOUT_MS));
-
-            if (err != ESP_OK || bytes_read == 0) {
-                audio_errors++;
-                ESP_LOGE(TAG, "I2S read failed: %s", esp_err_to_name(err));
+            if (err != ESP_OK || just_read == 0) {
+                if (err == ESP_OK) err = ESP_ERR_TIMEOUT;
                 goto capture_exit;
             }
-
-            received += bytes_read;
+            received += just_read;
         }
-
-        // Microphone data is in the left I2S slot.
-        for (size_t i = 0; i < ECO_BLOCK_SAMPLES; i++) {
-            mono_buffer[i] = (int16_t)(raw_buffer[2 * i] >> 16);
+        // Retain the same physical I2S LEFT slot used by the existing firmware.
+        for (size_t i = 0; i < count; ++i) {
+            const int16_t s = (int16_t)(raw_buffer[2 * i] >> 16);
+            pcm[collected + i] = s;
+            const double x = (double)s / 32768.0;
+            sum_squares += x * x;
         }
-
-        if (xRingbufferSend(audio_ring, mono_buffer, sizeof(mono_buffer),
-                            pdMS_TO_TICKS(RING_TIMEOUT_MS)) != pdTRUE) {
-            audio_overflows++;
-            ESP_LOGE(TAG, "Ring Buffer overflow at block %" PRIu32, audio_blocks);
-            goto capture_exit;
-        }
-
-        audio_blocks++;
+        collected += count;
     }
 
 capture_exit:
-    capture_stopped = true;
-
-    err = i2s_channel_disable(i2s_rx);
+    *end_us = esp_timer_get_time();
+    esp_err_t disable_err = i2s_channel_disable(i2s_rx);
+    if (err == ESP_OK) err = disable_err;
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Cannot disable I2S: %s", esp_err_to_name(err));
+        ESP_LOGE(TAG, "I2S capture failed: %s", esp_err_to_name(err));
+        return err;
     }
-
-    ESP_LOGE(TAG, "Capture stopped | blocks=%" PRIu32 " errors=%" PRIu32 " overflows=%" PRIu32,
-             audio_blocks, audio_errors, audio_overflows);
-
-    vTaskDelete(NULL);
+    *rms = sqrt(sum_squares / ECO_SEGMENT_SAMPLES);
+    ESP_LOGI(TAG, "Capture #%" PRIu32 " | %.2f s | RMS=%.6f | samples=%u",
+             windows + 1, (double)(*end_us - start_us) / 1e6,
+             *rms, (unsigned)collected);
+    return ESP_OK;
 }
 
-static void dsp_task(void *arg)
+static void acquisition_task(void *arg)
 {
     (void)arg;
-
-    uint32_t windows = 0;
-    uint32_t processed_blocks = 0;
-    double sum_squares = 0.0;
-
-    eco_features_reset(&features);
-    int64_t window_start_us = esp_timer_get_time();
-
-    ESP_LOGI(TAG, "DSP task started");
+    int16_t *pcm = pcm_buffer;
+    eco_features_t *features = feature_buffer;
+    log_memory_status("buffers_allocated");
+    ESP_LOGW(TAG, "Scheduled capture: 6 s audio, then paused during inference");
 
     while (true) {
-        size_t bytes = 0;
-        int16_t *audio = (int16_t *)xRingbufferReceive(audio_ring, &bytes, pdMS_TO_TICKS(100));
-
-        if (audio == NULL) {
-            if (capture_stopped) break;
-            continue;
-        }
-
-        if (bytes != sizeof(mono_buffer)) {
-            ESP_LOGE(TAG, "Unexpected audio block size: %u", (unsigned)bytes);
-            vRingbufferReturnItem(audio_ring, audio);
-            break;
-        }
-
-        for (size_t i = 0; i < ECO_BLOCK_SAMPLES; i++) {
-            double sample = (double)audio[i] / 32768.0;
-            sum_squares += sample * sample;
-        }
-
-        esp_err_t err = eco_features_push(&features, audio, ECO_BLOCK_SAMPLES);
-        vRingbufferReturnItem(audio_ring, audio);
-
+        double rms = 0.0;
+        int64_t end_us = 0;
+        esp_err_t err = capture_segment(pcm, &rms, &end_us);
         if (err != ESP_OK) {
-            ESP_LOGE(TAG, "Log-Mel processing failed: %s", esp_err_to_name(err));
+            ++audio_errors;
             break;
         }
 
-        processed_blocks++;
-
-        if (eco_features_complete(&features)) {
-            windows++;
-
-            int64_t window_end_us = esp_timer_get_time();
-            double rms = sqrt(sum_squares / ECO_SEGMENT_SAMPLES);
-            double elapsed_s = (double)(window_end_us - window_start_us) / 1e6;
-            float indices[3] = {0};
-            int64_t inference_us = 0;
-
-            ESP_LOGI(TAG, "Window %" PRIu32 " | frames=%u | RMS=%.6f | elapsed=%.2fs",
-                     windows, (unsigned)features.frames_generated, rms, elapsed_s);
-
-            err = eco_inference_run(&features.logmel[0][0], indices, &inference_us);
-            if (err != ESP_OK) {
-                ESP_LOGE(TAG, "CNN inference failed: %s", esp_err_to_name(err));
-                break;
-            }
-
-            ESP_LOGI(TAG, "CNN | Bio=%.4f | Geo=%.4f | Antro=%.4f | inference_ms=%.2f",
-                     indices[0], indices[1], indices[2], (double)inference_us / 1000.0);
-
-            eco_telemetry_t telemetry = {
-                .end_us = window_end_us,
-                .seq = windows,
-                .bio = indices[0],
-                .geo = indices[1],
-                .antro = indices[2],
-                .rms = (float)rms,
-                .inference_ms = (float)inference_us / 1000.0f,
-                .errors = audio_errors,
-                .overflows = audio_overflows,
-            };
-
-            eco_network_publish(&telemetry);
-
-            ESP_LOGI(TAG, "Blocks | captured=%" PRIu32 " | processed=%" PRIu32
-                     " | errors=%" PRIu32 " | overflows=%" PRIu32 " | stack_free=%u",
-                     audio_blocks, processed_blocks, audio_errors, audio_overflows,
-                     (unsigned)uxTaskGetStackHighWaterMark(NULL));
-
-            log_memory_status("window");
-
-            eco_features_reset(&features);
-            sum_squares = 0.0;
-            window_start_us = esp_timer_get_time();
+        int64_t start_dsp = esp_timer_get_time();
+        err = eco_features_compute(pcm, ECO_SEGMENT_SAMPLES, features);
+        const double dsp_ms = (double)(esp_timer_get_time() - start_dsp) / 1000.0;
+        if (err != ESP_OK) {
+            ++audio_errors;
+            ESP_LOGE(TAG, "Log-Mel failed: %s", esp_err_to_name(err));
+            break;
         }
-    }
 
-    ESP_LOGE(TAG, "DSP task stopped");
+        float indices[3] = {0.0f};
+        int64_t inference_us = 0;
+        err = eco_inference_run(&features->logmel[0][0], indices, &inference_us);
+        if (err != ESP_OK) {
+            ++audio_errors;
+            ESP_LOGE(TAG, "tinyCLAP failed: %s", esp_err_to_name(err));
+            break;
+        }
+        ++windows;
+        ESP_LOGI(TAG, "Window %" PRIu32 " | Bio=%.4f Geo=%.4f Antro=%.4f | DSP=%.2f ms | PhiNet=%.2f ms",
+                 windows, (double)indices[0], (double)indices[1],
+                 (double)indices[2], dsp_ms, (double)inference_us / 1000.0);
+
+        eco_telemetry_t telemetry = {
+            .end_us = end_us,
+            .seq = windows,
+            .bio = indices[0],
+            .geo = indices[1],
+            .antro = indices[2],
+            .rms = (float)rms,
+            .inference_ms = (float)inference_us / 1000.0f,
+            .errors = audio_errors,
+            .overflows = 0,
+        };
+        eco_network_publish(&telemetry);
+        ESP_LOGI(TAG, "Cycle complete | next 6-s capture starts now | stack_free=%u",
+                 (unsigned)uxTaskGetStackHighWaterMark(NULL));
+        log_memory_status("window");
+    }
+    ESP_LOGE(TAG, "Acquisition stopped | errors=%" PRIu32, audio_errors);
     vTaskDelete(NULL);
 }
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Edge Ecoacoustics - Continuous CNN float32 + MQTT");
+    ESP_LOGI(TAG, "Edge Ecoacoustics - tinyCLAP INT8 + Bio/Geo/Antro + MQTT");
+    // Allocate the large model arena first to avoid PSRAM fragmentation.
+    log_memory_status("startup");
+    ESP_ERROR_CHECK(eco_inference_init());
     ESP_ERROR_CHECK(eco_features_init());
 
-    audio_ring = xRingbufferCreate(RING_BYTES, RINGBUF_TYPE_NOSPLIT);
-    assert(audio_ring != NULL);
+    // Reserve remaining buffers before WiFi/TLS to avoid fragmentation.
+    pcm_buffer = (int16_t *)heap_caps_aligned_alloc(
+        16, ECO_SEGMENT_SAMPLES * sizeof(int16_t),
+        MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+    feature_buffer = (eco_features_t *)heap_caps_aligned_alloc(
+        16, sizeof(eco_features_t),
+        MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+    assert(pcm_buffer != NULL && feature_buffer != NULL);
 
     i2s_chan_config_t chan_cfg = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_AUTO, I2S_ROLE_MASTER);
     chan_cfg.dma_desc_num = DMA_DESC_NUM;
@@ -246,20 +196,11 @@ void app_main(void)
             .invert_flags = {0},
         },
     };
-
     ESP_ERROR_CHECK(i2s_channel_init_std_mode(i2s_rx, &i2s_cfg));
-
-    log_memory_status("before_cnn");
-    ESP_ERROR_CHECK(eco_inference_init());
-    log_memory_status("after_cnn");
-
     ESP_ERROR_CHECK(eco_network_init());
 
-    BaseType_t result = xTaskCreate(dsp_task, "dsp_task", DSP_STACK, NULL, 5, NULL);
+    BaseType_t result = xTaskCreate(acquisition_task, "tinyclap_audio",
+                                    CAPTURE_STACK, NULL, 5, NULL);
     assert(result == pdPASS);
-
-    result = xTaskCreate(capture_task, "audio_capture", CAPTURE_STACK, NULL, 7, NULL);
-    assert(result == pdPASS);
-
-    ESP_LOGI(TAG, "Continuous capture | 48 kHz | left slot | CNN float32 every 6 seconds | MQTT/TLS");
+    ESP_LOGI(TAG, "Scheduled acquisition started | 44.1 kHz | left slot | MQTT/TLS");
 }

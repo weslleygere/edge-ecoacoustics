@@ -1,3 +1,10 @@
+/*
+ * Edge Ecoacoustics - Wi-Fi + MQTT/TLS
+ * ESP32-S3 / ESP-IDF 6.x
+ *
+ * Diagnostics for Wi-Fi, IP, NTP, MQTT and telemetry delivery.
+ * Maintains the existing topic and JSON payload format.
+ */
 
 #include "network.h"
 
@@ -9,6 +16,7 @@
 #include "esp_event.h"
 #include "esp_log.h"
 #include "esp_netif.h"
+#include "esp_netif_ip_addr.h"
 #include "esp_netif_sntp.h"
 #include "esp_timer.h"
 #include "esp_wifi.h"
@@ -25,33 +33,55 @@
 #define WIFI_READY BIT0
 #define MQTT_READY BIT1
 #define QUEUE_LENGTH 32
+#define CONNECTION_LOG_INTERVAL_MS 15000
 
 static const char *TAG = "eco_network";
-static QueueHandle_t telemetry_queue;
-static EventGroupHandle_t network_events;
-static esp_mqtt_client_handle_t mqtt_client;
+static QueueHandle_t telemetry_queue = NULL;
+static EventGroupHandle_t network_events = NULL;
+static esp_mqtt_client_handle_t mqtt_client = NULL;
 static uint32_t dropped = 0;
 
 extern const uint8_t emqx_ca_start[] asm("_binary_emqxsl_ca_crt_start");
 
-static void wifi_event_handler(void *arg, esp_event_base_t base, int32_t id, void *data)
+static void wifi_event_handler(void *arg, esp_event_base_t base,
+                               int32_t id, void *data)
 {
     (void)arg;
-    (void)data;
 
     if (base == WIFI_EVENT && id == WIFI_EVENT_STA_START) {
-        esp_wifi_connect();
+        ESP_LOGI(TAG, "Wi-Fi started | SSID=%s", CONFIG_ECO_WIFI_SSID);
+        esp_err_t err = esp_wifi_connect();
+        if (err != ESP_OK) {
+            ESP_LOGE(TAG, "Wi-Fi connect failed: %s", esp_err_to_name(err));
+        }
+    } else if (base == WIFI_EVENT && id == WIFI_EVENT_STA_CONNECTED) {
+        ESP_LOGI(TAG, "Connected to access point; waiting for IP");
     } else if (base == WIFI_EVENT && id == WIFI_EVENT_STA_DISCONNECTED) {
+        const wifi_event_sta_disconnected_t *event =
+            (const wifi_event_sta_disconnected_t *)data;
+
         xEventGroupClearBits(network_events, WIFI_READY | MQTT_READY);
-        ESP_LOGW(TAG, "Wi-Fi disconnected; reconnecting");
-        esp_wifi_connect();
+        ESP_LOGW(TAG, "Wi-Fi disconnected | reason=%u; reconnecting",
+                 event != NULL ? (unsigned)event->reason : 0U);
+
+        esp_err_t err = esp_wifi_connect();
+        if (err != ESP_OK) {
+            ESP_LOGE(TAG, "Wi-Fi reconnect failed: %s", esp_err_to_name(err));
+        }
     } else if (base == IP_EVENT && id == IP_EVENT_STA_GOT_IP) {
+        const ip_event_got_ip_t *event = (const ip_event_got_ip_t *)data;
+        if (event != NULL) {
+            ESP_LOGI(TAG, "Wi-Fi connected | IP=" IPSTR,
+                     IP2STR(&event->ip_info.ip));
+        } else {
+            ESP_LOGI(TAG, "Wi-Fi connected | IP obtained");
+        }
         xEventGroupSetBits(network_events, WIFI_READY);
-        ESP_LOGI(TAG, "Wi-Fi connected");
     }
 }
 
-static void mqtt_event_handler(void *arg, esp_event_base_t base, int32_t id, void *data)
+static void mqtt_event_handler(void *arg, esp_event_base_t base,
+                               int32_t id, void *data)
 {
     (void)arg;
     (void)base;
@@ -60,7 +90,7 @@ static void mqtt_event_handler(void *arg, esp_event_base_t base, int32_t id, voi
 
     if (id == MQTT_EVENT_CONNECTED) {
         xEventGroupSetBits(network_events, MQTT_READY);
-        ESP_LOGI(TAG, "MQTT connected");
+        ESP_LOGI(TAG, "MQTT connected | topic=%s", MQTT_TOPIC);
     } else if (id == MQTT_EVENT_DISCONNECTED) {
         xEventGroupClearBits(network_events, MQTT_READY);
         ESP_LOGW(TAG, "MQTT disconnected");
@@ -74,6 +104,8 @@ static void mqtt_event_handler(void *arg, esp_event_base_t base, int32_t id, voi
 static void network_task(void *arg)
 {
     (void)arg;
+
+    ESP_LOGI(TAG, "Network task started");
 
     ESP_ERROR_CHECK(nvs_flash_init());
     ESP_ERROR_CHECK(esp_netif_init());
@@ -101,9 +133,18 @@ static void network_task(void *arg)
 
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_cfg));
+    ESP_LOGI(TAG, "Starting Wi-Fi");
     ESP_ERROR_CHECK(esp_wifi_start());
 
-    xEventGroupWaitBits(network_events, WIFI_READY, pdFALSE, pdTRUE, portMAX_DELAY);
+    ESP_LOGI(TAG, "Waiting for Wi-Fi connection and IP");
+    while ((xEventGroupWaitBits(network_events, WIFI_READY,
+                                pdFALSE, pdTRUE,
+                                pdMS_TO_TICKS(CONNECTION_LOG_INTERVAL_MS))
+            & WIFI_READY) == 0) {
+        ESP_LOGW(TAG, "Still waiting for Wi-Fi/IP");
+    }
+
+    ESP_LOGI(TAG, "Wi-Fi ready; starting NTP synchronization");
     ESP_ERROR_CHECK(esp_netif_sntp_start());
 
     while (esp_netif_sntp_sync_wait(pdMS_TO_TICKS(30000)) != ESP_OK) {
@@ -126,13 +167,22 @@ static void network_task(void *arg)
 
     ESP_ERROR_CHECK(esp_mqtt_client_register_event(
         mqtt_client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL));
+    ESP_LOGI(TAG, "Starting MQTT/TLS connection");
     ESP_ERROR_CHECK(esp_mqtt_client_start(mqtt_client));
 
     while (true) {
-        xEventGroupWaitBits(network_events, MQTT_READY, pdFALSE, pdTRUE, portMAX_DELAY);
+        if ((xEventGroupWaitBits(network_events, MQTT_READY,
+                                 pdFALSE, pdTRUE,
+                                 pdMS_TO_TICKS(CONNECTION_LOG_INTERVAL_MS))
+             & MQTT_READY) == 0) {
+            ESP_LOGW(TAG, "Still waiting for MQTT connection | pending=%u",
+                     (unsigned)uxQueueMessagesWaiting(telemetry_queue));
+            continue;
+        }
 
         eco_telemetry_t item;
-        if (xQueueReceive(telemetry_queue, &item, pdMS_TO_TICKS(1000)) != pdTRUE) {
+        if (xQueueReceive(telemetry_queue, &item,
+                          pdMS_TO_TICKS(1000)) != pdTRUE) {
             continue;
         }
 
@@ -154,7 +204,7 @@ static void network_task(void *arg)
             item.rms, item.inference_ms, item.errors, item.overflows,
             __atomic_load_n(&dropped, __ATOMIC_RELAXED));
 
-        if (len < 0 || len >= sizeof(payload)) {
+        if (len < 0 || len >= (int)sizeof(payload)) {
             __atomic_fetch_add(&dropped, 1, __ATOMIC_RELAXED);
             ESP_LOGE(TAG, "Telemetry payload too large");
             continue;
@@ -172,7 +222,8 @@ static void network_task(void *arg)
             continue;
         }
 
-        ESP_LOGI(TAG, "MQTT enqueued | seq=%" PRIu32 " | id=%d", item.seq, msg_id);
+        ESP_LOGI(TAG, "MQTT enqueued | seq=%" PRIu32 " | id=%d",
+                 item.seq, msg_id);
     }
 }
 
@@ -181,15 +232,28 @@ esp_err_t eco_network_init(void)
     telemetry_queue = xQueueCreate(QUEUE_LENGTH, sizeof(eco_telemetry_t));
     network_events = xEventGroupCreate();
 
-    if (!telemetry_queue || !network_events) return ESP_ERR_NO_MEM;
+    if (!telemetry_queue || !network_events) {
+        ESP_LOGE(TAG, "Cannot allocate network queue/events");
+        return ESP_ERR_NO_MEM;
+    }
 
-    return xTaskCreate(network_task, "eco_network", 6144, NULL, 3, NULL) == pdPASS
+    return xTaskCreate(network_task, "eco_network", 6144,
+                       NULL, 3, NULL) == pdPASS
         ? ESP_OK : ESP_ERR_NO_MEM;
 }
 
 bool eco_network_publish(const eco_telemetry_t *data)
 {
-    if (xQueueSend(telemetry_queue, data, 0) == pdTRUE) return true;
+    if (data == NULL || telemetry_queue == NULL) {
+        ESP_LOGE(TAG, "Telemetry not ready");
+        return false;
+    }
+
+    if (xQueueSend(telemetry_queue, data, 0) == pdTRUE) {
+        ESP_LOGI(TAG, "Telemetry queued | seq=%" PRIu32 " | pending=%u",
+                 data->seq, (unsigned)uxQueueMessagesWaiting(telemetry_queue));
+        return true;
+    }
 
     uint32_t total = __atomic_add_fetch(&dropped, 1, __ATOMIC_RELAXED);
     ESP_LOGW(TAG, "Telemetry queue full | dropped=%" PRIu32, total);
