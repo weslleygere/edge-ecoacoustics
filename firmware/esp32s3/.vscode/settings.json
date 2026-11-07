@@ -42,5 +42,6 @@
     "--background-index",
     "--query-driver=**",
     "--compile-commands-dir=C:/esp/edge-ecoacoustics-build/build"
-  ]
+  ],
+  "r.lsp.promptToInstall": false
 }

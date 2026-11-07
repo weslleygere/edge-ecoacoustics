@@ -192,14 +192,15 @@ static void network_task(void *arg)
         int64_t now_ms = (int64_t)now.tv_sec * 1000 + now.tv_usec / 1000;
         int64_t ts_ms = now_ms - (esp_timer_get_time() - item.end_us) / 1000;
 
-        char payload[256];
+        // Single network task; static buffer avoids growing the 6-KiB stack.
+        static char payload[1536];
         int len = snprintf(payload, sizeof(payload),
             "{\"device\":\"esp32s3_01\",\"ts_ms\":%" PRId64
             ",\"seq\":%" PRIu32
             ",\"bio\":%.4f,\"geo\":%.4f,\"antro\":%.4f"
             ",\"rms\":%.6f,\"inference_ms\":%.2f"
             ",\"errors\":%" PRIu32 ",\"overflows\":%" PRIu32
-            ",\"dropped\":%" PRIu32 "}",
+            ",\"dropped\":%" PRIu32,
             ts_ms, item.seq, item.bio, item.geo, item.antro,
             item.rms, item.inference_ms, item.errors, item.overflows,
             __atomic_load_n(&dropped, __ATOMIC_RELAXED));
@@ -210,8 +211,39 @@ static void network_task(void *arg)
             continue;
         }
 
+        // IDs refer to model/prompts.txt; text labels stay outside firmware.
+        static const char *const groups[ECO_PROMPT_GROUPS] = {
+            "bio", "geo", "antro"
+        };
+        size_t used = (size_t)len;
+        bool valid = true;
+        for (int g = 0; g < ECO_PROMPT_GROUPS && valid; ++g) {
+            for (int k = 0; k < ECO_TOP_K; ++k) {
+                const eco_prompt_rank_t *p = &item.top[g][k];
+                if (p->id >= 41) { valid = false; break; }
+                int written = snprintf(payload + used, sizeof(payload) - used,
+                    ",\"%s_top%d_id\":%u,\"%s_top%d_cosine\":%.5f"
+                    ",\"%s_top%d_score\":%.5f",
+                    groups[g], k + 1, (unsigned)p->id,
+                    groups[g], k + 1, (double)p->cosine,
+                    groups[g], k + 1, (double)p->score);
+                if (written < 0 || (size_t)written >= sizeof(payload) - used) {
+                    valid = false;
+                    break;
+                }
+                used += (size_t)written;
+            }
+        }
+        if (!valid || used + 2 > sizeof(payload)) {
+            __atomic_fetch_add(&dropped, 1, __ATOMIC_RELAXED);
+            ESP_LOGE(TAG, "Top prompt JSON too large or invalid ID");
+            continue;
+        }
+        payload[used++] = '}';
+        payload[used] = '\0';
+
         int msg_id = esp_mqtt_client_enqueue(
-            mqtt_client, MQTT_TOPIC, payload, len, 1, 0, true);
+            mqtt_client, MQTT_TOPIC, payload, (int)used, 1, 0, true);
 
         if (msg_id < 0) {
             if (xQueueSendToFront(telemetry_queue, &item, 0) != pdTRUE) {

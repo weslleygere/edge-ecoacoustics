@@ -1,4 +1,4 @@
-Biophony - Domestic animal - Cat, cat meowing or purring, cat in the distance
+Biophony - Domestic animal - Cat meowing, cat purring, cat in the distance
 Biophony - Domestic animal - Rooster crowing, rooster crows, rooster in the distance, chicken
 Biophony - Domestic animal - Cow mooing, cow lowing, cow in the background, cowbell
 Biophony - Domestic animal - Dog barking, dog barks in the distance
@@ -29,7 +29,7 @@ Anthropophony - People yelling, people screaming, people shouting, children shou
 Anthropophony - People crying, children crying
 Technophony - Objects - Bells ringing, bells chiming, bells in the background, church bells
 Technophony - Objects - Computer-related sounds like keyboard typing, glitch, electronic sounds
-Technophony - Objects - Doors opening, closing, creaking or sounds of keys or lock
+Technophony - Objects - Doors opening, doors closing, sounds of keys or lock
 Technophony - Objects - Microphone tapping, audio feedback, crackling on microphone
 Technophony - Vehicles - Tractor, mower, lawnmower running, and other machines used for farming or gardening
 Technophony - Vehicles - Airplane, plane, helicopter, plane flying overhead and other flying vehicles

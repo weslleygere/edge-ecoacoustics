@@ -129,8 +129,10 @@ static void acquisition_task(void *arg)
         }
 
         float indices[3] = {0.0f};
+        eco_prompt_rank_t top[ECO_PROMPT_GROUPS][ECO_TOP_K] = {0};
         int64_t inference_us = 0;
-        err = eco_inference_run(&features->logmel[0][0], indices, &inference_us);
+        err = eco_inference_run_with_top(
+            &features->logmel[0][0], indices, &inference_us, top);
         if (err != ESP_OK) {
             ++audio_errors;
             ESP_LOGE(TAG, "tinyCLAP failed: %s", esp_err_to_name(err));
@@ -152,6 +154,12 @@ static void acquisition_task(void *arg)
             .errors = audio_errors,
             .overflows = 0,
         };
+        // Queue stores a value-copy: no dangling pointers to stack memory.
+        for (int g = 0; g < ECO_PROMPT_GROUPS; ++g) {
+            for (int k = 0; k < ECO_TOP_K; ++k) {
+                telemetry.top[g][k] = top[g][k];
+            }
+        }
         eco_network_publish(&telemetry);
         ESP_LOGI(TAG, "Cycle complete | next 6-s capture starts now | stack_free=%u",
                  (unsigned)uxTaskGetStackHighWaterMark(NULL));

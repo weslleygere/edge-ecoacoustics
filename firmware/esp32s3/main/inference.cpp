@@ -132,7 +132,8 @@ static void insert_rank(PromptRank ranks[3], int prompt_id, float score)
 static bool score_embedding(const TfLiteTensor *output,
                             float indices[3],
                             PromptRank ranks[3][3],
-                            float *embedding_norm)
+                            float *embedding_norm,
+                            PromptRank cosine_ranks[3][3] = nullptr)
 {
     const float out_scale = output->params.scale;
     const int out_zero = output->params.zero_point;
@@ -153,6 +154,7 @@ static bool score_embedding(const TfLiteTensor *output,
     for (int group = 0; group < 3; ++group) {
         for (int pos = 0; pos < 3; ++pos) {
             ranks[group][pos] = {-1, -1.0f};
+            if (cosine_ranks != nullptr) cosine_ranks[group][pos] = {-1, -2.0f};
         }
     }
 
@@ -168,6 +170,9 @@ static bool score_embedding(const TfLiteTensor *output,
         for (int group = 0; group < 3; ++group) {
             if (prompt_masks[p] & bits[group]) {
                 insert_rank(ranks[group], static_cast<int>(p), similarity);
+                if (cosine_ranks != nullptr) {
+                    insert_rank(cosine_ranks[group], static_cast<int>(p), cosine);
+                }
             }
         }
     }
@@ -347,8 +352,9 @@ extern "C" esp_err_t eco_inference_init(void)
     return ESP_OK;
 }
 
-extern "C" esp_err_t eco_inference_run(const float *logmel, float indices[3],
-                                       int64_t *inference_us)
+extern "C" esp_err_t eco_inference_run_with_top(
+    const float *logmel, float indices[3], int64_t *inference_us,
+    eco_prompt_rank_t top[ECO_PROMPT_GROUPS][ECO_TOP_K])
 {
     if (!interpreter || !logmel || !indices || !inference_us) {
         return ESP_ERR_INVALID_STATE;
@@ -386,13 +392,34 @@ extern "C" esp_err_t eco_inference_run(const float *logmel, float indices[3],
     }
 
     PromptRank ranks[3][3];
+    PromptRank cosine_ranks[3][3];
     float norm = 0.0f;
-    if (!score_embedding(output, indices, ranks, &norm)) {
+    if (!score_embedding(output, indices, ranks, &norm,
+                         top != nullptr ? cosine_ranks : nullptr)) {
         return ESP_FAIL;
     }
+    if (top != nullptr) {
+        for (int g = 0; g < ECO_PROMPT_GROUPS; ++g) {
+            for (int k = 0; k < ECO_TOP_K; ++k) {
+                if (cosine_ranks[g][k].id < 0) return ESP_FAIL;
+                const float cosine = cosine_ranks[g][k].score;
+                top[g][k].id = static_cast<uint8_t>(cosine_ranks[g][k].id);
+                top[g][k].cosine = cosine;
+                top[g][k].score = clip01((cosine * logit_scale - 5.0f) / 15.0f);
+            }
+        }
+    }
+
     ESP_LOGI(TAG, "INT8 | Bio=%.4f Geo=%.4f Antro=%.4f | inference_ms=%.2f",
              (double)indices[0], (double)indices[1], (double)indices[2],
              (double)*inference_us / 1000.0);
     log_ranks("LIVE", ranks);
     return ESP_OK;
+}
+
+// Preserve the original API for any other existing call sites.
+extern "C" esp_err_t eco_inference_run(const float *logmel, float indices[3],
+                                       int64_t *inference_us)
+{
+    return eco_inference_run_with_top(logmel, indices, inference_us, nullptr);
 }

@@ -22,3 +22,6 @@ results/training/
 *.keras
 *.joblib
 
+checkpoints/
+exports/
+calibration/
