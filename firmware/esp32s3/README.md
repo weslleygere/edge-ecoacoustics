@@ -1,202 +1,421 @@
 
 # ESP32-S3 firmware
 
-Continuous ecoacoustic monitoring with ESP-IDF 6.0.2.
+ESP-IDF firmware for real-time ecoacoustic monitoring with tinyCLAP INT8.
 
 ## Hardware
 
-- ESP32-S3 N16R8: 16 MB Flash, 8 MB octal PSRAM.
-- I2S microphone: 48 kHz, 32-bit stereo slots.
-- BCLK: GPIO 4.
-- WS: GPIO 5.
-- DIN: GPIO 6.
-- Active microphone data: left I2S slot.
+The validated hardware configuration is:
 
-The firmware extracts 16-bit PCM from the high 16 bits of each left-slot sample.
+- ESP32-S3 N16R8.
+- 16 MB Flash.
+- 8 MB octal PSRAM.
+- I2S microphone with 32-bit stereo slots.
+- Active microphone channel: left I2S slot.
+
+GPIO configuration:
+
+| Signal | GPIO |
+|--------|------|
+| BCLK   | 4    |
+| WS     | 5    |
+| DIN    | 6    |
+
+The ESP32-S3 captures at 44,100 Hz and extracts signed 16-bit PCM from the upper 16 bits of each 32-bit left-slot sample.
 
 ## Processing pipeline
 
 ```text
-I2S -> DMA -> Ring Buffer -> Log-Mel -> CNN float32 -> MQTT/TLS
+I2S microphone
+      |
+6-second PCM capture
+      |
+Log-Mel frontend
+    827 x 64
+      |
+PhiNet INT8
+      |
+1024-D audio embedding
+      |
+41 text embeddings
+      |
+Cosine similarity
+      |
+Bio / Geo / Antro
+      |
+MQTT/TLS
 ```
 
-Audio acquisition is continuous.
+Audio acquisition and processing are sequential.
 
-- Audio block: 960 samples (20 ms).
-- Segment: 288,000 samples (6 s).
-- Feature representation: 299 x 40 Log-Mel.
-- CNN inference: once per segment.
-- MQTT publication: once per segment.
+For every measurement:
 
-Acquisition, DSP and network communication run in separate FreeRTOS tasks.
+1. Enable I2S and capture six seconds of audio.
+2. Disable I2S.
+3. Compute the Log-Mel spectrogram.
+4. Execute PhiNet INT8 inference.
+5. Compute prompt similarities and ecoacoustic indices.
+6. Queue the measurement for MQTT publication.
+7. Begin the next capture.
 
-## Model
+There is no continuous acquisition ring buffer.
 
-Selected student: `cnn_logmel`.
+The network runs in a separate FreeRTOS task, allowing telemetry to be transmitted independently of audio processing.
 
-- 5,403 parameters.
-- Float32 TFLite model: 25,540 bytes.
-- Tensor arena: 256 KiB allocated in PSRAM.
-- Actual arena usage: approximately 146 KiB.
-- Inference latency: approximately 490 ms.
+## Audio frontend
 
-The model outputs three independent indices in this order:
+The frontend is implemented in `main/feature.c`.
+
+Parameters:
+
+| Parameter | Value |
+|-----------|-------|
+| Sample rate | 44,100 Hz |
+| Segment duration | 6 s |
+| Samples per segment | 264,600 |
+| Audio block | 882 samples (20 ms) |
+| FFT length | 1,024 |
+| Hop length | 320 |
+| Window | Periodic Hann |
+| Center padding | Reflect |
+| Mel bands | 64 |
+| Mel frequency range | 50–14,000 Hz |
+| Mel normalization | Slaney |
+| Output shape | 827 x 64 |
+
+The spectrogram uses squared FFT magnitudes followed by Mel filtering and logarithmic conversion to decibels.
+
+The Mel filter matrix is generated offline by `model/package_firmware.py` and stored in Flash.
+
+## tinyCLAP inference
+
+The audio encoder is a PhiNet model exported to fully quantized INT8 TFLite.
+
+Model interface:
 
 ```text
-bio, geo, antro
+Input:  int8 [1, 827, 64]
+Output: int8 [1, 1024]
 ```
 
-These values are continuous ecoacoustic indices, not class probabilities.
+The firmware runs inference with TensorFlow Lite Micro.
+
+The tensor arena reserves 6 MiB in PSRAM.
+
+The model uses 12 supported TFLite operator types:
+
+```text
+ADD
+CONV_2D
+DEPTHWISE_CONV_2D
+FULLY_CONNECTED
+LOGISTIC
+MEAN
+MUL
+PAD
+RESHAPE
+RSQRT
+SQUARED_DIFFERENCE
+SUB
+```
+
+The firmware dequantizes the output embedding and calculates cosine similarities against 41 precomputed CLAP text embeddings.
+
+For each prompt:
+
+```python
+score = clip((cosine * logit_scale - 5) / 15, 0, 1)
+```
+
+For each category:
+
+```python
+index = 0.75 * top1 + 0.25 * top2
+```
+
+The resulting indices are:
+
+- `bio`: biophony.
+- `geo`: geophony.
+- `antro`: anthropophony and technophony.
+
+The indices are independent values in [0, 1] and are not calibrated probabilities.
+
+The firmware also reports the three most similar prompts per category.
 
 ## Required local artifacts
 
-The following files must exist before building:
+The firmware requires these files:
 
 ```text
 firmware/esp32s3/
-    main/
-        emqxsl-ca.crt
-    model/
-        cnn_logmel_float32.tflite
-        normalization.bin
+├── main/
+│   └── emqxsl-ca.crt
+└── model/
+    ├── tinyclap_phinet_int8.tflite
+    ├── tinyclap_text_assets.bin
+    └── tinyclap_mel_filters.bin
 ```
 
-The TFLite file contains the trained CNN weights.
+Their roles are:
 
-`normalization.bin` stores 40 means followed by 40 scale values, as float32 values.
+| File | Purpose |
+|------|---------|
+| `tinyclap_phinet_int8.tflite` | Quantized audio encoder |
+| `tinyclap_text_assets.bin` | Text embeddings, category masks, and logit scale |
+| `tinyclap_mel_filters.bin` | Slaney Mel filter matrix |
+| `emqxsl-ca.crt` | CA certificate for MQTT/TLS server verification |
 
-`emqxsl-ca.crt` contains the public CA certificate used to verify the EMQX Cloud server.
+The model assets are generated or copied by:
 
-These artifacts are excluded from Git and must be supplied locally. Do not place Wi-Fi or MQTT passwords in versioned files.
+```powershell
+python model/package_firmware.py --install
+```
+
+Run this command from the repository root after generating the model and text embeddings.
+
+The public CA certificate must correspond to the configured MQTT broker.
+
+Model binaries and certificates are not automatically downloaded during compilation.
 
 ## Dependencies
 
-The component manifest `main/idf_component.yml` defines:
+The firmware was validated with ESP-IDF 6.0.2.
+
+The component manifest `main/idf_component.yml` declares:
 
 - `espressif/mqtt`
 - `espressif/esp-dsp`
 - `espressif/esp-tflite-micro`
 
-The ESP-IDF Component Manager resolves these dependencies during configuration and build.
+The ESP-IDF Component Manager resolves these dependencies during project configuration.
 
-## Windows / OneDrive build
+## Building on Windows
 
-The repository may be located under OneDrive, where spaces and accented characters in directory names can interfere with ESP-IDF tools.
+The firmware was developed on Windows, with the repository stored under OneDrive.
 
-The existing `build.ps1` script mirrors the firmware into an ASCII-only staging directory:
+Because ESP-IDF build tools may have problems with accented characters and spaces in paths, `build.ps1` copies the firmware into an ASCII-only staging directory.
+
+Default locations:
 
 ```text
 C:\esp\edge-ecoacoustics-build\source
-```
-
-Build outputs are generated in:
-
-```text
 C:\esp\edge-ecoacoustics-build\build
 ```
+
+The script copies:
+
+- Firmware source files.
+- ESP-IDF CMake configuration.
+- `sdkconfig.defaults`.
+- `partitions.csv`.
+- The three tinyCLAP model assets.
+
+### Prepare the staging directory
 
 From the repository root:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File firmware/esp32s3/build.ps1
+.\firmware\esp32s3\build.ps1 -Action Prepare
 ```
 
-The script synchronizes the source files and runs the build. The build does not flash the device.
+This copies the necessary files without compiling the firmware.
 
-The staged source contains its own generated `sdkconfig`, which preserves locally configured options across regular builds.
+### Configure Wi-Fi and MQTT
 
-## Local configuration
-
-Use the ESP-IDF terminal to open the staged firmware project:
+Open an ESP-IDF 6.0.2 terminal and run:
 
 ```powershell
 cd C:\esp\edge-ecoacoustics-build\source
 idf.py -B ..\build menuconfig
 ```
 
-Configure the following options under `Ecoacoustics Network`:
+Under `Ecoacoustics Network`, configure:
 
 - Wi-Fi SSID.
 - Wi-Fi password.
-- EMQX MQTT password.
+- MQTT password.
 
-The MQTT username is currently `eco`.
+Save the configuration before building.
 
-The firmware connects to:
+The resulting `sdkconfig` is stored in the staging directory and should not be committed to Git.
 
-```text
-x709811d.ala.eu-central-1.emqxsl.com:8883
+The MQTT broker URI, topic, and username are currently defined in `main/network.c`.
+
+To use another broker or device identifier, update those values and provide the appropriate CA certificate.
+
+### Compile
+
+Return to the repository root and run:
+
+```powershell
+.\firmware\esp32s3\build.ps1
 ```
 
-MQTT transport uses TLS and the bundled CA certificate.
+The script configures and builds the firmware.
 
-The current firmware uses fixed Wi-Fi credentials. Changing to a different SSID or password requires reconfiguring and rebuilding.
+Compilation does not automatically flash the device.
 
-## Memory and partition configuration
+### Flash the ESP32-S3
+
+From an ESP-IDF terminal:
+
+```powershell
+cd C:\esp\edge-ecoacoustics-build\source
+idf.py -B ..\build -p COM10 flash monitor
+```
+
+Replace `COM10` with the serial port used by your ESP32-S3.
+
+The firmware should initialize the model and Log-Mel frontend, connect to Wi-Fi, synchronize the clock, establish MQTT/TLS connectivity, and begin capturing audio.
+
+## Memory and partitions
 
 The project targets:
 
 - 16 MB Flash.
 - 8 MB octal PSRAM at 80 MHz.
-- Large factory application partition.
-- External PSRAM allocation for the mbedTLS connection.
+- 240 MHz CPU frequency.
+- External memory allocation for mbedTLS.
+- A custom partition table with a 12 MB factory application partition.
 
-The mbedTLS memory allocation strategy must be configured to use external SPIRAM, as validated during the Wi-Fi/MQTT integration.
+The memory and partition settings are defined in:
 
-Without this setting, the TLS connection previously failed because internal heap memory was insufficient.
+```text
+sdkconfig.defaults
+partitions.csv
+```
 
-The firmware currently does not use OTA updates.
+The large tensor arena and audio buffers are allocated in PSRAM.
 
-## MQTT telemetry
+External mbedTLS allocation is important because the project previously encountered internal heap limitations during TLS initialization.
 
-Topic:
+The current firmware does not implement OTA updates.
+
+## Network communication
+
+The network implementation is located in `main/network.c`.
+
+It provides:
+
+- Wi-Fi station connectivity.
+- Automatic reconnection after Wi-Fi disconnection.
+- NTP time synchronization.
+- MQTT over TLS.
+- Telemetry buffering using a FreeRTOS queue.
+- QoS 1 publication.
+
+The current MQTT topic is:
 
 ```text
 eco/esp32s3_01/indices
 ```
 
-QoS: 1.
+The default broker configuration uses EMQX Cloud Serverless.
 
-Messages are JSON objects containing:
+The firmware must have a valid Wi-Fi connection and synchronized system clock before establishing its initial MQTT connection.
 
-- `device`: device identifier.
-- `ts_ms`: UTC Unix timestamp in milliseconds.
-- `seq`: inference sequence number.
-- `bio`, `geo`, `antro`: CNN outputs.
-- `rms`: audio RMS.
-- `inference_ms`: inference duration.
-- `errors`: I2S error counter.
-- `overflows`: ring-buffer overflow counter.
-- `dropped`: telemetry drop counter.
+## MQTT telemetry
 
-The network module uses a FreeRTOS queue to avoid blocking the DSP task.
+Each measurement is published as a JSON object.
 
-The queue stores up to 32 measurements, corresponding to approximately 3.2 minutes of data. Long network outages may result in dropped measurements.
+Main fields:
 
-QoS 1 permits duplicate delivery. The downstream database should account for this when analyzing the time series.
+| Field | Description |
+|-------|-------------|
+| `device` | Device identifier |
+| `ts_ms` | UTC Unix timestamp in milliseconds |
+| `seq` | Measurement sequence number |
+| `bio` | Biophony index |
+| `geo` | Geophony index |
+| `antro` | Anthropophony/technophony index |
+| `rms` | Audio RMS |
+| `inference_ms` | PhiNet inference duration |
+| `errors` | Acquisition and processing error counter |
+| `overflows` | Reserved compatibility counter; currently zero |
+| `dropped` | Dropped telemetry counter |
 
-## Verified hardware behavior
+The message also contains nine groups of Top-3 prompt fields, with three prompts for each category.
 
-The following stages have been validated on the ESP32-S3:
+Naming convention:
 
-- Continuous I2S acquisition.
-- Log-Mel extraction with 299 frames per segment.
-- CNN float32 inference.
-- Wi-Fi connection.
-- NTP synchronization.
-- MQTT/TLS connection to EMQX Cloud.
-- JSON publication approximately every six seconds.
-- Message reception on Windows using Mosquitto.
+```text
+bio_top1_id
+bio_top1_cosine
+bio_top1_score
 
-The initial hardware tests reported zero I2S errors, zero ring-buffer overflows and zero telemetry drops.
+geo_top1_id
+geo_top1_cosine
+geo_top1_score
 
-Long-duration stability over 24 hours remains to be evaluated.
+antro_top1_id
+antro_top1_cosine
+antro_top1_score
+```
+
+The same naming pattern is used for `top2` and `top3`.
+
+Prompt IDs are zero-based and correspond to the order of entries in `model/text/prompts.txt`.
+
+The JSON field names and payload structure are preserved by the refactored firmware.
+
+## Telemetry buffering
+
+The network module uses a FreeRTOS queue with capacity for 32 measurements.
+
+Audio processing does not wait for each MQTT publication.
+
+If the queue becomes full, new telemetry may be dropped. The `dropped` counter records such losses and other publishing failures handled by the network module.
+
+MQTT uses QoS 1, which permits duplicate message delivery. Downstream processing should take this into account.
+
+Measurements are not persisted across power failures.
+
+## Monitoring stack
+
+The validated monitoring pipeline is:
+
+```text
+ESP32-S3
+   |
+ MQTT/TLS
+   |
+EMQX Cloud
+   |
+Telegraf
+   |
+InfluxDB
+   |
+Grafana
+```
+
+The system has been tested with real measurements published by the ESP32-S3 and visualized in Grafana.
+
+The dashboard can display Bio, Geo, and Antro time series, together with prompt-level information.
+
+## Verified behavior
+
+The following components have been validated on the ESP32-S3:
+
+- Six-second I2S acquisition.
+- Log-Mel extraction with 827 frames and 64 bands.
+- PhiNet INT8 inference.
+- Computation of Bio, Geo, and Antro indices.
+- Top-3 prompt scoring.
+- Wi-Fi connectivity and NTP synchronization.
+- MQTT/TLS publication.
+- Reception and storage through EMQX, Telegraf, and InfluxDB.
+- Visualization in Grafana.
+
+The model-generation pipeline has also reproduced the validated TFLite artifact with an identical SHA-256 hash using the original calibration data.
 
 ## Current limitations
 
-- Wi-Fi credentials are fixed at build time.
+- Audio acquisition is paused during processing.
+- Wi-Fi credentials are configured at build time.
+- Broker configuration is currently defined in source code.
 - Telemetry buffering is limited to 32 measurements.
-- MQTT delivery is not persisted across power failures.
-- No OTA update mechanism.
-- No deep sleep.
-- The 24-hour unattended deployment has not yet been validated.
+- Data is not persisted across power failures.
+- No OTA firmware update mechanism.
+- No deep sleep or power optimization.
+- Extended unattended stability testing remains to be completed.

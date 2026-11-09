@@ -1,163 +1,173 @@
-
 # Edge Ecoacoustics
 
-Ecoacoustic monitoring at the edge using an ESP32-S3, streaming audio processing and a compact CNN.
+Ecoacoustic monitoring on an ESP32-S3 using **tinyCLAP**, a quantized INT8 audio encoder, and acoustic indices inspired by the **Contrastive Ecoacoustic Indices (CEI)** methodology.
 
 ## Overview
 
-The system captures environmental audio and estimates three continuous ecoacoustic indices:
+Edge Ecoacoustics captures environmental audio and estimates three indices:
 
-- **Bio:** biophony
-- **Geo:** geophony
-- **Antro:** anthropophony, including technophony
+- **Bio:** biophony (sounds produced by living organisms).
+- **Geo:** geophony (sounds produced by natural abiotic sources).
+- **Antro:** anthropophony and technophony (human and technological sounds).
 
-The indices are independent values in [0, 1]. They are not calibrated probabilities and are not constrained to sum to 1.
+The ESP32-S3 processes audio locally and sends the results through MQTT/TLS to EMQX, Telegraf, InfluxDB, and Grafana.
 
-The current firmware processes audio continuously and produces one set of indices for each non-overlapping six-second window.
+## Methodology
 
-## System architecture
+The project uses the pretrained **PhiNet audio encoder from [tinyCLAP](https://github.com/fpaissan/tinyCLAP)** (Paissan & Farella, 2024), converted to INT8 TFLite for execution on the ESP32-S3.
 
-```text
-I2S microphone (48 kHz)
-        |
-      DMA
-        |
-  FreeRTOS ring buffer
-        |
- Streaming Log-Mel DSP
-        |
-  CNN float32 / TFLite Micro
-        |
- BIO / GEO / ANTRO
-        |
-   Wi-Fi + MQTT/TLS
-        |
-     EMQX Cloud
-        |
- Telegraf -> InfluxDB -> Grafana
-```
+The indices are inspired by **[Contrastive Ecoacoustic Indices (CEI)](https://github.com/ear-team/cei_package)** (Teytaut et al., 2026), which uses CLAP audio-text similarities to characterize soundscapes.
 
-The ESP32-S3 acquisition, inference and MQTT publication stages have been validated on hardware. Telegraf, InfluxDB and Grafana are the next integration stage and are not yet operational.
+Unlike the original CEI, this implementation:
 
-## Dataset
+- Combines anthropophony and technophony into one index (Antro).
+- Uses a weighted combination of the two highest prompt scores per category.
+- Calculates indices independently for each six-second segment, without temporal aggregation.
 
-The dataset contains 5,000 terrestrial recordings, each contributing one 60-second interval divided into ten non-overlapping six-second windows, for 50,000 labeled examples.
+The resulting indices are therefore **CEI-inspired, not identical to the original CEI**.
 
-Original recordings are stereo WAV files sampled at 48 kHz. The right channel is used for training-data preparation and pseudo-label generation.
+### Index calculation
 
-The dataset selection covers 30 recording sites and 24 hours of the day.
+For each segment, the audio embedding is compared with 41 text embeddings generated using CLAP 2022.
 
-Main files:
-
-- `data/recordings.csv`: selected recording manifest.
-- `data/recordings_clipping.csv`: clipping audit.
-- `data/cei_6s.csv`: CLAP-derived labels for the 50,000 windows.
-
-Original WAV files are not stored in Git.
-
-## Pseudo-label generation
-
-Pseudo-labels are derived from CLAP 2023 using prompts adapted from the Contrastive Ecoacoustic Indices methodology of Teytaut et al. (2026).
-
-For each category, similarity scores are rescaled using:
+Cosine similarities are scaled and converted to scores:
 
 ```python
-q = clip((similarity - 5) / 15, 0, 1)
+score = clip((cosine * logit_scale - 5) / 15, 0, 1)
+```
+
+Each category index is calculated from its two highest scores:
+
+```python
 index = 0.75 * top1 + 0.25 * top2
 ```
 
-Anthropophony and technophony prompts are combined into the Antro category.
+The indices range from 0 to 1 and are not calibrated probabilities. The firmware also reports the three highest-ranked prompts for each category.
 
-The three indices are independently computed for each six-second window. No temporal aggregation is performed on the device.
+## Architecture
 
-## Student model
+```text
+I2S microphone (44.1 kHz)
+           |
+     6 s audio capture
+           |
+      Log-Mel (827x64)
+           |
+      PhiNet INT8
+           |
+   Audio embedding (1024)
+           |
+   41 text similarities
+           |
+     Bio / Geo / Antro
+           |
+       MQTT/TLS
+           |
+       EMQX Cloud
+           |
+       Telegraf
+           |
+       InfluxDB
+           |
+        Grafana
+```
 
-The selected model is `cnn_logmel`:
+The firmware captures six seconds of audio, pauses acquisition during processing, and resumes capture after inference.
 
-- Input: 299 Log-Mel frames x 40 Mel bands.
-- Output: three float32 indices (`bio`, `geo`, `antro`).
-- Parameters: 5,403.
-- TFLite model: 25,540 bytes.
-- Validation macro MAE: 0.068134 against CLAP-derived pseudo-labels.
+### Hardware
 
-The ESP32-S3 uses TensorFlow Lite Micro, with the tensor arena allocated in PSRAM.
-
-Observed on-device inference latency is approximately 490 ms per six-second window.
-
-See `model/README.md` and `model/TRAINING.md`.
-
-## ESP32-S3 firmware
-
-Hardware:
-
-- ESP32-S3 with 16 MB Flash and 8 MB PSRAM.
-- I2S microphone at 48 kHz.
-- BCLK: GPIO 4.
-- WS: GPIO 5.
-- DIN: GPIO 6.
-- Left I2S slot.
-
-Firmware:
-
+- ESP32-S3 N16R8 (16 MB Flash, 8 MB PSRAM).
+- I2S microphone: BCLK GPIO 4, WS GPIO 5, DIN GPIO 6.
 - ESP-IDF 6.0.2.
-- Continuous I2S acquisition through DMA.
-- FreeRTOS ring buffer.
-- Streaming Log-Mel feature extraction.
-- CNN float32 inference every six seconds.
-- Wi-Fi connectivity and NTP clock synchronization.
-- MQTT/TLS publication to EMQX Cloud.
+- TensorFlow Lite Micro with a 6 MiB tensor arena in PSRAM.
 
-Each MQTT message includes the three indices, a UTC timestamp, sequence number, RMS, inference duration and error counters.
+## Model generation
 
-The device does not currently use deep sleep or periodic wake/sleep acquisition cycles.
+The pipeline uses three scripts in `model/`:
 
-See `firmware/esp32s3/README.md` for build and configuration instructions.
+- `build_audio.py`: exports and quantizes the PhiNet audio encoder.
+- `generate_text.py`: generates embeddings for the 41 text prompts.
+- `package_firmware.py`: prepares the model assets for the firmware.
 
-## Cloud communication
+### Requirements
 
-Broker: EMQX Cloud Serverless.
+Python 3.12.10 and the dependencies listed in `requirements.txt`:
 
-MQTT topic:
-
-```text
-eco/esp32s3_01/indices
-```
-
-Transport: MQTT over TLS, port 8883, QoS 1.
-
-The ESP32-S3 publishes one JSON message approximately every six seconds. Connectivity has been verified using Mosquitto clients on Windows.
-
-The remaining monitoring stack will use Telegraf, InfluxDB and Grafana on Windows, without Docker.
-
-## Project structure
-
-```text
-data/                  Dataset manifests and pseudo-labels
-dataset/               Recording selection and CLAP labeling
-firmware/esp32s3/      ESP32-S3 firmware and build tools
-model/                 Feature extraction, training and export
-results/               Figures and experiment results
-tests/                 Python tests
-```
-
-## Reproducibility
-
-Python dependencies:
-
-```bash
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 ```
 
-Tests:
+Download the pretrained checkpoints and place them in `model/checkpoints/`:
 
-```bash
-python -m unittest discover -s tests -v
+```text
+CLAP_weights_2022.pth
+phinet_alpha_1.50_beta_0.75_t0_6_N_7.ckpt
 ```
 
-Model and firmware artifacts are intentionally not all stored in Git. See the firmware README for required local files.
+The PhiNet checkpoint is available from the [tinyCLAP pretrained models](https://huggingface.co/fpaissan/tinyCLAP).
+
+### Generate the model
+
+```powershell
+python model/build_audio.py --audio-dir "path/to/wavs"
+```
+
+Calibration uses stereo WAV recordings sampled at 48 kHz, with at least 60 seconds per recording. The script uses the right audio channel and selects 40 recordings by default.
+
+### Generate text embeddings
+
+```powershell
+python model/generate_text.py
+```
+
+Prompts are defined in `model/text/prompts.txt`.
+
+### Prepare firmware assets
+
+```powershell
+python model/package_firmware.py --install
+```
+
+This generates or installs the required firmware assets:
+
+```text
+firmware/esp32s3/model/
+├── tinyclap_phinet_int8.tflite
+├── tinyclap_text_assets.bin
+└── tinyclap_mel_filters.bin
+```
+
+The model files and pretrained checkpoints are not included in Git.
+
+## Firmware
+
+The firmware requires ESP-IDF 6.0.2, the three model assets, and the MQTT/TLS CA certificate.
+
+From the repository root:
+
+```powershell
+.\firmware\esp32s3\build.ps1 -Action Prepare
+.\firmware\esp32s3\build.ps1
+```
+
+Wi-Fi and MQTT credentials must be configured locally using ESP-IDF `menuconfig`.
+
+See [firmware/esp32s3/README.md](firmware/esp32s3/README.md) for build, configuration, and flashing instructions.
+
+## Monitoring
+
+The ESP32-S3 publishes measurements through MQTT/TLS with QoS 1.
+
+**Topic:** `eco/esp32s3_01/indices`
+
+Each message contains the Bio, Geo, and Antro indices, timestamp, RMS, inference time, error counters, and Top-3 prompt information.
+
+The complete pipeline **ESP32-S3 → EMQX → Telegraf → InfluxDB → Grafana** has been tested with real device measurements.
 
 ## References
 
-- [Teytaut et al. (2026), Contrastive Ecoacoustic Indices](https://doi.org/10.1111/2041-210x.70369)
-- [Microsoft CLAP](https://github.com/microsoft/CLAP)
-- [ESP-IDF](https://docs.espressif.com/projects/esp-idf/)
+- Paissan, F., & Farella, E. (2024). [tinyCLAP: Distilling Contrastive Language-Audio Pretrained Models](https://doi.org/10.21437/Interspeech.2024-193). *Interspeech 2024*, 1685–1689. [Code](https://github.com/fpaissan/tinyCLAP).
+- Teytaut, Y., et al. (2026). [Contrastive ecoacoustic indices: Large-scale global soundscape characterization with contrastive inference](https://doi.org/10.1111/2041-210x.70369). *Methods in Ecology and Evolution*. [Code](https://github.com/ear-team/cei_package).
+- [Microsoft CLAP](https://github.com/microsoft/CLAP).

@@ -1,11 +1,31 @@
-numpy
-pandas
-soundfile
-torch
-msclap
-Unidecode
-matplotlib
-scikit-learn
-scipy
-joblib
-tensorflow
+
+# Edge Ecoacoustics
+# Ambiente de referencia: Python 3.12.10
+
+# Dados e processamento
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.17.1
+soundfile==0.14.0
+librosa==0.10.2.post1
+matplotlib==3.11.2
+scikit-learn==1.9.1
+joblib==1.6.0
+
+# CLAP e PhiNet
+torch==2.14.1
+torchaudio==2.11.0
+torchlibrosa==0.1.0
+transformers==4.57.6
+tokenizers==0.22.2
+micromind==0.2.1
+speechbrain==1.1.2
+torchinfo==1.8.0
+Unidecode==1.4.0
+
+# Conversao e validacao do modelo
+onnx==1.20.1
+onnxruntime==1.26.0
+onnx2tf==2.6.9
+tensorflow==2.21.0
+ai-edge-litert==2.1.2

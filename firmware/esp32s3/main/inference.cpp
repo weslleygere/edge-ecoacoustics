@@ -1,14 +1,4 @@
-/*
- * tinyCLAP INT8 + cosine similarity with 41 precomputed CLAP text vectors.
- *
- * Numeric validation mode:
- * - On the first real window, run one extra, deterministic INT8 input.
- * - Print an FNV1a checksum of the 1024 INT8 output bytes,
- *   Bio/Geo/Antro and top 3 prompt IDs/scores per category.
- * - Then run the normal real-audio inference and MQTT pipeline unchanged.
- *
- * Turn ECO_TINYCLAP_SELFTEST to 0 after validation.
- */
+/* tinyCLAP INT8 audio encoder and Bio/Geo/Antro scoring. */
 #include "inference.h"
 #include "feature.h"
 
@@ -25,13 +15,6 @@
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
 #include "tensorflow/lite/micro/schema/schema_generated.h"
-
-#define ECO_TINYCLAP_SELFTEST 1
-
-#if ECO_TINYCLAP_SELFTEST
-// Gerado por model/make_tinyclap_reference.py a partir do mesmo .tflite.
-#include "validation_reference.h"
-#endif
 
 namespace {
 constexpr size_t kArenaSize = 6 * 1024 * 1024;
@@ -105,17 +88,6 @@ static float clip01(float x)
     return x;
 }
 
-// Simple checksum over the exact INT8 output bytes, for PC/ESP comparison.
-static uint32_t embedding_fnv1a(const TfLiteTensor *output)
-{
-    uint32_t h = 2166136261u;
-    for (size_t i = 0; i < kEmbeddingSize; ++i) {
-        h ^= static_cast<uint8_t>(output->data.int8[i]);
-        h *= 16777619u;
-    }
-    return h;
-}
-
 static void insert_rank(PromptRank ranks[3], int prompt_id, float score)
 {
     for (size_t pos = 0; pos < 3; ++pos) {
@@ -184,100 +156,6 @@ static bool score_embedding(const TfLiteTensor *output,
     return true;
 }
 
-static void log_ranks(const char *prefix, const PromptRank ranks[3][3])
-{
-    static const char *names[3] = {"Bio", "Geo", "Antro"};
-    for (int g = 0; g < 3; ++g) {
-        ESP_LOGI(TAG,
-                 "%s TOP %s | %d=%.5f | %d=%.5f | %d=%.5f",
-                 prefix, names[g],
-                 ranks[g][0].id, (double)ranks[g][0].score,
-                 ranks[g][1].id, (double)ranks[g][1].score,
-                 ranks[g][2].id, (double)ranks[g][2].score);
-    }
-}
-
-#if ECO_TINYCLAP_SELFTEST
-// Quantifies backend differences over all 1024 INT8 embedding elements.
-// Both vectors use the same output zero point and scale, so cosine can be
-// computed on the zero-point-centered integer values.
-static void compare_reference_embedding(const TfLiteTensor *output)
-{
-    double sum_abs = 0.0;
-    double sum_sq_err = 0.0;
-    double dot = 0.0;
-    double norm_esp_sq = 0.0;
-    double norm_pc_sq = 0.0;
-    unsigned equal = 0, le1 = 0, le3 = 0, max_abs = 0;
-    const int zero = output->params.zero_point;
-
-    for (size_t i = 0; i < kEmbeddingSize; ++i) {
-        const int esp = static_cast<int>(output->data.int8[i]);
-        const int pc = static_cast<int>(kReferenceEmbedding[i]);
-        const unsigned diff = static_cast<unsigned>(esp >= pc ? esp - pc : pc - esp);
-        if (diff == 0) ++equal;
-        if (diff <= 1) ++le1;
-        if (diff <= 3) ++le3;
-        if (diff > max_abs) max_abs = diff;
-        sum_abs += static_cast<double>(diff);
-        sum_sq_err += static_cast<double>(diff) * diff;
-        const double a = esp - zero;
-        const double b = pc - zero;
-        dot += a * b;
-        norm_esp_sq += a * a;
-        norm_pc_sq += b * b;
-    }
-    const double cosine = (norm_esp_sq > 0 && norm_pc_sq > 0)
-        ? dot / std::sqrt(norm_esp_sq * norm_pc_sq) : 0.0;
-    ESP_LOGI(TAG, "VALIDATION DIFF | equal=%u/1024 | abs_le_1=%u | abs_le_3=%u | max_abs=%u",
-             equal, le1, le3, max_abs);
-    ESP_LOGI(TAG, "VALIDATION DIFF | MAE_INT8=%.4f | RMSE_INT8=%.4f | cosine=%.8f",
-             sum_abs / kEmbeddingSize,
-             std::sqrt(sum_sq_err / kEmbeddingSize), cosine);
-}
-
-// This verifies the TFLite and text-score stages independently of the DSP.
-// IMPORTANT: IDs are zero-based indexes into prompts.txt.
-static bool selftest_backend()
-{
-    TfLiteTensor *input = interpreter->input(0);
-    TfLiteTensor *output = interpreter->output(0);
-    const size_t n = ECO_FRAMES_PER_SEGMENT * ECO_MEL_BANDS;
-    for (size_t i = 0; i < n; ++i) {
-        const int value = -100 + static_cast<int>((i * 37u + 13u) % 160u);
-        input->data.int8[i] = static_cast<int8_t>(value);
-    }
-
-    ESP_LOGI(TAG, "VALIDATION start | deterministic INT8 input | elements=%u",
-             (unsigned)n);
-    const int64_t begin = esp_timer_get_time();
-    const TfLiteStatus status = interpreter->Invoke();
-    const int64_t elapsed = esp_timer_get_time() - begin;
-    if (status != kTfLiteOk) {
-        ESP_LOGE(TAG, "VALIDATION Invoke failed");
-        return false;
-    }
-    float indices[3];
-    float norm = 0.0f;
-    PromptRank ranks[3][3];
-    if (!score_embedding(output, indices, ranks, &norm)) {
-        ESP_LOGE(TAG, "VALIDATION score failed");
-        return false;
-    }
-    ESP_LOGI(TAG, "VALIDATION FNV1A=%08x | first8=%d,%d,%d,%d,%d,%d,%d,%d",
-             (unsigned)embedding_fnv1a(output),
-             (int)output->data.int8[0], (int)output->data.int8[1],
-             (int)output->data.int8[2], (int)output->data.int8[3],
-             (int)output->data.int8[4], (int)output->data.int8[5],
-             (int)output->data.int8[6], (int)output->data.int8[7]);
-    compare_reference_embedding(output);
-    ESP_LOGI(TAG, "VALIDATION indices | Bio=%.6f Geo=%.6f Antro=%.6f | norm=%.5f | ms=%.1f",
-             (double)indices[0], (double)indices[1], (double)indices[2],
-             (double)norm, (double)elapsed / 1000.0);
-    log_ranks("VALIDATION", ranks);
-    return true;
-}
-#endif
 }  // namespace
 
 extern "C" esp_err_t eco_inference_init(void)
@@ -362,16 +240,6 @@ extern "C" esp_err_t eco_inference_run_with_top(
     TfLiteTensor *input = interpreter->input(0);
     TfLiteTensor *output = interpreter->output(0);
 
-#if ECO_TINYCLAP_SELFTEST
-    static bool selftest_done = false;
-    if (!selftest_done) {
-        // Runs in the normal processing task, rather than app_main.
-        // A second Invoke will process the actual captured audio below.
-        if (!selftest_backend()) return ESP_FAIL;
-        selftest_done = true;
-    }
-#endif
-
     const float in_scale = input->params.scale;
     const int in_zero = input->params.zero_point;
     const size_t n = ECO_FRAMES_PER_SEGMENT * ECO_MEL_BANDS;
@@ -410,10 +278,6 @@ extern "C" esp_err_t eco_inference_run_with_top(
         }
     }
 
-    ESP_LOGI(TAG, "INT8 | Bio=%.4f Geo=%.4f Antro=%.4f | inference_ms=%.2f",
-             (double)indices[0], (double)indices[1], (double)indices[2],
-             (double)*inference_us / 1000.0);
-    log_ranks("LIVE", ranks);
     return ESP_OK;
 }
 
