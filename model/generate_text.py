@@ -26,12 +26,19 @@ def main():
     parser.add_argument("--reference", type=Path, help="NPY anterior para comparação numérica")
     args = parser.parse_args()
 
-    lines = [line.strip() for line in PROMPTS.read_text(encoding="utf-8-sig").splitlines() if line.strip()]
-    if len(lines) != 41:
-        raise ValueError(f"Esperados 41 prompts; encontrados {len(lines)}")
-    prompts = [unidecode(line.lower().split(" - ")[-1]) for line in lines]
-    if any(not prompt for prompt in prompts):
-        raise ValueError("Prompt vazio")
+    lines = [
+        line.strip()
+        for line in PROMPTS.read_text(encoding="utf-8-sig").splitlines()
+        if line.strip()
+    ]
+
+    prompts = [
+        unidecode(line.lower().split(" - ")[-1])
+        for line in lines
+    ]
+
+    if not prompts or any(not prompt.strip() for prompt in prompts):
+        raise ValueError("Arquivo de prompts vazio ou inválido")
 
     checkpoint = torch.load(CHECKPOINT, map_location="cpu", weights_only=True, mmap=True)
     text_state = {
@@ -74,9 +81,6 @@ def main():
             results.append(F.normalize(projection(cls), dim=-1).cpu())
 
     embeddings = torch.cat(results).numpy().astype(np.float32)
-    if embeddings.shape != (41, 1024) or not np.isfinite(embeddings).all():
-        raise RuntimeError("Embeddings inválidos")
-
     norms = np.linalg.norm(embeddings, axis=1)
     if not np.allclose(norms, 1, atol=1e-5):
         raise RuntimeError("Embeddings não normalizados")

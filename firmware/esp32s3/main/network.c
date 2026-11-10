@@ -336,7 +336,7 @@ static void network_task(void *arg)
             for (int k = 0; k < ECO_TOP_K; ++k) {
                 const eco_prompt_rank_t *p = &item.top[g][k];
 
-                if (p->id >= 41) {
+                if (p->id >= eco_inference_prompt_count()) {
                     valid = false;
                     break;
                 }

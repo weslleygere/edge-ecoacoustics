@@ -16,6 +16,9 @@ typedef struct {
     float score;   // Original clipped score in [0,1].
 } eco_prompt_rank_t;
 
+// Returns the number of prompts in model/prompts.txt.
+uint32_t eco_inference_prompt_count(void);
+
 // Persistent tinyCLAP INT8 interpreter, with 6 MiB tensor arena in PSRAM.
 esp_err_t eco_inference_init(void);
 

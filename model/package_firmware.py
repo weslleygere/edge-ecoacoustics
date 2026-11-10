@@ -18,7 +18,6 @@ from pathlib import Path
 import librosa
 import numpy as np
 import torch
-from unidecode import unidecode
 
 
 ROOT = Path(__file__).resolve().parent
@@ -55,28 +54,21 @@ def make_assets():
         if line.strip()
     ]
 
-    if len(prompts) != 41:
+    num_prompts = len(prompts)
+
+    if not 3 <= num_prompts <= 256:
         raise ValueError(
-            f"Expected 41 prompts, got {len(prompts)}"
+            f"Invalid number of prompts: {num_prompts} "
+            "(expected 3 to 256)"
         )
 
     labels = [
-        p.split(" - ")[-1].strip()
-        for p in prompts
-    ]
-
-    effective = [
-        unidecode(label.lower())
-        for label in labels
+        prompt.split(" - ")[-1].strip()
+        for prompt in prompts
     ]
 
     if any(not label for label in labels):
         raise ValueError("Empty prompt description")
-
-    if len(set(effective)) != 41:
-        raise ValueError(
-            "Duplicate effective prompt descriptions"
-        )
 
     # Categorias
     mapping = {
@@ -90,7 +82,7 @@ def make_assets():
     masks = bytearray()
 
     for prompt in prompts:
-        category = prompt.split(" - ", 1)[0].lower()
+        category = prompt.split(" - ", 1)[0].strip().lower()
 
         if category not in mapping:
             raise ValueError(
@@ -104,9 +96,10 @@ def make_assets():
         for bit in (1, 2, 4)
     ]
 
-    if min(category_counts) < 2:
+    if min(category_counts) < 3:
         raise ValueError(
-            f"Invalid prompt categories: {category_counts}"
+            "At least 3 prompts are required for "
+            f"each category (Bio/Geo/Antro): {category_counts}"
         )
 
     # Embeddings textuais
@@ -116,13 +109,14 @@ def make_assets():
     )
 
     if (
-        text.shape != (41, 1024)
+        text.shape != (num_prompts, 1024)
         or text.dtype != np.float32
         or not np.isfinite(text).all()
     ):
         raise ValueError(
-            f"Invalid text embedding array: "
-            f"{text.shape}, {text.dtype}"
+            f"Invalid text embeddings: "
+            f"shape={text.shape}, dtype={text.dtype}; "
+            f"expected ({num_prompts}, 1024) float32"
         )
 
     norms = np.linalg.norm(
@@ -153,12 +147,12 @@ def make_assets():
     if not np.isfinite(logit_scale) or logit_scale <= 0:
         raise ValueError("Invalid logit scale")
 
-    # Binário de embeddings
+    # Binario de embeddings
     text_bin = bytearray(
         struct.pack(
             "<4sIIf",
             b"ECO1",
-            41,
+            num_prompts,
             1024,
             logit_scale
         )
@@ -173,7 +167,12 @@ def make_assets():
         text.tobytes(order="C")
     )
 
-    if len(text_bin) != 167996:
+    expected_size = (
+        ((16 + num_prompts + 3) // 4) * 4
+        + num_prompts * 1024 * 4
+    )
+
+    if len(text_bin) != expected_size:
         raise ValueError(
             "Unexpected text asset size"
         )
@@ -221,7 +220,8 @@ def make_assets():
         )
 
     print(
-        f"Prompts Bio/Geo/Antro: {category_counts}; "
+        f"Prompts: {num_prompts} | "
+        f"Bio/Geo/Antro: {category_counts} | "
         f"exp(logit_scale)={logit_scale:.8f}"
     )
 
@@ -260,7 +260,7 @@ def publish(files, install):
         )
         return
 
-    # Substituição atômica por arquivo
+    # Substituicao atomica por arquivo
     for destination, contents in files.items():
         destination.parent.mkdir(
             parents=True,
