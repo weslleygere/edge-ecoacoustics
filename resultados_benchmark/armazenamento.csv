@@ -1,0 +1,7 @@
+﻿item,bytes,KiB,MiB,origem
+Modelo TFLite,4700992,4590.81,4.483,Arquivo TFLite
+Firmware (.bin),6145168,6001.14,5.86,Imagem de aplicação
+Tensor Arena reservada,6291456,6144.0,6.0,Configuração do código
+Tensor Arena usada,,,,Log de inicialização
+Buffer PCM,,,,BENCH_BUFFERS
+Buffer Log-Mel,,,,BENCH_BUFFERS

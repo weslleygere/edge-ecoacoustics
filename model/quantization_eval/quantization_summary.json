@@ -1,0 +1,77 @@
+{
+  "description": "Fidelidade FP32 vs TFLite INT8 no computador, não acurácia supervisionada",
+  "segment_count": 500,
+  "unique_wav_count": 104,
+  "seed": 42,
+  "input_sample_rate": 48000,
+  "model_sample_rate": 44100,
+  "channel": "right (índice 1)",
+  "duration_seconds": 6,
+  "logmel_shape": [
+    827,
+    64
+  ],
+  "text_prompt_count": 40,
+  "embedding_cosine": {
+    "mean": 0.9904611909389496,
+    "median": 0.9917071461677551,
+    "min": 0.8814562559127808,
+    "max": 0.997974157333374,
+    "p95": 0.9972611695528031
+  },
+  "embedding_mae": {
+    "mean": 0.7614749162075204,
+    "median": 0.7364979033718555,
+    "min": 0.3653011346432322,
+    "max": 3.917235060769599,
+    "p95": 1.0979161494498828
+  },
+  "input_clipped_fraction": {
+    "mean": 7.674576783555017e-05,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.009862454655380895,
+    "p95": 3.778718258766626e-05
+  },
+  "dominant_agreement": 0.988,
+  "per_category": {
+    "bio": {
+      "index_absolute_error": {
+        "mean": 0.025862291194692282,
+        "median": 0.02018186477434941,
+        "min": 0.0,
+        "max": 0.12808363315227778,
+        "p95": 0.06898033031759383
+      },
+      "top1_raw_cosine_agreement": 0.956
+    },
+    "geo": {
+      "index_absolute_error": {
+        "mean": 0.013565977389280745,
+        "median": 0.010608376537915853,
+        "min": 0.0,
+        "max": 0.15284363443647636,
+        "p95": 0.036508050842093104
+      },
+      "top1_raw_cosine_agreement": 0.978
+    },
+    "antro": {
+      "index_absolute_error": {
+        "mean": 0.0002631240442221345,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.046563559126150275,
+        "p95": 0.0
+      },
+      "top1_raw_cosine_agreement": 0.9
+    }
+  },
+  "model_files": {
+    "checkpoint": "C:\\Users\\weslleygsantos\\OneDrive - Fundação para Inovações Tecnológicas - FITec\\Documentos\\edge-ecoacoustics\\model\\checkpoints\\phinet_alpha_1.50_beta_0.75_t0_6_N_7.ckpt",
+    "checkpoint_sha256": "9ee541d799c106510def4e228818e3cef000bb1e130557c292b23cd94798d88b",
+    "tflite": "C:\\Users\\weslleygsantos\\OneDrive - Fundação para Inovações Tecnológicas - FITec\\Documentos\\edge-ecoacoustics\\model\\generated\\tinyclap_phinet_int8.tflite",
+    "tflite_sha256": "153bffa4f6f01cfdc3ceba30bdb1046bdc2653b2a04d473a7fe4011a3f98a68c",
+    "text_assets": "C:\\Users\\weslleygsantos\\OneDrive - Fundação para Inovações Tecnológicas - FITec\\Documentos\\edge-ecoacoustics\\firmware\\esp32s3\\model\\tinyclap_text_assets.bin",
+    "text_assets_sha256": "434b99844eef6af275df743a9621603e99f7fe6825c8554d95bfcb9ea6e760a4"
+  }
+}

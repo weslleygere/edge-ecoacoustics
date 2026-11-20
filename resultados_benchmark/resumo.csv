@@ -1,0 +1,8 @@
+﻿metrica,descricao,n,media_ms,desvio_ms,min_ms,mediana_ms,p95_ms,max_ms
+capture_ms,Captura I2S,30,6001.252,0.07,6001.214,6001.238,6001.265,6001.62
+dsp_ms,Log-Mel (DSP),30,7995.821,16.433,7979.199,7992.026,8015.941,8065.52
+invoke_ms,Inferência PhiNet,30,7058.534,12.468,7041.873,7055.462,7080.51,7089.115
+run_extra_ms,Outros (inferência),30,75.327,0.849,74.456,75.313,76.628,78.473
+process_ms,Processamento total,30,15129.706,20.13,15101.323,15125.993,15156.423,15196.268
+cycle_ms,Ciclo medido,30,21130.987,20.119,21102.585,21127.262,21157.682,21197.527
+interval_ms,Intervalo entre capturas,29,21145.005,21.54,21116.38,21139.709,21171.473,21221.568

@@ -42,6 +42,21 @@ static uint32_t windows = 0;
 static int16_t *pcm_buffer = NULL;
 static eco_features_t *feature_buffer = NULL;
 
+/* BENCH: memoria interna e PSRAM (bytes livres e minimo desde o boot). */
+static void bench_memory(const char *phase)
+{
+    const uint32_t internal = MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT;
+    const uint32_t psram = MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT;
+    ESP_LOGI(TAG,
+        "BENCH_MEM,phase=%s,internal_free=%u,internal_min=%u,psram_free=%u,psram_min=%u",
+        phase,
+        (unsigned)heap_caps_get_free_size(internal),
+        (unsigned)heap_caps_get_minimum_free_size(internal),
+        (unsigned)heap_caps_get_free_size(psram),
+        (unsigned)heap_caps_get_minimum_free_size(psram));
+}
+
+
 static esp_err_t capture_segment(int16_t *pcm, double *rms, int64_t *end_us)
 {
     esp_err_t err = i2s_channel_enable(i2s_rx);
@@ -125,12 +140,20 @@ static void acquisition_task(void *arg)
     int16_t *pcm = pcm_buffer;
     eco_features_t *features = feature_buffer;
 
+    int64_t last_cycle_start = 0;
     while (true) {
+        const int64_t cycle_start = esp_timer_get_time();
+        const double interval_ms = last_cycle_start == 0 ? -1.0 :
+            (double)(cycle_start - last_cycle_start) / 1000.0;
+        last_cycle_start = cycle_start;
         double rms = 0.0;
         int64_t end_us = 0;
 
         // Captura de 6 segundos.
+        const int64_t capture_start = esp_timer_get_time();
         esp_err_t err = capture_segment(pcm, &rms, &end_us);
+        const double capture_ms =
+            (double)(esp_timer_get_time() - capture_start) / 1000.0;
 
         if (err != ESP_OK) {
             ++audio_errors;
@@ -164,6 +187,7 @@ static void acquisition_task(void *arg)
         eco_prompt_rank_t top[ECO_PROMPT_GROUPS][ECO_TOP_K] = {0};
         int64_t inference_us = 0;
 
+        const int64_t run_start = esp_timer_get_time();
         err = eco_inference_run_with_top(
             &features->logmel[0][0],
             indices,
@@ -181,7 +205,28 @@ static void acquisition_task(void *arg)
             break;
         }
 
+        const double run_ms =
+            (double)(esp_timer_get_time() - run_start) / 1000.0;
+        const double process_ms =
+            (double)(esp_timer_get_time() - start_dsp) / 1000.0;
+        const double cycle_ms =
+            (double)(esp_timer_get_time() - cycle_start) / 1000.0;
+        const double invoke_ms = (double)inference_us / 1000.0;
+        /* run_extra inclui quantizacao, indices e overhead da funcao. */
+        const double run_extra_ms = run_ms - invoke_ms;
         ++windows;
+
+        if (windows <= 30) {
+            ESP_LOGI(TAG,
+                "BENCH,seq=%" PRIu32
+                ",capture_ms=%.3f,dsp_ms=%.3f,invoke_ms=%.3f"
+                ",run_extra_ms=%.3f,process_ms=%.3f,cycle_ms=%.3f,interval_ms=%.3f",
+                windows, capture_ms, dsp_ms, invoke_ms,
+                run_extra_ms, process_ms, cycle_ms, interval_ms);
+            if (windows == 1 || windows == 30) {
+                bench_memory(windows == 1 ? "window_1" : "window_30");
+            }
+        }
 
         ESP_LOGI(
             TAG,
@@ -230,10 +275,12 @@ static void acquisition_task(void *arg)
 void app_main(void)
 {
     ESP_LOGI(TAG, "Edge Ecoacoustics - tinyCLAP INT8");
+    bench_memory("boot");
 
     // Inicializar o modelo antes das demais alocacoes em PSRAM.
     ESP_ERROR_CHECK(eco_inference_init());
     ESP_ERROR_CHECK(eco_features_init());
+    bench_memory("model_ready");
 
     pcm_buffer = (int16_t *)heap_caps_aligned_alloc(
         16,
@@ -248,6 +295,10 @@ void app_main(void)
     );
 
     assert(pcm_buffer != NULL && feature_buffer != NULL);
+    ESP_LOGI(TAG, "BENCH_BUFFERS,pcm_bytes=%u,logmel_bytes=%u",
+        (unsigned)(ECO_SEGMENT_SAMPLES * sizeof(int16_t)),
+        (unsigned)sizeof(eco_features_t));
+    bench_memory("buffers_ready");
 
     // Configuracao I2S.
     i2s_chan_config_t chan_cfg =
@@ -285,6 +336,7 @@ void app_main(void)
 
     // Rede inicializada apos reservar os buffers de audio.
     ESP_ERROR_CHECK(eco_network_init());
+    bench_memory("network_started");
 
     BaseType_t result = xTaskCreate(
         acquisition_task,

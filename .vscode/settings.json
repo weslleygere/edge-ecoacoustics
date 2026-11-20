@@ -15,7 +15,7 @@
     "cmake.buildDirectory": "C:/esp/edge-ecoacoustics-build/build",
     "cmake.configureOnOpen": false,
     "cmake.autoDetectSourceDirectory": false,
-    "idf.port": "COM10",
+    "idf.port": "COM3",
     "idf.flashType": "UART",
     "clangd.path": "C:\\Espressif\\tools\\esp-clang\\esp-20.1.1_20250829\\esp-clang\\bin\\clangd.exe",
     "clangd.arguments": [

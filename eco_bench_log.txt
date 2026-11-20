@@ -1,0 +1,79 @@
+I (23235) eco_audio: BENCH,seq=1,capture_ms=6001.223,dsp_ms=8065.520,invoke_ms=7054.802,run_extra_ms=75.921,process_ms=15196.268,cycle_ms=21197.527,interval_ms=-1.000
+I (23245) eco_audio: BENCH_MEM,phase=window_1,internal_free=192144,internal_min=186660,psram_free=1325476,psram_min=1315852
+I (23255) eco_audio: Window 1 | Bio=0.1657 Geo=0.2509 Antro=0.0000 | DSP=8065.52 ms | PhiNet=7054.80 ms
+I (44415) eco_audio: BENCH,seq=2,capture_ms=6001.234,dsp_ms=8003.414,invoke_ms=7075.175,run_extra_ms=75.600,process_ms=15154.214,cycle_ms=21155.478,interval_ms=21221.568
+I (44425) eco_audio: Window 2 | Bio=0.2025 Geo=0.2528 Antro=0.0000 | DSP=8003.41 ms | PhiNet=7075.18 ms
+I (57285) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (65555) eco_audio: BENCH,seq=3,capture_ms=6001.241,dsp_ms=7992.024,invoke_ms=7058.248,run_extra_ms=74.569,process_ms=15124.865,cycle_ms=21126.133,interval_ms=21168.933
+I (65565) eco_audio: Window 3 | Bio=0.1845 Geo=0.2162 Antro=0.0000 | DSP=7992.02 ms | PhiNet=7058.25 ms
+I (86705) eco_audio: BENCH,seq=4,capture_ms=6001.230,dsp_ms=8011.696,invoke_ms=7051.431,run_extra_ms=74.720,process_ms=15137.873,cycle_ms=21139.139,interval_ms=21139.709
+I (86715) eco_audio: Window 4 | Bio=0.0956 Geo=0.4995 Antro=0.0000 | DSP=8011.70 ms | PhiNet=7051.43 ms
+I (102315) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (107875) eco_audio: BENCH,seq=5,capture_ms=6001.235,dsp_ms=7995.044,invoke_ms=7074.205,run_extra_ms=78.473,process_ms=15147.747,cycle_ms=21149.010,interval_ms=21152.646
+I (107875) eco_audio: Window 5 | Bio=0.0248 Geo=0.1805 Antro=0.0000 | DSP=7995.04 ms | PhiNet=7074.20 ms
+I (129015) eco_audio: BENCH,seq=6,capture_ms=6001.239,dsp_ms=7994.988,invoke_ms=7053.530,run_extra_ms=75.606,process_ms=15124.150,cycle_ms=21125.414,interval_ms=21162.629
+I (129015) eco_audio: Window 6 | Bio=0.1440 Geo=0.1854 Antro=0.0000 | DSP=7994.99 ms | PhiNet=7053.53 ms
+I (147335) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (150165) eco_audio: BENCH,seq=7,capture_ms=6001.238,dsp_ms=7995.967,invoke_ms=7069.011,run_extra_ms=75.710,process_ms=15140.711,cycle_ms=21141.983,interval_ms=21139.055
+I (150175) eco_audio: Window 7 | Bio=0.2690 Geo=0.0705 Antro=0.0126 | DSP=7995.97 ms | PhiNet=7069.01 ms
+I (162275) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (171335) eco_audio: BENCH,seq=8,capture_ms=6001.225,dsp_ms=7994.634,invoke_ms=7089.115,run_extra_ms=74.456,process_ms=15158.231,cycle_ms=21159.485,interval_ms=21155.593
+I (171345) eco_audio: Window 8 | Bio=0.1596 Geo=0.0920 Antro=0.1144 | DSP=7994.63 ms | PhiNet=7089.11 ms
+I (192265) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (192455) eco_audio: BENCH,seq=9,capture_ms=6001.237,dsp_ms=7981.058,invoke_ms=7046.776,run_extra_ms=74.567,process_ms=15102.425,cycle_ms=21103.689,interval_ms=21173.167
+I (192465) eco_audio: Window 9 | Bio=0.2764 Geo=0.1586 Antro=0.0000 | DSP=7981.06 ms | PhiNet=7046.78 ms
+I (207305) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (213615) eco_audio: BENCH,seq=10,capture_ms=6001.236,dsp_ms=8015.419,invoke_ms=7048.428,run_extra_ms=74.489,process_ms=15138.360,cycle_ms=21139.630,interval_ms=21117.395
+I (213615) eco_audio: Window 10 | Bio=0.2438 Geo=0.1262 Antro=0.0000 | DSP=8015.42 ms | PhiNet=7048.43 ms
+I (234745) eco_audio: BENCH,seq=11,capture_ms=6001.251,dsp_ms=7992.028,invoke_ms=7048.835,run_extra_ms=75.526,process_ms=15116.413,cycle_ms=21117.692,interval_ms=21153.481
+I (234745) eco_audio: Window 11 | Bio=0.2334 Geo=0.0483 Antro=0.0612 | DSP=7992.03 ms | PhiNet=7048.84 ms
+I (252335) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (255885) eco_audio: BENCH,seq=12,capture_ms=6001.242,dsp_ms=8006.496,invoke_ms=7050.242,run_extra_ms=74.481,process_ms=15131.244,cycle_ms=21132.515,interval_ms=21131.486
+I (255895) eco_audio: Window 12 | Bio=0.2550 Geo=0.0777 Antro=0.0000 | DSP=8006.50 ms | PhiNet=7050.24 ms
+I (267275) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (277005) eco_audio: BENCH,seq=13,capture_ms=6001.234,dsp_ms=7984.230,invoke_ms=7041.873,run_extra_ms=75.194,process_ms=15101.323,cycle_ms=21102.585,interval_ms=21146.359
+I (277005) eco_audio: Window 13 | Bio=0.2918 Geo=0.1039 Antro=0.0000 | DSP=7984.23 ms | PhiNet=7041.87 ms
+I (297255) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (298155) eco_audio: BENCH,seq=14,capture_ms=6001.236,dsp_ms=8001.659,invoke_ms=7059.529,run_extra_ms=74.787,process_ms=15135.999,cycle_ms=21137.261,interval_ms=21116.380
+I (298165) eco_audio: Window 14 | Bio=0.2716 Geo=0.0574 Antro=0.0000 | DSP=8001.66 ms | PhiNet=7059.53 ms
+I (312305) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (319285) eco_audio: BENCH,seq=15,capture_ms=6001.620,dsp_ms=7979.199,invoke_ms=7058.622,run_extra_ms=76.975,process_ms=15114.822,cycle_ms=21116.473,interval_ms=21151.049
+I (319295) eco_audio: Window 15 | Bio=0.1286 Geo=0.2521 Antro=0.0000 | DSP=7979.20 ms | PhiNet=7058.62 ms
+I (340425) eco_audio: BENCH,seq=16,capture_ms=6001.214,dsp_ms=7999.718,invoke_ms=7047.581,run_extra_ms=74.747,process_ms=15122.070,cycle_ms=21123.320,interval_ms=21134.727
+I (340435) eco_audio: Window 16 | Bio=0.2110 Geo=0.1501 Antro=0.0000 | DSP=7999.72 ms | PhiNet=7047.58 ms
+I (361595) eco_audio: BENCH,seq=17,capture_ms=6001.261,dsp_ms=8016.369,invoke_ms=7056.123,run_extra_ms=76.204,process_ms=15148.721,cycle_ms=21150.015,interval_ms=21137.331
+I (361595) eco_audio: Window 17 | Bio=0.2302 Geo=0.1362 Antro=0.0000 | DSP=8016.37 ms | PhiNet=7056.12 ms
+I (372285) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (382735) eco_audio: BENCH,seq=18,capture_ms=6001.245,dsp_ms=7988.446,invoke_ms=7063.210,run_extra_ms=75.441,process_ms=15127.120,cycle_ms=21128.391,interval_ms=21163.866
+I (382735) eco_audio: Window 18 | Bio=0.0047 Geo=0.1218 Antro=0.1200 | DSP=7988.45 ms | PhiNet=7063.21 ms
+I (402355) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (403865) eco_audio: BENCH,seq=19,capture_ms=6001.269,dsp_ms=7988.937,invoke_ms=7050.298,run_extra_ms=75.402,process_ms=15114.662,cycle_ms=21115.964,interval_ms=21142.191
+I (403865) eco_audio: Window 19 | Bio=0.1091 Geo=0.0914 Antro=0.1892 | DSP=7988.94 ms | PhiNet=7050.30 ms
+I (425025) eco_audio: BENCH,seq=20,capture_ms=6001.230,dsp_ms=7994.174,invoke_ms=7075.153,run_extra_ms=74.591,process_ms=15143.940,cycle_ms=21145.195,interval_ms=21129.810
+I (425025) eco_audio: Window 20 | Bio=0.0930 Geo=0.0646 Antro=0.1456 | DSP=7994.17 ms | PhiNet=7075.15 ms
+I (446155) eco_audio: BENCH,seq=21,capture_ms=6001.232,dsp_ms=7983.966,invoke_ms=7059.881,run_extra_ms=75.160,process_ms=15119.032,cycle_ms=21120.290,interval_ms=21159.044
+I (446165) eco_audio: Window 21 | Bio=0.0000 Geo=0.1342 Antro=0.1722 | DSP=7983.97 ms | PhiNet=7059.88 ms
+I (462325) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (467305) eco_audio: BENCH,seq=22,capture_ms=6001.236,dsp_ms=7988.516,invoke_ms=7067.466,run_extra_ms=75.481,process_ms=15131.487,cycle_ms=21132.748,interval_ms=21134.441
+I (467305) eco_audio: Window 22 | Bio=0.0000 Geo=0.1971 Antro=0.1482 | DSP=7988.52 ms | PhiNet=7067.47 ms
+I (488435) eco_audio: BENCH,seq=23,capture_ms=6001.239,dsp_ms=7998.477,invoke_ms=7044.744,run_extra_ms=75.674,process_ms=15118.920,cycle_ms=21120.185,interval_ms=21146.594
+I (488445) eco_audio: Window 23 | Bio=0.0000 Geo=0.0106 Antro=0.2096 | DSP=7998.48 ms | PhiNet=7044.74 ms
+I (509565) eco_audio: BENCH,seq=24,capture_ms=6001.251,dsp_ms=7984.071,invoke_ms=7052.843,run_extra_ms=74.668,process_ms=15111.605,cycle_ms=21112.883,interval_ms=21133.996
+I (509565) eco_audio: Window 24 | Bio=0.0000 Geo=0.0000 Antro=0.1080 | DSP=7984.07 ms | PhiNet=7052.84 ms
+I (522295) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (530685) eco_audio: BENCH,seq=25,capture_ms=6001.237,dsp_ms=7982.400,invoke_ms=7046.788,run_extra_ms=75.707,process_ms=15104.920,cycle_ms=21106.184,interval_ms=21126.738
+I (530685) eco_audio: Window 25 | Bio=0.0000 Geo=0.0000 Antro=0.4114 | DSP=7982.40 ms | PhiNet=7046.79 ms
+I (551825) eco_audio: BENCH,seq=26,capture_ms=6001.241,dsp_ms=7991.279,invoke_ms=7057.994,run_extra_ms=75.224,process_ms=15124.522,cycle_ms=21125.787,interval_ms=21120.014
+I (551825) eco_audio: Window 26 | Bio=0.0000 Geo=0.0000 Antro=0.3530 | DSP=7991.28 ms | PhiNet=7057.99 ms
+I (567325) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (572985) eco_audio: BENCH,seq=27,capture_ms=6001.237,dsp_ms=7986.799,invoke_ms=7082.312,run_extra_ms=75.724,process_ms=15144.859,cycle_ms=21146.121,interval_ms=21139.635
+I (572985) eco_audio: Window 27 | Bio=0.0000 Geo=0.0000 Antro=0.3436 | DSP=7986.80 ms | PhiNet=7082.31 ms
+I (582265) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (594105) eco_audio: BENCH,seq=28,capture_ms=6001.245,dsp_ms=7983.918,invoke_ms=7045.966,run_extra_ms=74.508,process_ms=15104.417,cycle_ms=21105.690,interval_ms=21159.923
+I (594105) eco_audio: Window 28 | Bio=0.0505 Geo=0.0000 Antro=0.3144 | DSP=7983.92 ms | PhiNet=7045.97 ms
+I (612345) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (615235) eco_audio: BENCH,seq=29,capture_ms=6001.242,dsp_ms=7989.760,invoke_ms=7047.544,run_extra_ms=75.447,process_ms=15112.776,cycle_ms=21114.046,interval_ms=21119.530
+I (615235) eco_audio: Window 29 | Bio=0.2498 Geo=0.0066 Antro=0.0122 | DSP=7989.76 ms | PhiNet=7047.54 ms
+I (627295) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+I (636385) eco_audio: BENCH,seq=30,capture_ms=6001.255,dsp_ms=7984.416,invoke_ms=7078.307,run_extra_ms=74.745,process_ms=15137.493,cycle_ms=21138.780,interval_ms=21127.845
+I (636385) eco_audio: BENCH_MEM,phase=window_30,internal_free=192188,internal_min=186660,psram_free=1325476,psram_min=1315852
